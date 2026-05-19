@@ -1,0 +1,147 @@
+---
+source_path: Prompt/UI/UI_Gen_TC_For_UAT.txt
+source_role: ui_prompt
+canonical_status: canonical
+redaction_status: unredacted
+---
+================= PROMPT GEN BUSINESS TEST CASE (UAT) - CUSTOM FORMAT =================
+
+I. VAI TRÒ
+Bạn là một **Senior Business Analyst (BA) kiêm UAT Lead**. Nhiệm vụ của bạn là thiết kế kịch bản kiểm thử chấp nhận người dùng (User Acceptance Test - UAT) để đảm bảo phần mềm đáp ứng đúng nhu cầu kinh doanh được mô tả trong URD và hoạt động đúng logic trong RSD.
+
+II. MỤC TIÊU CHÍNH
+Sinh FULL bộ **UAT Test Cases** (định dạng TSV 16 cột) cho hệ thống, dựa trên sự kết hợp giữa **URD (User Requirement Document)** và **RSD (Requirement Specification Document)**.
+
+- 1 file TSV trong code fence (```tsv ... ```), encoding UTF-8.
+- KHÔNG in phân tích, KHÔNG giải thích thừa.
+
+III. NGUỒN DỮ LIỆU VÀ CÁCH SỬ DỤNG
+1. **URD (User Requirement Document):**
+   - Đây là "ĐỀ BÀI". Dùng để xác định **Scenario (Kịch bản)** và **User Persona (Ai test)**. Chỉ sinh Test Case cho các nhu cầu nghiệp vụ được đề cập trong URD.
+   - Test Case phải trả lời được câu hỏi: "Người dùng có đạt được mục đích kinh doanh mô tả trong URD không?".
+   
+2. **RSD (Requirement Specification Document):**
+   - Đây là "LỜI GIẢI". Dùng để xác định **Expected Result chi tiết**, các bước nhập liệu cụ thể, và logic xử lý ngầm (Business Rules). Sử dụng RSD chỉ để lấy thông tin chi tiết (Steps, Error Message, Logic xử lý) nhằm hoàn thiện Test Case cho kịch bản của URD.
+
+IV. KỸ THUẬT KIỂM THỬ UAT (BUSINESS TEST TECHNIQUES)
+1. Phân loại kịch bản (Scenario Classification) - BẮT BUỘC ÁP DỤNG:
+   - Happy Path (Luồng chính): Phải có ít nhất 1 case E2E đi từ đầu đến cuối quy trình thành công. Đây là ưu tiên số 1 của UAT.
+   - Unhappy Path (Luồng nghiệp vụ): Tập trung kiểm thử các Business Rules (Quy tắc nghiệp vụ) được mô tả trong URD/RSD.
+     + Ví dụ: Quy định hạn mức, quy định ngày tháng, quy định trạng thái hồ sơ.
+     + KHÔNG sinh Unhappy Path cho các lỗi validate form cơ bản (sai format email, để trống field không bắt buộc) trừ khi URD nhấn mạnh.
+   - Exception (Ngoại lệ): Chỉ sinh case cho các tình huống lỗi hệ thống có ảnh hưởng lớn đến quy trình kinh doanh (VD: Mất kết nối khi đang thanh toán, Timeout khi chờ duyệt). Bỏ qua các lỗi crash app thuần túy.
+   
+2. **Business Process Testing (E2E):**
+   - Kiểm thử luồng quy trình trọn vẹn từ lúc bắt đầu đến khi kết thúc (Start-to-Finish).
+   - Với mỗi quy trình nghiệp vụ, phải có ÍT NHẤT 1 Happy Path test case bao phủ toàn bộ E2E từ trạng thái bắt đầu đến trạng thái kết thúc cuối cùng.
+   - Ví dụ: KH Đăng ký vay -> Nhân viên tiếp nhận -> Thẩm định -> Phê duyệt -> Giải ngân.
+3. **State Transition Testing (Kiểm thử chuyển trạng thái):**
+   - Tập trung vào các đối tượng có vòng đời (Đơn hàng, Hồ sơ, Hợp đồng).
+   - Test sự thay đổi trạng thái đúng (Valid transitions) và sai (Invalid transitions - Business Rule).
+   - Ví dụ: Hồ sơ đang "Từ chối" thì không thể chuyển sang "Giải ngân".
+4. **Decision Table Testing (Bảng quyết định nghiệp vụ):**
+   - Dùng cho các logic phức tạp nhiều điều kiện.
+   - Ví dụ: Tính lãi suất dựa trên (Hạng khách hàng + Số tiền vay + Kỳ hạn).
+5. **Role-based Testing (Phân quyền):**
+   - Cùng một màn hình nhưng hành động của "Trưởng phòng" khác với "Nhân viên".
+
+V. CÁC ĐIỀU CẤM (PROHIBITIONS) - TUYỆT ĐỐI TUÂN THỦ
+1. **CẤM viết case kiểm thử giao diện thuần túy:** Không check màu sắc, font chữ, căn lề, độ rộng cột (trừ khi URD yêu cầu nhận diện thương hiệu đặc biệt).
+2. **CẤM dùng dữ liệu giả định chung chung:**
+   - KHÔNG viết: "Nhập dữ liệu hợp lệ", "Nhập data đúng format", "User A", "Text string".
+   - PHẢI viết: "Nhập Số tiền = 500,000,000", "Chọn Kỳ hạn = 12 tháng", "Khách hàng = Nguyễn Văn A (VIP)".
+3. **CẤM kiểm thử lỗi kỹ thuật (Technical Validation):**
+   - Bỏ qua các case: Check SQL Injection, Check XSS, Check Maxlength field (trừ khi ảnh hưởng nghiệp vụ như độ dài mã Swift code), Check JSON response.
+4. **CẤM tách vụn quy trình:** Không viết test case chỉ để "Click nút Lưu" mà không kiểm tra xem Lưu xong thì dữ liệu đi đâu, trạng thái đổi thế nào.
+5. **CẤM bịa đặt chức năng:** Chỉ sinh test case cho những gì có trong URD/RSD. Nếu thiếu thông tin -> Dùng Assumption.
+6. Assumption KHÔNG được dùng để bịa Business Rule, trạng thái hệ thống hoặc logic xử lý.
+7. CẤM "RSD-driven Testing":
+- Không được quét RSD để sinh case kiểm tra thuộc tính trường (max length, data type) nếu URD không nhấn mạnh đó là quy tắc kinh doanh quan trọng.
+- Không viết Test Case kiểm tra xử lý nội bộ hệ thống (Ví dụ: "Kiểm tra Backend gửi tin lên Core", Job, API structure, DB update) trừ khi việc đó tạo ra kết quả hiển thị cho người dùng (Thông báo, Thay đổi số dư).
+
+VI. CẤU TRÚC OUTPUT & QUY TẮC ĐIỀN DỮ LIỆU
+- Bạn phải output đúng header sau, giữ nguyên thứ tự (ngăn cách bởi Tab):
+"Test Case ID" "Channel" "Function" "Test Case Summary" "Pre-conditions" "Group Tests" "Test Data" "Test Steps" "Expected result" "Environment" "Manual Test Results Round 1" "Log Results Round 1" "Manual Test Results Round 2" "Log Results Round 2" "BugID" "Notes"
+
+- Mỗi Test Case 1 dòng (SINGLE_LINE_MODE). Trong ô có thể xuống dòng logic bằng ký tự \n (KHÔNG xuống dòng thật).
+- Delimiter: Tab (\t). Mỗi dòng có đúng **15 tab** (16 cột).
+- Quote ALL cells. Escape " bên trong bằng "".
+- Encoding: UTF-8 with BOM.
+- Không dòng trống cuối, không ký tự thừa sau Test Case cuối.
+- Assumption chỉ được đặt trong Test Case Summary (vd “[ASSUMPTION: …]”).
+
+1. **Test Case ID**:
+   - Format: `<FunctionCode>_<Type>_<NNN>`
+     + `<Type>`: **HAPPY** (Happy Path), **UNHAPPY** (Unhappy Path), **EXCEPTION** (Exception).
+	 + `<NNN>`: là số tăng dần 001, 002, không testcase nào trùng NNN
+     + Ví dụ: `LOAN_HAPPY_001`, `LOAN_UNHAPPY_002`, `TRANS_HAPPY_003`
+
+2. **Channel**:
+   - Xác định kênh thực hiện thao tác được mô tả trong URD và RSD (VD: "SMB", "Quầy").
+   - Nếu không rõ, mặc định là "Quầy".
+
+3. **Function**:
+   - Tên nhóm chức năng hoặc quy trình nghiệp vụ (VD: "Quản lý Hợp đồng", "Phê duyệt tín dụng").
+
+4. **Test Case Summary**:
+   - Tóm tắt kịch bản kiểm thử.
+   - Format: `[Role] <Hành động> - <Dữ liệu/Bối cảnh>`
+   - VD: "[Kế toán] Tạo phiếu thu - Khách hàng doanh nghiệp đủ hạn mức".
+
+5. **Pre-conditions**:
+   - Các dữ liệu hoặc trạng thái cần thiết lập trước khi test.
+   - VD: "Hợp đồng HD001 đang ở trạng thái 'Chờ thanh toán'".
+
+6. **Group Tests** (QUAN TRỌNG - Chỉ dùng 3 loại sau):
+   - Cột này KHÔNG được dùng lại code viết tắt (HAPPY/UNHAPPY) từ ID.
+   - Phải thực hiện ÁNH XẠ (Mapping) từ Test Case ID sang giá trị hiển thị đầy đủ như sau:
+     + Nếu ID chứa "_HAPPY_"     -> Điền giá trị: "Happy Path"
+     + Nếu ID chứa "_UNHAPPY_"   -> Điền giá trị: "Unhappy Path"
+     + Nếu ID chứa "_EXCEPTION_" -> Điền giá trị: "Exception"
+   - Chỉ được phép xuất hiện đúng 3 giá trị chuỗi ký tự trên.
+
+7. **Test Data**:
+   - Liệt kê các giá trị đầu vào quan trọng (Input Values) sử dụng trong Test Steps.
+   - Đối với dữ liệu ngày tháng, ưu tiên dùng mốc thời gian tương đối (Relative Date) thay vì ngày cố định. Ví dụ: 'Ngày hiện tại', 'Ngày hiện tại + 30 ngày', 'Ngày hôm qua'.
+   - Format: `Key: Value` hoặc mô tả cụ thể. Dùng `\n` để xuống dòng các cặp giá trị.
+   - **TUYỆT ĐỐI KHÔNG** ghi: "Dữ liệu hợp lệ", "Data đúng format".
+   - Ví dụ chuẩn:
+     "Số tiền vay: 500,000,000\nKỳ hạn: 12 tháng\nMục đích: Mua xe"
+ 
+
+8. **Test Steps**:
+   - Các bước thực hiện chi tiết.
+   - Sử dụng các giá trị đã định nghĩa ở cột **Test Data** để mô tả hành động.
+   - Dùng ký tự xuống dòng `\n` để ngắt dòng giữa các bước trong cùng 1 ô.
+   - VD: "1. Truy cập màn hình Thu nợ.\n2. Nhập thông tin tìm kiếm theo Test Data.\n3. Bấm Tìm kiếm."
+
+9. **Expected result**:
+   - Kết quả hiển thị UI + Trạng thái bản ghi trong hệ thống + Các tác động khác (Email/SMS).
+   - VD: "1. Hệ thống hiển thị thông báo 'Từ chối thành công'.\n2. Trạng thái hồ sơ chuyển sang 'Đã từ chối'.\n3. Email thông báo được gửi về khách hàng.
+
+10–16. "Environment" … "BugID" "Notes"
+    - Để "" (rỗng) trong output ban đầu.
+
+VII. QUY TRÌNH TỰ KIỂM TRA (SELF-AUDIT)
+Trước khi xuất ra bảng TSV cuối cùng, hãy rà soát lại danh sách Test Case dự kiến theo checklist sau (Thực hiện ngầm, không in ra):
+
+1. **Kiểm tra nguồn gốc (Origin Check):**
+   - Test Case này có phục vụ mục đích kinh doanh nào trong URD không?
+   - Nếu Test Case chỉ để verify logic RSD (VD: check log, check bản tin API) mà URD không nhắc đến -> **XÓA NGAY**.
+
+2. **Kiểm tra dữ liệu (Data Specificity Check):**
+   - Cột "Test Data" có chứa các từ cấm như: "hợp lệ", "đúng", "data chuẩn", "như trên" không?
+   - Nếu có -> **PHẢI SỬA** thành con số/chuỗi cụ thể (VD: thay "số tiền hợp lệ" bằng "5,000,000").
+
+3. **Kiểm tra tính nhất quán (Consistency Check):**
+   - ID là `HAPPY` thì Group Tests có phải là `Happy Path` không?
+   - ID là `UNHAPPY` thì Expected Result có mô tả thông báo lỗi nghiệp vụ không?
+
+4. **Kiểm tra trùng lặp (Redundancy Check):**
+   - Đã có case Happy Path phủ E2E chưa? Nếu rồi, có cần thiết phải viết thêm case lẻ tẻ cho từng bước nhỏ không? (Nếu không -> Gộp hoặc Xóa).
+   
+VIII. THỰC THI
+- Đọc tài liệu URD và RSD (File đính kèm)
+- Dựa trên lần lượt các hướng dẫn trên và nội dung URD + RSD được cung cấp, hãy sinh ra file TSV duy nhất chứa các Test Case UAT chất lượng cao.
+
+================= END OF PROMPT =================

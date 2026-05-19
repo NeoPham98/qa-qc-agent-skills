@@ -1,0 +1,55 @@
+Sprint	Epic	Chức năng	Test case Status 						Trạng thái test hiện tại	Mức độ ưu tiên nghiệp vụ	Trạng thái Automation test hiện tại	Automation Test Estimate	Automation Test Cases (Done)	Test case Generate Type	Link test cases	Automation Test Type	Noted			Total Manual Test Cases		Total Automation Test Cases	
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases												Total API Test cases	1229	Total API Test cases	0
+1.0																				Total  UI Test cases	4954	Total  UI Test cases	397
+2.0																	
+7.0	BO_01	BO_01.001_SIT_Testcases_QLMHTS_Danh sách màn hình tham số (có tìm kiếm và phân trang)	120	0	0	0	0	120	Ready to UAT		In - Progress			Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI				Total  UI Test cases (priority 1)	3399
+		BO_01.002_SIT_Testcases_QLMHTS_Thêm mới màn hình tham số	119	0	0	0	0	119	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=539144836#gid=539144836	Web UI	
+		BO_01.003_SIT_Testcases_QLMHTS_Chỉnh sửa màn hình tham số	71	0	0	0	0	71	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=979649417#gid=979649417	Web UI	
+		BO_01.004_SIT_Testcases_QLMHTS_Chi tiết màn hình tham số	17	0	0	0	0	17	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_01.005_SIT_Testcase_Tích hợp service Base (Create, update, view) Màn hình tham số	19	0	0	0	0	19	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	BO_02	BO_02.001_SIT_Testcases_QLTSC_Danh sách tham số ( tìm kiếm, phân trang)	108	0	0	0	0	88	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_02.002_SIT_Testcases_QLTSC_Thêm mới tham số chung	127	0	0	0	0	127	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1782778992#gid=1782778992	Web UI	
+		BO_02.003_QLTSC_Chỉnh sửa màn hình tham số	117	0	0	0	0	117	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_02.004: Xem chi tiết tham số chung	29	0	0	0	0	29	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_02.005_SIT_Testcase_Tích hợp service Base (Create, update, view) tham số chung	15	0	0	0	0	15	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	API	
+8.0	BO_03	BO_03.001_Danh sách tham số ( tìm kiếm, phân trang)	117	0	0	0	0	117	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_03.002 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng thêm mới	76	0	0	0	0	76	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_03.003 màn hình 'QL loại dịch vụ đối tác' - Chức năng chỉnh sửa	75	0	0	0	0	75	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_03.004 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng xem chi tiết	18	0	0	0	0	18	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_03.005_Tích hợp service Base (Thêm, Sửa )	15	0	0	0	0	15	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	BO_05	BO_05.001_Quản lý tham số kỹ thuật_Chức năng tìm kiếm, phân trang	102	0	0	0	0	102	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_05.002 _Testcase_QL tham số kỹ thuật_Chức năng thêm mới	207	0	0	0	0	207	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_05.003_SIT_Testcases_QL Tham số kỹ thuật_Chức năng chỉnh sửa	177	0	0	0	0	177	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_05.004_SIT_Testcases_QL Tham số kỹ thuật_Chức năng xem chi tiết	22	0	0	0	0	22	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+		BO_05.005_Tích hợp service Base (Thêm, Sửa )	28	0	0	0	0	28	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	API	
+9.0	BO_42	BO_42.001_Danh sách tham số ( tìm kiếm, phân trang)	117	0	0	0	0	117	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API	
+		BO_42.002_Ngành nghề kinh doanh_Chức năng thêm mới	71	0	0	0	0	71	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API	
+		BO_42.003_SIT_Testcase_Ngành nghề kinh doanh_Chức năng chỉnh sửa	58	0	0	0	0	58	Ready to UAT					Manual	https:[REDACTED_SECRET]?usp=drive_web&ouid=114816021400451530869	API	
+		BO_42.004_SIT_Testcase_Ngành nghề kinh doanh_Chức năng xem chi tiết	17	0	0	0	0	17	Ready to UAT					Manual	https:[REDACTED_SECRET]?usp=drive_web&ouid=114816021400451530869	API	
+		BO_42.005_Ngành nghề kinh doanh_Tích hợp service Base (Thêm, Sửa )	16	0	0	0	0	16	Ready to UAT					Manual	https:[REDACTED_SECRET]	API	
+	BO_06	BO_06.001 - Danh sách giá trị tham số	132	0	0	0	0	132	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=2124846155#gid=2124846155	API	
+		BO_06.002_Thêm mới Thư mục dịch vụ cấp 1	76	0	0	0	0	76	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=792430575#gid=792430575	API	
+		BO_06.003 - Chỉnh sửa Thư mục dịch vụ cấp 1	95	0	0	0	0	95	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=77352670#gid=77352670	API	
+		BO_06.004 - Xem chi tiết Thư mục dịch vụ cấp 1	24	0	0	0	0	24	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1023309538#gid=1023309538	API	
+		BO_06.005_Tích hợp service Base (Thêm, Sửa, Xem chi tiết, tìm kiếm )	15	0	0	0	0	15	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	API	
+10.0	BO_04	BO_04.001_Sản phẩm dịch vụ cấp 2_Danh sách tham số ( tìm kiếm, phân trang)	129	0	0	0	0	129	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1059917613#gid=1059917613	API	
+		BO_04.002_Sản phẩm dịch vụ cấp 2_chức năng thêm mới	58	0	0	0	0	58	Ready to UAT					Manual	https:[REDACTED_SECRET]?usp=drive_link	API	
+		BO_04.003_Sản phẩm dịch vụ cấp 2_Chức năng chỉnh sửa	51	0	0	0	0	51	Ready to UAT					Manual	https:[REDACTED_SECRET]	API	
+		BO_04.004_SIT_Testcases_Quản Lý Nhóm sản phẩm cấp 2_Chức năng xem chi tiết	19	0	0	0	0	19	Ready to UAT					Manual	https:[REDACTED_SECRET]?usp=drive_web&ouid=114816021400451530869	API	
+		BO_04.005_Sản phẩm dịch vụ cấp 2_Tích hợp service Base (Thêm, Sửa )	16	0	0	0	0	16	Ready to UAT					Manual	https:[REDACTED_SECRET]?usp=drive_web&ouid=114816021400451530869	API	
+	BO_43	BO_43.003_Chỉnh sửa Chỉ dẫn xử lý giao dịch	95	0	0	0	0	95	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=194219167#gid=194219167	API	
+		BO_43.001_Danh sách giá trị tham số Chỉ dẫn xử lý giao dịch(có tìm kiếm và phân trang)	134	0	0	0	0	134	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1308532961#gid=1308532961	API	
+		BO_43.002_Thêm mới Chỉ dẫn xử lý giao dịch	63	0	0	0	0	63	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1065491668#gid=1065491668	API	
+		BO_43.004 - Xem chi tiết Chỉ dẫn xử lý giao dịch	24	0	0	0	0	24	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=148483717#gid=148483717	Web UI	
+		BO_43.005_Tích hợp service Base (Thêm, Sửa, Xem chi tiết, tìm kiếm ) Chỉ dẫn xử lý giao dịch	15	0	0	0	0	15	Ready to UAT					Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI	
+11.0	BO_21	"BO_21.001,002_SIT_Testcase_Khai báo thông tin đối tác và vấn tin CIF (Partner)
+
+
+
+
+"	151	0	0	0	9	160	Ready to UAT	1.0	Completed		105.0	Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI												
+	BO_22	BO_22.003.004.005_ Khai báo đa ngôn ngữ cho Tên thay thế mã khách hàng và upload file tài khoản	198	0	0	0	0	198	Ready to UAT	1.0	Completed		245.0	Manual	https:[REDACTED_SECRET]?gid=2009115587#gid=2009115587	Web UI												
+12.0	BO_22	BO_22.001,002_ Danh sách + Khai báo thông tin dịch vụ cấp 1	75	9	0	0	28	112	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI												
+	BO_23	BO_23_SIT_Testcase_Khai báo thông tin Terminal	63	25	0	0	25	113	Ready to UAT	1.0	In - Progress		47.0	AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI												
+13.0	BO_24	BO_24.002_Khai báo thông tin Phí	66	21	0	0	0	104	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI												
+	BO_25	BO_25.002_Khai báo thông tin hạn mức	0	0	0	0	0	48	In-Test	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI												

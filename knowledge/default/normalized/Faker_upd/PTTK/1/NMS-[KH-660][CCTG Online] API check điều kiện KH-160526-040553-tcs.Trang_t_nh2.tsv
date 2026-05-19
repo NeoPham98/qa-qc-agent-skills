@@ -1,0 +1,408 @@
+Test Case ID	Function	Group Tests	Scenario Outline	"Test Case
+Summary"	Pre-conditions	Test Data	Test Steps	"Expected
+result"	Environment	Priority	Regression	Automation	"Manual Test Results
+Round 1"	Manual Test Results Round 2	Automation Test Results	"Actual
+result"	BugID	Notes 																		" ""TD_P1_002_TC_002"""	"Method &
+Header"	Method & Header	Gọi API với sai HTTP Method (GET)	"Kiểm tra hệ thống
+từ chối request khi sử dụng sai Method GET thay vì POST"	"1. Env: SIT              2. DB:
+[PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method GET.              5. Kiểm
+tra giá trị trả về:              - HTTP Status: 405 (Method Not Allowed) hoặc 404"	"5.              HTTP
+Status: 405              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 405,               ""error"": ""Method Not
+Allowed"",               ""path"":
+""/v1/customer/validate""              }"	SIT	Medium	No	Yes
+TD_P1_001_TC_001	Method & Header	"Method &
+Header"	Happy Path (Method và Header hoàn toàn hợp lệ)	"Kiểm tra gọi API thành
+công khi truyền đầy đủ Method POST và các Header bắt buộc hợp lệ"	"1. Env:
+SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ001, X-App-Code=WEB, Accept-language=vi              6.
+Pre-Data: Dữ liệu khách hàng tồn tại trong hệ thống"	"1. File:
+customer_validate.json              2. Body: {""requestCif"": ""6856078""}"	"1. Thiết lập
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.              2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token, requestID=REQ001,
+X-App-Code=WEB, Accept-language=vi.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method POST (Giữ
+nguyên data).              5. Kiểm tra giá trị trả về của các trường trong Response
+Body:              - HTTP Status: 200              - Response Body:              - $.code = ""0""              - $.message =
+""SUCCESS""              - $.success = true"	"5.              HTTP Status: 200              Response Body:              {              
+""code"": ""0"",               ""message"": ""SUCCESS"",               ""errors"": null,               ""traceId"":
+""1735790943042-159b47e0-1aad-470b-b37f-945ec384c2a4"",               ""responseTime"":
+""2025-01-02T11:09:03.109+07:00"",               ""success"":
+true              }"	SIT	High	Yes	Yes
+TD_P1_002_TC_002	"Method &
+Header"	Method & Header	Gọi API với sai HTTP Method (GET)	"Kiểm tra hệ thống
+từ chối request khi sử dụng sai Method GET thay vì POST"	"1. Env: SIT              2. DB:
+[PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              
+2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.              
+3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              
+4. Gọi API customer_validate với Method GET.              
+5. Kiểm tra giá trị trả về:     
+- HTTP Status: 405 (Method Not Allowed) hoặc 404"	"5.              HTTP
+Status: 405              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 405,               ""error"": ""Method Not
+Allowed"",               ""path"":
+""/v1/customer/validate""              }"	SIT	Medium	No	Yes
+TD_P1_003_TC_003	Method & Header	Method & Header	"Gọi API với sai HTTP
+Method (PUT)"	"Kiểm tra hệ thống từ chối request khi sử dụng sai Method PUT thay
+vì POST"	"1. Env: SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method PUT.              5. Kiểm
+tra giá trị trả về:              - HTTP Status: 405 (Method Not Allowed)"	"5.              HTTP
+Status: 405              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 405,               ""error"": ""Method Not
+Allowed"",               ""path"":
+""/v1/customer/validate""              }"	SIT	Medium	No	Yes
+TD_P1_004_TC_004	Method & Header	Method & Header	"Header 'authToken' bị
+Missing"	Kiểm tra lỗi 401 khi request không truyền header authToken	"1. Env:
+SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json"	"1. File:
+customer_validate.json              2. Body: {""requestCif"": ""6856078""}"	"1. Thiết lập
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.              2. Thiết lập Header:
+Content-Type=application/json (KHÔNG truyền authToken).              3. Thiết lập dữ liệu
+Request Body từ file customer_validate.json.              4. Gọi API customer_validate với
+Method POST.              5. Kiểm tra giá trị trả về:              - HTTP Status: 401
+(Unauthorized)"	"5.              HTTP Status: 401              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 401,               ""error"":
+""Unauthorized"",               ""message"": ""Full authentication is required to access
+this resource"",               ""path"":
+""/v1/customer/validate""              }"	SIT	High	Yes	Yes
+TD_P1_005_TC_005	Method & Header	Method & Header	"Header 'authToken' không
+hợp lệ hoặc hết hạn"	"Kiểm tra lỗi 401 khi truyền authToken sai định dạng
+""invalid_token_123"""	"1. Env: SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=invalid_token_123"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/json,
+authToken=invalid_token_123.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method POST.              5. Kiểm
+tra giá trị trả về:              - HTTP Status: 401 (Unauthorized)"	"5.              HTTP
+Status: 401              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 401,               ""error"":
+""Unauthorized"",               ""message"": ""Invalid token"",               ""path"":
+""/v1/customer/validate""              }"	SIT	High	Yes	Yes
+TD_P1_006_TC_006	Method & Header	Method & Header	"Truyền sai Content-Type
+(text/plain)"	"Kiểm tra lỗi 415 khi Header Content-Type truyền là 'text/plain'
+thay vì 'application/json'"	"1. Env: SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=text/plain,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=text/plain,
+authToken=valid_token.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method POST.              5. Kiểm
+tra giá trị trả về:              - HTTP Status: 415 (Unsupported Media Type)"	"5.              HTTP
+Status: 415              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 415,               ""error"": ""Unsupported
+Media Type"",               ""path"":
+""/v1/customer/validate""              }"	SIT	Medium	No	Yes
+TD_P1_007_TC_007	Method & Header	Method & Header	"Truyền sai Content-Type
+(application/xml)"	"Kiểm tra lỗi 415 khi Header Content-Type truyền là
+'application/xml' thay vì 'application/json'"	"1. Env: SIT              2. DB:
+[PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/xml,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/xml,
+authToken=valid_token.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method POST.              5. Kiểm
+tra giá trị trả về:              - HTTP Status: 415 (Unsupported Media Type)"	"5.              HTTP
+Status: 415              Response Body:              {               ""timestamp"":
+""2025-01-02T11:09:03.109+07:00"",               ""status"": 415,               ""error"": ""Unsupported
+Media Type"",               ""path"":
+""/v1/customer/validate""              }"	SIT	Medium	No	Yes
+TD_P1_008_TC_008	Method & Header	Method & Header	"Header 'requestID' bị
+Missing"	"Kiểm tra lỗi 400 khi thiếu header bắt buộc requestID [ASSUMPTION:
+Header này bắt buộc để tracking log]"	"1. Env: SIT              2. DB: [PENDING_DOC]              3.
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4.
+Endpoint: /v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json              2. Body:
+{""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token (KHÔNG truyền requestID).              3. Thiết lập dữ liệu Request
+Body từ file customer_validate.json.              4. Gọi API customer_validate với Method
+POST.              5. Kiểm tra giá trị trả về:              - HTTP Status: 400 (Bad Request)              -
+$.message chứa nội dung liên quan đến missing header requestID"	"5.              HTTP
+Status: 400              Response Body:              {               ""code"": ""BAD_REQUEST"",               ""message"":
+""Missing request header 'requestID'"",               ""success"":
+false              }"	SIT	Medium	Yes	Yes
+TD_P1_009_TC_009	Method & Header	Method & Header	"Header 'X-App-Code' bị
+Missing"	"Kiểm tra lỗi 400 khi thiếu header bắt buộc X-App-Code [ASSUMPTION:
+Header này bắt buộc để xác định nguồn gọi API]"	"1. Env: SIT              2. DB:
+[PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ001"	"1. File: customer_validate.json              2.
+Body: {""requestCif"": ""6856078""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.              2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ001 (KHÔNG truyền X-App-Code).              3. Thiết lập
+dữ liệu Request Body từ file customer_validate.json.              4. Gọi API
+customer_validate với Method POST.              5. Kiểm tra giá trị trả về:              - HTTP
+Status: 400 (Bad Request)              - $.message chứa nội dung liên quan đến missing
+header X-App-Code"	"5.              HTTP Status: 400              Response Body:              {               ""code"":
+""BAD_REQUEST"",               ""message"": ""Missing request header 'X-App-Code'"",              
+""success"": false              }"	SIT	Medium	Yes	Yes
+TD_P1_010_TC_010	Method & Header	Method & Header	"Header 'Accept-language'
+bị Missing"	"Kiểm tra API tự động dùng ngôn ngữ mặc định (vi) khi thiếu header
+Accept-language [ASSUMPTION: Hệ thống tự động dùng ngôn ngữ mặc định là
+'vi']"	"1. Env: SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ001, X-App-Code=WEB"	"1. File:
+customer_validate.json              2. Body: {""requestCif"": ""6856078""}"	"1. Thiết lập
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.              2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token, requestID=REQ001,
+X-App-Code=WEB (KHÔNG truyền Accept-language).              3. Thiết lập dữ liệu Request
+Body từ file customer_validate.json.              4. Gọi API customer_validate với Method
+POST.              5. Kiểm tra giá trị trả về của các trường trong Response Body:              - HTTP
+Status: 200              - Response Body:              - $.message = ""SUCCESS"" (Ngôn ngữ tiếng
+Việt)"	"5.              HTTP Status: 200              Response Body:              {               ""code"": ""0"",              
+""message"": ""SUCCESS"",               ""success"":
+true              }"	SIT	Low	No	Yes						" ""TD_P1_011_TC_011"""	"Method &
+Header"	Method & Header	"Header 'Accept-language' với giá trị không hỗ trợ (Ví
+dụ: fr)"	"Kiểm tra API fallback về ngôn ngữ mặc định khi truyền ngôn ngữ không
+hỗ trợ 'fr' [ASSUMPTION: Hệ thống tự động fallback về ngôn ngữ mặc định 'vi'
+hoặc 'en']"	"1. Env: SIT              2. DB: [PENDING_DOC]              3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api              4. Endpoint:
+/v1/customer/validate              5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ001, X-App-Code=WEB, Accept-language=fr"	"1.
+File: customer_validate.json              2. Body: {""requestCif"": ""6856078""}"	"1. Thiết
+lập URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.              2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token, requestID=REQ001,
+X-App-Code=WEB, Accept-language=fr.              3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.              4. Gọi API customer_validate với Method POST.              5. Kiểm
+tra giá trị trả về của các trường trong Response Body:              - HTTP Status: 200              -
+Response Body:              - $.message = ""SUCCESS"" (Fallback về tiếng Việt hoặc
+Anh)"	"5.              HTTP Status: 200              Response Body:              {               ""code"": ""0"",               ""message"":
+""SUCCESS"",               ""success"": true              }"	SIT	Low	No	Yes
+TD_P2_001_TC_001	Schema Validation	"Schema
+Validation"	Happy Path Full Flow (Valid Schema)	"Kiểm tra gọi API thành công
+với request payload chứa đầy đủ trường requestCif đúng định dạng (String,
+length 12)"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ_SCH_001, X-App-Code=WEB\n6. Pre-Data: Khách
+hàng CIF '123456789012' tồn tại và thỏa mãn các điều kiện nghiệp vụ"	"1. File:
+customer_validate.json\n2. Body: {""requestCif"": ""123456789012""}"	"1. Thiết
+lập URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.\n2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token, requestID=REQ_SCH_001,
+X-App-Code=WEB.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API customer_validate với Method POST và giữ
+nguyên data từ file.\n5. Kiểm tra giá trị trả về của các trường trong Response
+Body:\n- HTTP Status: 200\n- Response Body:\n- $.code = ""0""\n- $.message =
+""SUCCESS""\n- $.success = true"	"5.\nHTTP Status: 200\nResponse Body:\n{\n
+""code"": ""0"",\n ""message"": ""SUCCESS"",\n ""errors"": null,\n ""traceId"":
+""1735790943042-159b47e0-1aad-470b-b37f-945ec384c2a4"",\n ""responseTime"":
+""2025-01-02T11:09:03.109+07:00"",\n ""success"":
+true\n}"	SIT	High	Yes	Yes
+TD_P2_002_TC_002	"Schema
+Validation"	Schema Validation	Field Missing Validation	"Kiểm tra lỗi khi
+request payload thiếu key 'requestCif' (Trường bắt buộc)"	"1. Env: SIT\n2. DB:
+[PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token"	1. File: customer_validate.json\n2. Body: {}	"1. Thiết
+lập URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.\n2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token.\n3. Thiết lập dữ liệu
+Request Body từ file customer_validate.json.\n4. Gọi API customer_validate với
+Method POST và override field:\n- requestCif = null (Mô tả lý do: Missing
+field)\n5. Kiểm tra giá trị trả về của các trường trong Response Body:\n- HTTP
+Status: 400\n- $.success = false"	"5.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""BAD_REQUEST"",\n ""message"": ""requestCif is mandatory"",\n
+""success"": false\n}"	SIT	Medium	Yes	Yes
+TD_P2_003_TC_003	Schema Validation	Schema Validation	"Field Empty
+Validation"	"Kiểm tra lỗi khi request payload truyền trường 'requestCif' giá trị
+rỗng """""	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json\n2. Body:
+{""requestCif"": """"}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API customer_validate với Method POST và
+override field:\n- requestCif = """" (Mô tả lý do: Empty value)\n5. Kiểm tra giá
+trị trả về của các trường trong Response Body:\n- HTTP Status: 400\n- $.success
+= false"	"5.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""BAD_REQUEST"",\n
+""message"": ""requestCif cannot be empty"",\n ""success"":
+false\n}"	SIT	Medium	Yes	Yes
+TD_P2_004_TC_004	Schema Validation	Schema Validation	"Field Type
+Validation"	"Kiểm tra lỗi khi request payload truyền 'requestCif' sai kiểu dữ
+liệu (truyền Number 6856078 thay vì String)"	"1. Env: SIT\n2. DB:
+[PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json\n2. Body:
+{""requestCif"": 6856078}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API customer_validate với Method POST và
+override field:\n- requestCif = 6856078 (Mô tả lý do: Invalid type Number)\n5.
+Kiểm tra giá trị trả về của các trường trong Response Body:\n- HTTP
+Status: 400\n- $.success = false"	"5.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""BAD_REQUEST"",\n ""message"": ""Invalid data type for
+requestCif"",\n ""success"":
+false\n}"	SIT	Medium	Yes	Yes
+TD_P2_005_TC_005	Schema Validation	Schema Validation	"Field Max Length
+Validation"	"Kiểm tra lỗi khi 'requestCif' vượt quá độ dài tối đa (truyền 13 ký
+tự ""1234567890123"")"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token"	"1. File: customer_validate.json\n2. Body:
+{""requestCif"": ""1234567890123""}"	"1. Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API customer_validate với Method POST và
+override field:\n- requestCif = ""1234567890123"" (Mô tả lý do: Exceed Max
+Length 12)\n5. Kiểm tra giá trị trả về của các trường trong Response Body:\n-
+HTTP Status: 400\n- $.success = false"	"5.\nHTTP Status: 400\nResponse
+Body:\n{\n ""code"": ""BAD_REQUEST"",\n ""message"": ""requestCif length
+exceeds 12"",\n ""success"":
+false\n}"	SIT	Medium	Yes	Yes
+ TD_P3_002_TC_001	"Value, Business Logic, Cross
+Logic"	Value, Business Logic, Cross Logic	"Happy Path (Dữ liệu và Trạng thái
+hợp lệ)"	"Kiểm tra khách hàng thỏa mãn mọi điều kiện (Quốc tịch, Tuổi, Loại
+KH, Cư trú) và trong giờ giao dịch"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token, requestID=REQ_VAL_001, X-App-Code=WEB\n6. Pre-Data: Khách
+hàng CIF '6856078' hợp lệ, hệ thống ngoài giờ COT"	"1. File:
+customer_validate.json\n2. Body: {""requestCif"": ""6856078""}"	"1. Thiết lập
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api,
+Endpoint: /v1/customer/validate.\n2. Thiết lập Header:
+Content-Type=application/json, authToken=valid_token, requestID=REQ_VAL_001,
+X-App-Code=WEB.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API customer_validate với Method POST (Giữ
+nguyên data).\n5. Kiểm tra giá trị trả về của các trường trong Response
+Body:\n- HTTP Status: 200\n- Response Body:\n- $.code = ""0""\n- $.message =
+""SUCCESS""\n- $.success = true"	"5.\nHTTP Status: 200\nResponse Body:\n{\n
+""code"": ""0"",\n ""message"": ""SUCCESS"",\n ""errors"": null,\n ""traceId"":
+""1735790943042-159b47e0-1aad-470b-b37f-945ec384c2a4"",\n ""responseTime"":
+""2025-01-02T11:09:03.109+07:00"",\n ""success"":
+true\n}"	SIT	High	Yes	Yes																																																						
+ TD_P3_002_TC_002	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"requestCif
+không tồn tại"	"Kiểm tra hệ thống báo lỗi khi truyền requestCif không tồn tại
+trên hệ thống Core (CIF = ""999999999"")"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3.
+URL: http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4.
+Endpoint: /v1/customer/validate\n5. Header: Content-Type=application/json,
+authToken=valid_token\n6. Pre-Data: CIF '999999999' không tồn tại trong DB"	"1.
+File: customer_validate.json\n2. Body: {""requestCif"": ""999999999""}"	"1.
+Thiết lập URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api, Endpoint:
+/v1/customer/validate.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=valid_token.\n3. Thiết lập dữ liệu Request Body từ file
+customer_validate.json.\n4. Gọi API với Method POST và override field:\n-
+requestCif = ""999999999""\n5. Kiểm tra giá trị trả về:\n- HTTP Status: 400 (Bad
+Request)\n- $.success = false"	"5.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""ERR_CIF_NOT_FOUND"",\n ""message"": ""Khách hàng không tồn tại"",\n
+""success"": false\n}"	SIT	Medium	Yes	Yes																																																						
+TD_P3_003_TC_003	Value, Business Logic, Cross Logic	"Value, Business Logic,
+Cross Logic"	Quốc tịch không hợp lệ	"Kiểm tra trả mã lỗi 101 khi khách hàng có
+quốc tịch không thỏa mãn điều kiện"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com/cctg-online-api\n4. Endpoint:
+/v1/customer/validate\n5. Pre-Data: Khách hàng CIF '101101' có quốc tịch không
+hợp lệ"	"1. File: customer_validate.json\n2. Body: {""requestCif"":
+""101101""}"	"1. Thiết lập URL, Header và Request Body.\n2. Gọi API với
+requestCif = ""101101"".\n3. Kiểm tra giá trị trả về:\n- HTTP Status: 400\n-
+$.code = ""101""\n- $.message = ""quốc tịch không hợp lệ""\n- $.success =
+false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""101"",\n
+""message"": ""quốc tịch không hợp lệ"",\n ""success"":
+false\n}"	SIT	High	Yes	Yes
+ TD_P3_004_TC_004	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Tuổi không
+hợp lệ"	"Kiểm tra trả mã lỗi 102 khi khách hàng không thỏa mãn điều kiện độ
+tuổi"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. Pre-Data: Khách hàng CIF '102102'
+có ngày sinh dẫn đến tuổi < 18"	"1. File: customer_validate.json\n2. Body:
+{""requestCif"": ""102102""}"	"1. Thiết lập URL, Header và Request Body.\n2. Gọi
+API với requestCif = ""102102"".\n3. Kiểm tra giá trị trả về:\n- HTTP
+Status: 400\n- $.code = ""102""\n- $.message = ""tuổi không hợp lệ""\n-
+$.success = false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"":
+""102"",\n ""message"": ""tuổi không hợp lệ"",\n ""success"":
+false\n}"	SIT	High	Yes	Yes																		
+ TD_P3_005_TC_005	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Loại khách
+hàng không hợp lệ"	"Kiểm tra trả mã lỗi 103 khi khách hàng thuộc phân khúc
+không được phép"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. Pre-Data: Khách hàng
+CIF '103103' là loại khách hàng doanh nghiệp (không hỗ trợ)"	"1. File:
+customer_validate.json\n2. Body: {""requestCif"": ""103103""}"	"1. Thiết lập
+URL, Header và Request Body.\n2. Gọi API với requestCif = ""103103"".\n3. Kiểm
+tra giá trị trả về:\n- HTTP Status: 400\n- $.code = ""103""\n- $.message =
+""loại khách hàng không hợp lệ""\n- $.success = false"	"3.\nHTTP
+Status: 400\nResponse Body:\n{\n ""code"": ""103"",\n ""message"": ""loại khách
+hàng không hợp lệ"",\n ""success"":
+false\n}"	SIT	High	Yes	Yes																		
+ TD_P3_006_TC_006	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Tình trạng cư
+trú không hợp lệ"	"Kiểm tra trả mã lỗi 104 khi khách hàng có tình trạng cư trú
+không thỏa mãn"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. Pre-Data: Khách hàng CIF
+'104104' có tình trạng Non-resident"	"1. File: customer_validate.json\n2. Body:
+{""requestCif"": ""104104""}"	"1. Thiết lập URL, Header và Request Body.\n2. Gọi
+API với requestCif = ""104104"".\n3. Kiểm tra giá trị trả về:\n- HTTP
+Status: 400\n- $.code = ""104""\n- $.message = ""tình trạng cư trú không hợp
+lệ""\n- $.success = false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""104"",\n ""message"": ""tình trạng cư trú không hợp lệ"",\n
+""success"": false\n}"	SIT	High	Yes	Yes																		
+TD_P3_007_TC_007	Value, Business Logic, Cross Logic	"Value, Business Logic,
+Cross Logic"	Hệ thống đang trong giờ COT	"Kiểm tra trả mã lỗi 109 khi thực
+hiện gọi API trong khung giờ Cut Off Time"	"1. Env: SIT\n2. Pre-Data: Hệ thống
+đang trong giờ COT (Ví dụ: 23:00 - 01:00)"	"1. File: customer_validate.json\n2.
+Body: {""requestCif"": ""6856078""}"	"1. Thiết lập URL, Header và Request
+Body.\n2. Gọi API customer_validate vào khung giờ COT.\n3. Kiểm tra giá trị trả
+về:\n- HTTP Status: 400\n- $.code = ""109""\n- $.message = ""Hiện tại đã hết giờ
+giao dịch. Quý khách vui lòng thực hiện từ {0} đến {1} hàng ngày.""\n- $.success
+= false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""109"",\n
+""message"": ""Hiện tại đã hết giờ giao dịch. Quý khách vui lòng thực hiện
+từ 08:00 đến 17:00 hàng ngày."",\n ""success"":
+false\n}"	SIT	High	Yes	Yes
+ TD_P3_008_TC_008	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Ưu tiên kiểm
+tra lỗi (Multiple violations)"	"Kiểm tra thứ tự ưu tiên lỗi: Trả về lỗi 101 khi
+KH vi phạm cả Quốc tịch (101) và Tuổi (102)"	"1. Env: SIT\n2. Pre-Data: KH CIF
+'888888' có Quốc tịch không hợp lệ VÀ Tuổi < 18"	"1. File:
+customer_validate.json\n2. Body: {""requestCif"": ""888888""}"	"1. Thiết lập
+URL, Header và Request Body.\n2. Gọi API với requestCif = ""888888"".\n3. Kiểm
+tra giá trị trả về (Hệ thống phải trả lỗi có mức ưu tiên cao nhất):\n- HTTP
+Status: 400\n- $.code = ""101""\n- $.success = false"	"3.\nHTTP
+Status: 400\nResponse Body:\n{\n ""code"": ""101"",\n ""message"": ""quốc tịch
+không hợp lệ"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes

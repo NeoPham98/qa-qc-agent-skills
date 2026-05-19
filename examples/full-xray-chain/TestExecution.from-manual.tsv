@@ -1,0 +1,3 @@
+﻿Test Execution ID	Test Set ID	Test Case ID	Environment	Build / Version	Tester	Planned Run Date	Status	Actual Result	Evidence	Defect Link	Requirement ID	Test Condition ID	Notes
+TE-PAYGATES-001	TS-SIT-001	TD_P1_001_TC_001	SIT	SIT-001	tester01		Not Run				[PENDING_DOC:requirement_id]	[PENDING_DOC:test_condition_id]	
+TE-PAYGATES-001	TS-SIT-001	TD_P2_002_TC_001	SIT	SIT-001	tester01		Not Run				[PENDING_DOC:requirement_id]	[PENDING_DOC:test_condition_id]	

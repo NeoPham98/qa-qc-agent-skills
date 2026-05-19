@@ -1,0 +1,49 @@
+version: 1
+name: packaged_excel_profile_map
+summary: Runtime Excel profile map distilled from sample BIDV workbooks and packaged as contracts/validators.
+runtime_rule: User machines do not need sample BIDV workbooks. Samples are used only to derive packaged contracts, validators, and golden examples.
+profiles:
+  legacy_api_ui_19_column:
+    purpose: contract-style API/UI manual testcase workbook.
+    packaged_contracts:
+      - data/output-contracts/legacy_19_column_testcase_contract.md
+      - data/output-contracts/testcase_excel_columns.md
+    export_scripts:
+      tsv: scripts/export_legacy_19col_tsv.py
+      xlsx: scripts/export_legacy_19col_xlsx.py
+    validators:
+      - scripts/validate_testcase_contract.py
+      - scripts/validate_legacy_19col_tsv.py
+      - scripts/validate_testcase_granularity.py
+    required_final_artifacts:
+      - TestCaseSource.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+  uat_16_column:
+    purpose: contract-style UAT testcase workbook.
+    packaged_contracts:
+      - data/output-contracts/uat_16_column_testcase_contract.md
+    validators:
+      - scripts/validate_testcase_contract.py
+      - scripts/validate_testcase_granularity.py
+  manual_execution_status:
+    purpose: Manual execution import/update/export flow.
+    packaged_contracts:
+      - data/output-contracts/manual_execution_reader_contract.md
+      - data/output-contracts/test_status_excel_columns.md
+    import_script: scripts/read_manual_execution_results.py
+    validators:
+      - scripts/validate_testcase_contract.py
+      - scripts/validate_tracker.py
+  paygates_dashboard:
+    purpose: Paygates status/dashboard output derived from testcase and execution artifacts.
+    packaged_contracts:
+      - data/output-contracts/paygates_dashboard_contract.md
+    validators:
+      - scripts/validate_paygates_dashboard.py
+      - scripts/validate_tracker.py
+rules:
+  preserve_testcase_ids: true
+  preserve_manual_result_columns: true
+  do_not_expand_contract_from_sample_overflow: true
+  approved_workbooks_are_versioned_not_overwritten: true

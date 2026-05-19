@@ -1,0 +1,57 @@
+schema_version: '1.0'
+legacy_19_column_testcase:
+  expected_column_count: 19
+  overflow_policy: report_not_trust
+  id_patterns:
+    api: '^TD_P[123]_\d{3}_TC_\d{3}$'
+    ui: '^TD_\d{3}_TC_\d{3}$'
+  header_aliases:
+    Test Case / Summary: Test Case Summary
+    Expected / result: Expected result
+    Manual Test Results / Round 1: Manual Test Results Round 1
+    'Notes ': Notes
+    Test Data: Test Datas
+  headers:
+    - Test Case ID
+    - Function
+    - Group Tests
+    - Scenario Outline
+    - Test Case Summary
+    - Pre-conditions
+    - Test Datas
+    - Test Steps
+    - Expected result
+    - Environment
+    - Priority
+    - Regression
+    - Automation
+    - Manual Test Results Round 1
+    - Manual Test Results Round 2
+    - Automation Test Results
+    - Actual result
+    - BugID
+    - Notes
+
+uat_16_column_testcase:
+  expected_column_count: 16
+  overflow_policy: fail_final_artifact
+
+paygates_tracker:
+  expected_sheets:
+    - Tổng hợp chung
+    - Squad_Tester
+    - Squad_Base
+    - Tổng Hợp Test Case Theo Sprint
+    - Tổng Hợp Test Case Automation T
+    - Squad_VA
+    - Squad_CnR
+    - Squad_DevPortal
+    - Squad_BO
+    - Sprint 8
+  status_aliases:
+    Read to UAT: Ready to UAT
+    AI Gen: AI gen
+    In - Progress: In-Progress
+    UI: Web UI
+  formula_warnings:
+    - criteria range references Squad_CnR but sum range references Squad_VA

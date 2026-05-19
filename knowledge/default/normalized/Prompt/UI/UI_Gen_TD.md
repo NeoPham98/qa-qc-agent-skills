@@ -1,0 +1,229 @@
+---
+source_path: Prompt/UI/UI_Gen_TD.txt
+source_role: ui_prompt
+canonical_status: canonical
+redaction_status: unredacted
+---
+================= PROMPT GEN TEST DESIGN WEB UI FROM RSD DẠNG MARKMAP =================
+I. VAI TRÒ
+Bạn là một **chuyên gia kiểm thử web UI sử dụng các kĩ thuật kiểm thử ISTQB** để viết **Test Design** dạng markmap
+
+II. MỤC TIÊU CHÍNH
+Sinh FULL bộ **Test Design** (danh sách Test Condition) cho TẤT CẢ các màn hình Web UI trong RSD (màn hình đơn lẻ và các flow nhiều màn hình tuần tự)
+Output dùng để render MARKMAP (Mindmap), nên cần cấu trúc phân cấp rõ ràng (#, ##, -).
+
+1. Mỗi Node trong file MARKDOWN = **1 Test Condition** (điều kiện kiểm thử ở mức logic), KHÔNG phải test case chi tiết.
+2. Test Design phải:
+   - Phân tích đầy đủ phạm vi kiểm thử cho từng màn hình / flow.
+   - Xác định rõ:
+     + UI element nào đang được kiểm thử (field, button, link, tab, popup, grid, icon action, pagination…).
+     + Business rule nào đang áp dụng.
+     + Loại kỹ thuật kiểm thử (ECP, BVA, Decision Table, State Transition, Error Guessing).
+     + Input/partition/boundary/state tương ứng.
+     + Expected behavior ở mức high-level (UI + API/DB nếu có).
+3. Mỗi màn hình / flow phải có đủ **5 kỹ thuật kiểm thử** ở mức Test Design:
+   1) ECP (Equivalence Class Partitioning)
+   2) BVA (Boundary Value Analysis)
+   3) Decision Table
+   4) State Transition
+   5) Error Guessing
+
+Output DUY NHẤT:
+- 1 nội dung Markdown trong code fence (markdown ...).
+- Tuân thủ chính xác cấu trúc header (#) và list (-) được quy định bên dưới.
+- KHÔNG in phân tích nội bộ, KHÔNG in Coverage Matrix, KHÔNG chú giải ngoài code fence.
+
+III. NGUỒN DỮ LIỆU
+-  RSD Web UI (các file mô tả màn hình, luồng nghiệp vụ, quy tắc dữ liệu, lỗi hiển thị, di chuyển màn hình), bao gồm:
+  + Mô tả màn hình (tên màn hình, field, nút bấm, link, bảng dữ liệu…).
+  + Bảng field (kiểu dữ liệu, bắt buộc/không, min/max, pattern, domain…).
+  + Quy tắc nghiệp vụ áp dụng trên màn hình (business rules).
+  + Mã lỗi / thông báo lỗi / thông báo thành công.
+  + Phần **[Di chuyển màn hình]** (điều kiện / hành động → chuyển sang màn hình nào).
+- Phân tích thiết kế (PTTK) - UI:
+  + API call behavior khi thao tác UI (verify, save, update, delete, highlight lỗi, enable/disable nút, click, popup, kết quả).
+  + Mapping field UI → request API, response API → UI (message, trạng thái nút, trạng thái dòng…).
+  + Mô tả hành vi đặc biệt: double-click, pagination, contextmenu, v.v.
+- **Danh sách mã lỗi** (nếu có): mã lỗi, mô tả, loại lỗi (VALIDATION/BUSINESS/SYSTEM…).
+- Chỉ được sử dụng thông tin trong RSD/PTTK hoặc suy luận logic trực tiếp từ đó.
+
+Nguyên tắc:
+- Nếu phải giả định do thiếu dữ liệu: ghi **[ASSUMPTION: …] trong Test Case Summary** (KHÔNG đặt ở cột khác).
+- TUYỆT ĐỐI không sáng tạo thêm màn hình, field, rule, message ngoài RSD/PTTK.
+- Phải ưu tiên tập trung và phân tích **CÁC VÙNG BÔI ĐỎ** trong mockup PTTK-UI:
+  + Đây là các UI element trọng tâm để sinh Test Condition.
+- Chỉ thiết kế Test Condition cho **phần tử đã được highlight** (Button, Input, Tab, Popup, Pagination, Action Icon…).
+  + Mỗi phần tử highlight phải được: nhận diện đúng loại UI → xác định hành động → gắn rule từ RSD/PTTK → sinh đủ Test Condition (valid/invalid/boundary/state/EG nếu áp dụng).
+- Nếu mockup highlight phần tử mà RSD/PTTK thiếu mô tả → ghi [ASSUMPTION] trong Test Case Summary.
+- Không sinh Test Condition cho phần tử không được highlight (trừ khi RSD/PTTK mô tả rõ rule cho phần tử đó).
+
+IV. ĐỊNH NGHĨA TEST DESIGN (TEST CONDITION)
+1. **Test Condition** là một đơn vị kiểm thử logic gồm:
+   - Bối cảnh màn hình/flow và UI element đang kiểm thử.
+   - Loại kỹ thuật áp dụng: ECP/BVA/Decision Table/State Transition/Error Guessing.
+   - Partition/boundary/state đang được xem xét (VD: “class hợp lệ”, “class không hợp lệ”, “min-1, min, max, max+1”, “FORM_VALID → SUBMIT_FAIL”…).
+   - Expected behavior ở mức high-level (UI/Navigation/API/DB).
+2. 1 Test Condition **sau này** có thể sinh ra **1 hoặc nhiều Test Case chi tiết** (với data cụ thể khác nhau) nhưng hiện tại **chỉ cần 1 dòng Test Design**.
+
+V. KỸ THUẬT KIỂM THỬ & COVERAGE (ÁP DỤNG Ở MỨC TEST DESIGN)
+1. ECP:
+   - Mỗi field nhập liệu:
+     + Có ít nhất 1 Test Condition cho **class hợp lệ (valid)**.
+     + Có 1–2 Test Condition cho các **class không hợp lệ (invalid)**:
+       * Sai format (sai pattern, nhập chữ vào số…).
+       * Ngoài domain (giá trị không thuộc danh mục).
+       * Giá trị bị cấm (blacklist).
+   - Nếu field có domain (dropdown / radio / checkbox):
+     + Mỗi giá trị hợp lệ chính → ít nhất 1 Test Condition valid.
+     + Ít nhất 1 Test Condition invalid cho giá trị ngoài domain (nếu có cách nhập).
+
+2. BVA:
+   - Với field có min/max length/giá trị số:
+     + Ít nhất 1 Test Condition mô tả boundary:
+       * min-1, min, giữa (mid), max, max+1.
+       * zero/negative nếu meaningful.
+
+3. Decision Table:
+   - Với các rule kết hợp nhiều điều kiện:
+     + Ví dụ: bắt buộc tick checkbox + chọn lý do + nhập OTP.
+   - Thiết kế các Test Condition đại diện cho:
+     + All-valid (thỏa mọi điều kiện).
+     + Single invalid (mỗi điều kiện sai 1 lần).
+     + Multi-mix (≥2 điều kiện sai).
+
+4. State Transition (UI):
+   - Các state quan trọng:
+     + FORM_EMPTY
+     + FORM_INVALID
+     + FORM_VALID
+     + SUBMIT_SUCCESS → NEXT_SCREEN / POPUP_SUCCESS
+     + SUBMIT_FAIL → hiển thị lỗi, ở lại màn hình hiện tại
+   - Tạo Test Condition cho:
+     + Luồng thành công đi hết flow.
+     + Luồng dừng tại từng bước do sai dữ liệu / sai trạng thái (theo rule RSD).
+
+5. Error Guessing:
+   - Thiết kế Test Condition cho các tình huống “nhạy cảm”:
+     + Nhập toàn khoảng trắng.
+     + Dán chuỗi rất dài vào field có giới hạn.
+     + Nhập ký tự đặc biệt (#,@,$,%, tiếng Việt có dấu nếu RSD cho phép/không).
+     + Bấm nút nhiều lần liên tiếp (double-click/triple-click) nếu PTTK có mô tả.
+     + Refresh/back trên trình duyệt ở các bước nhạy cảm nếu RSD/PTTK có quy tắc.
+
+VI. CẤU TRÚC OUTPUT MARKDOWN (DÙNG CHO MARKMAP)
+1. Thay vì bảng tính, output phải tuân thủ format cây như sau:
+	# <Tên file RSD>
+	## <Tên Function / Màn hình / Flow>
+	### TD_<ID_TEST_CONDITION> - <Kỹ thuật> - <Nội dung tóm tắt Condition>
+với
+TD là prefix cố định 
+ID_TEST_CONDITION: Số thứ tự bắt đầu từ 001, tăng dần đến Test condition cuối cùng.
+
+	- **Steps**: <Mô tả hành động high-level>
+	- **Expected**: <Mô tả kết quả mong đợi high-level>
+
+Quy định chi tiết từng node:
+
+Level 1 (#): Tên file RSD
+Tên file RSD
+
+Level 2 (##): Tên Function / Màn hình / Flow
+Tên tiếng Việt của màn hình hoặc flow nghiệp vụ (VD: # Đăng nhập hệ thống, # Chuyển khoản nội bộ).
+
+Level 3 (###): Test Condition
+Format chuỗi: [TD_<ID_TEST_CONDITION>][<Kỹ thuật>] <Mô tả Partition/Boundary/State>
+Ví dụ:
+
+### [ECP] Username hợp lệ (tài khoản tồn tại, ACTIVE)
+### [BVA] Số tiền chuyển: min-1 (Invalid)
+### [ST] Flow thành công: FORM_VALID -> OTP_SUCCESS -> Màn hình kết quả
+### [EG] Nhập Username chứa ký tự đặc biệt (SQL Injection)
+Lưu ý: Tích hợp thông tin Test Data/Partition vào dòng tiêu đề này để hiển thị rõ trên node của Mindmap.
+Level 3 (List item -):
+Dòng 1: - **Steps**: <Mô tả ngắn gọn>
+VD: User nhập Username hợp lệ, Password hợp lệ và nhấn Đăng nhập.
+Không ghi step 1, 2, 3 chi tiết.
+Dòng 2: - **Expected**: <Kết quả hệ thống>
+VD: Hệ thống chuyển sang trang Dashboard.
+VD: Hiển thị lỗi 'Số tiền không hợp lệ' ngay dưới field amount.
+
+VII. HƯỚNG DẪN MAPPING DỮ LIỆU VÀO MARKDOWN NODE
+Node ## Function:
+Lấy tên màn hình/flow từ RSD. Gom nhóm các Test Condition thuộc cùng 1 màn hình vào dưới 1 header ##.
+Node ### Test Condition:
+Đây là trọng tâm của Test Design.
+Phải thể hiện được: Đang test cái gì (UI element/Rule) + Data class nào (Valid/Invalid/Boundary).
+Nếu phải giả định: Ghi [ASSUMPTION: ...] ngay cuối dòng header ###.
+Node - **Steps**::
+Tương đương cột "Test Steps" (high-level) trong prompt cũ.
+Mô tả hành động kích hoạt điều kiện kiểm thử (nhập data thuộc partition nào, bấm nút gì).
+Node - **Expected**::
+Tương đương cột "Expected result" trong prompt cũ.
+Mô tả phản hồi của UI/API/DB ở mức logic.
+
+VIII. CẤM (CHO TEST DESIGN)
+- Không tự tạo màn hình, field, rule, error message, flow ngoài RSD/PTTK.
+- Không dùng các cụm: “như trên”, “…”, “tương tự”, “data hợp lệ”, “data không hợp lệ”, “max length OK”…
+- Không nén mô tả Test Condition quá ngắn khiến không hiểu đang test partition/boundary nào.
+- Không tách quá nhiều node con khiến Mindmap bị rối (chỉ giữ cấu trúc 4 cấp: #, ##, ###, -).
+- Không để node trống.
+- Không sinh Test Steps chi tiết 1., 2., 3. (đây là Test Design, không phải Test Case).
+- Không verify UI/UX về layout/màu sắc/căn lề/responsive trừ khi RSD/PTTK mô tả rõ (nếu phải giả định → [ASSUMPTION] trong Summary).
+
+IX. AMBIGUITY HANDLING (ASSUMPTION)
+- Nếu:
+  + Thông báo lỗi/mô tả rule xuất hiện trong RSD nhưng không rõ trigger.
+  + RSD không ghi rõ field bắt buộc hay không.
+  + RSD/PTTK không miêu tả kết quả sau thao tác (click button, gọi API…).
+→ Vẫn phải tạo Test Condition, và:
+  -  Ghi [ASSUMPTION: ...] vào cuối dòng tiêu đề ### Test Condition hoặc trong phần Expected.
+
+X. FLOW WEB UI & [DI CHUYỂN MÀN HÌNH]
+- Flow gồm SCREEN_1 → SCREEN_2 → ... → SCREEN_n tuần tự.
+- Mọi điều hướng giữa màn hình **phải bám theo [Di chuyển màn hình] trong RSD**:
+  + Điều kiện/trường hợp nào dẫn tới màn hình nào.
+- Trong Test Design, phải có Test Condition cho:
+  + Happy path full flow.
+  + Các nhánh lỗi chính ở từng màn hình.
+- Negative pre-condition ở màn hình k:
+  + Mô tả cách tạo điều kiện lỗi ở mức high-level (không cần step chi tiết).
+
+XI. ERROR MESSAGE & RULE COVERAGE
+- Liệt kê (nội bộ) tất cả error message / thông báo lỗi trong RSD cho một màn / flow.
+- Mỗi error message phải có ít nhất 1 Test Condition tương ứng.
+- Nếu RSD liệt kê message nhưng không chỉ rõ trigger:
+  + Sinh Test Condition với [ASSUMPTION: trigger <giả định>] trong Test Case Summary.
+
+XII. ERROR GUESSING DETAIL (WEB UI)
+- Tăng độ đa dạng Test Condition cho Error Guessing:
+  + Khoảng trắng đầu/cuối.
+  + Chuỗi rất dài / ký tự Unicode / emoji.
+  + Nhập kiểu dữ liệu sai (chữ vào số, số vào text…).
+  + Back/Refresh khi form đang ở trạng thái nhạy cảm (nếu RSD/PTTK mô tả).
+
+XIII. SELF-AUDIT TRƯỚC KHI IN MARKDOWN
+1. Mỗi field chính trong mỗi màn hình:
+   - Có Test Condition valid + invalid (ECP).
+   - Có Test Condition boundary nếu RSD có min/max (BVA).
+2. Mỗi error message / thông báo lỗi trong RSD: ≥1 Test Condition.
+3. Mỗi rule kết hợp nhiều điều kiện:
+   - Có Decision Table đủ all-valid, single-invalid, multi-mix (ở mức Test Condition).
+4. Mỗi flow:
+   - Ít nhất 1 Test Condition happy path full flow (State Transition).
+   - Các Test Condition dừng ở các điểm lỗi logic chính.
+5. Điều hướng giữa các màn hình luôn nhất quán với [Di chuyển màn hình].
+6. Không dùng cụm bị cấm (“như trên”, “tương tự”, “data hợp lệ”…).
+7. Test Datas thể hiện rõ partition/boundary/state, không ghi chung chung.
+8. Assumption CHỈ nằm trong Test Case Summary, có prefix “[ASSUMPTION: …]”.
+9. Mọi Test Case ID (ID Test Condition) là duy nhất.
+
+XIV. THỰC THI CUỐI
+1. Parse toàn bộ RSD Web UI + PTTK-UI: màn hình, field, rule, message, [Di chuyển màn hình], API, DB.
+2. Xây Coverage Matrix nội bộ (KHÔNG in ra) để đảm bảo:
+   - Không sót field, không sót rule, không sót message, không sót flow.
+3. Sinh **Test Design** (danh sách Test Condition) cho TẤT CẢ màn hình/flow, dưới dạng Markdown chuẩn cấu trúc Markmap (#, ##, ###, - Steps, - Expected).
+4. Self-audit theo checklist ở mục XII.
+5. Xuất DUY NHẤT 1 code fence markdown ....
+6. KHÔNG in thêm bất kỳ giải thích, bảng, chữ nào ngoài code fence markdown.
+
+================= KẾT THÚC PROMPT =================

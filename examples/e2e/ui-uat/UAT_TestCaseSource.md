@@ -1,0 +1,6 @@
+# UAT TestCase Source
+
+| Test Case ID | Test Case Name | Precondition | Test Steps | Test Data | Expected Result | Priority | Test Type | Module | Requirement ID | Execution Result | Actual Result | Bug ID | Tester | Execution Date | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| UAT_001 | Primary Condition: checker approves valid PAYGATES request | Maker has created a valid request and checker account is active | 1. Login as checker\n2. Open pending PAYGATES request\n3. Review details\n4. Approve request | Primary Condition: checker approves valid PAYGATES request\nRequest status=Pending approval | Request moves to approved state and audit trail is recorded | High | UAT | PAYGATES Approval | REQ-PAY-001 |  |  |  |  |  |  |
+| UAT_002 | Primary Condition: checker rejects invalid PAYGATES request | Maker has created request with incorrect information and checker account is active | 1. Login as checker\n2. Open pending PAYGATES request\n3. Input reject reason\n4. Reject request | Primary Condition: checker rejects invalid PAYGATES request\nReject reason=Invalid beneficiary | Request moves to rejected state and maker can view reject reason | High | UAT | PAYGATES Approval | REQ-PAY-002 |  |  |  |  |  |  |

@@ -1,0 +1,580 @@
+{
+  "status": "success",
+  "total_sources": 77,
+  "results": [
+    {
+      "source_path": "api_automation/nms_sdk/__init__.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__init__.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/__init__.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\__init__.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/assertions.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\assertions.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/client.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\client.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/endpoints.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\endpoints.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/headers.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\headers.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/schemas.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\schemas.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/__pycache__/smoke.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\__pycache__\\smoke.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/assertions.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\assertions.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/client.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\client.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/endpoints.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\endpoints.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/headers.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\headers.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/schemas.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\schemas.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/nms_sdk/smoke.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\nms_sdk\\smoke.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/README.md",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\README.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "api_automation/tests/__pycache__/test_client.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\__pycache__\\test_client.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/tests/__pycache__/test_common_utilities.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\__pycache__\\test_common_utilities.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/tests/__pycache__/test_endpoint_catalog.cpython-314.pyc",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\__pycache__\\test_endpoint_catalog.cpython-314.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/tests/test_client.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\test_client.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/tests/test_common_utilities.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\test_common_utilities.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "api_automation/tests/test_endpoint_catalog.py",
+      "output_path": "knowledge\\bidv\\normalized\\api_automation\\tests\\test_endpoint_catalog.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/1/NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\1\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.md",
+      "status": "converted",
+      "strategy": "xlsx_profile"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/1/NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\1\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.Trang_t_nh1.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Trang tính1"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/1/NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\1\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.Trang_t_nh2.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Trang tính2"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/1/NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\1\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553-tcs.Trang_t_nh3.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Trang tính3"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/1/NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\1\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/2/NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\2\\NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.md",
+      "status": "converted",
+      "strategy": "xlsx_profile"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/2/NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\2\\NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.Trang_t_nh1.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Trang tính1"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/2/NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\2\\NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713-tcs.Trang_t_nh2.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Trang tính2"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/2/NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\2\\NMS-[KH-660][CCTG Online] API danh sách sản phẩm CCTG-160526-040713.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/DLHCM-[LH]_Squad 08_Rating_PTTK Chi tiết Sprint 5-160526-035458.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\DLHCM-[LH]_Squad 08_Rating_PTTK Chi tiết Sprint 5-160526-035458.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/NMS-[KH-660][CCTG Online] API lấy thông tin người giới thiệu bằng mã cán bộ-160526-040727.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\NMS-[KH-660][CCTG Online] API lấy thông tin người giới thiệu bằng mã cán bộ-160526-040727.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/PTTK/NMS-[KH-660][CCTG Online] API thông tin nhóm CCTG-160526-040705.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\PTTK\\NMS-[KH-660][CCTG Online] API thông tin nhóm CCTG-160526-040705.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/CustomerIn-0.1 Đăng nhập SSO & Phân Quyền OneAccess-160526-035609.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\CustomerIn-0.1 Đăng nhập SSO & Phân Quyền OneAccess-160526-035609.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_A/Làm rõ thông tin/NMS-KH truy vấn Chứng nhận quyền sở hữu CCTG (CNTG) của khoản CCTG đã mua trước đó-160526-040143.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_A\\Làm rõ thông tin\\NMS-KH truy vấn Chứng nhận quyền sở hữu CCTG (CNTG) của khoản CCTG đã mua trước đó-160526-040143.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_A/Làm rõ thông tin/NMS-Luồng KH rút trước hạn-160526-040235.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_A\\Làm rõ thông tin\\NMS-Luồng KH rút trước hạn-160526-040235.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_A/Làm rõ thông tin/NMS-Luồng tất toán CCTG-160526-040404.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_A\\Làm rõ thông tin\\NMS-Luồng tất toán CCTG-160526-040404.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_A/Làm rõ thông tin/NMS-Đặc điểm CCTG và luồng mua CCTG-160526-040059.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_A\\Làm rõ thông tin\\NMS-Đặc điểm CCTG và luồng mua CCTG-160526-040059.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_A/NMS-[KH-660][CCTG Online][URD]-160526-040025.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_A\\NMS-[KH-660][CCTG Online][URD]-160526-040025.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_B/PS0082025-BO_001.RSD_Quản lý Màn Hình Tham Số-160526-041133.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_B\\PS0082025-BO_001.RSD_Quản lý Màn Hình Tham Số-160526-041133.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_B/Tài liệu reference trong RSD/PS0082025-MH1 Màn hình Quản lý tìm kiếm-160526-041158.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_B\\Tài liệu reference trong RSD\\PS0082025-MH1 Màn hình Quản lý tìm kiếm-160526-041158.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_B/Tài liệu reference trong RSD/PS0082025-MH2 Thêm mới Màn hình tham số-160526-041237.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_B\\Tài liệu reference trong RSD\\PS0082025-MH2 Thêm mới Màn hình tham số-160526-041237.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_B/Tài liệu reference trong RSD/PS0082025-MH3 Chỉnh sửa Màn hình tham số.-160526-041254.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_B\\Tài liệu reference trong RSD\\PS0082025-MH3 Chỉnh sửa Màn hình tham số.-160526-041254.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Faker_upd/RSD/RSD_B/Tài liệu reference trong RSD/PS0082025-MH4 Xem chi tiết Màn hình tham số.-160526-041329.pdf",
+      "output_path": "knowledge\\bidv\\normalized\\Faker_upd\\RSD\\RSD_B\\Tài liệu reference trong RSD\\PS0082025-MH4 Xem chi tiết Màn hình tham số.-160526-041329.md",
+      "status": "reported",
+      "strategy": "pdf_report"
+    },
+    {
+      "source_path": "Prompt/API/[Old]_API_Gen_TC_From_TD.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Old]_API_Gen_TC_From_TD.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/[Old]_API_Gen_TD_v1.2.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Old]_API_Gen_TD_v1.2.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/[Review_Prompt]Claude_Sonet_4.6.jpg",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Review_Prompt]Claude_Sonet_4.6.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/[Review_Prompt]Gemini_Pro_3_1.jpg",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Review_Prompt]Gemini_Pro_3_1.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/[Review_Prompt]Gemini_Pro_3_2.jpg",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Review_Prompt]Gemini_Pro_3_2.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/[Review_TD]Claude_Sonet_4.6.jpg",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Review_TD]Claude_Sonet_4.6.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/[Review_TD]Gemini_pro_3.jpg",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\[Review_TD]Gemini_pro_3.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/API_Gen_TC_From_TD_v2.docx",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_Gen_TC_From_TD_v2.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/API_Gen_TC_From_TD_v2.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_Gen_TC_From_TD_v2.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_NewParameterGuideline.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_NewParameterGuideline.md",
+      "status": "converted",
+      "strategy": "xlsx_profile"
+    },
+    {
+      "source_path": "Prompt/API/API_NewParameterGuideline.xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_NewParameterGuideline.Sheet1.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Sheet1"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_1_Setup_Context.docx",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_1_Setup_Context.md",
+      "status": "reported",
+      "strategy": "unsupported_extension"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_1_Setup_Context.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_1_Setup_Context.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_2_Method_Header.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_2_Method_Header.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_2_Method_Header_BreakDown.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_2_Method_Header_BreakDown.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_3_Schema_Validation.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_3_Schema_Validation.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_3_Schema_Validation_BreakDown.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_3_Schema_Validation_BreakDown.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_4_Value_Business_Cross_Logic.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_4_Value_Business_Cross_Logic.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\API_TD_4_Value_Business_Cross_Logic_BreakDown.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/API_Gen_Script_Logic_Business_Feature.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\API_Gen_Script_Logic_Business_Feature.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/API_Gen_Script_Method_Header_Validation_Feature.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\API_Gen_Script_Method_Header_Validation_Feature.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/API_Gen_Script_Validation_Feature.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\API_Gen_Script_Validation_Feature.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/api_logic_business_example.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\api_logic_business_example.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/api_method_header_validation_example.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\api_method_header_validation_example.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/API_TestCase_Analysis.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\API_TestCase_Analysis.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/api_validation_example.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\api_validation_example.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/API/Gen Script/properties.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\API\\Gen Script\\properties.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/Side Workshop/Workshop Hướng dẫn sử dụng AI sinh test case.pptx",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\Side Workshop\\Workshop Hướng dẫn sử dụng AI sinh test case.md",
+      "status": "converted",
+      "strategy": "pptx_text"
+    },
+    {
+      "source_path": "Prompt/UI/UI_Gen_TC_For_UAT.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\UI\\UI_Gen_TC_For_UAT.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/UI/UI_Gen_TC_From_TD.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\UI\\UI_Gen_TC_From_TD.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "Prompt/UI/UI_Gen_TD.txt",
+      "output_path": "knowledge\\bidv\\normalized\\Prompt\\UI\\UI_Gen_TD.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "template/Template_PTTK_AI.doc",
+      "output_path": "knowledge\\bidv\\normalized\\template\\Template_PTTK_AI.md",
+      "status": "converted",
+      "strategy": "mhtml_doc"
+    },
+    {
+      "source_path": "template/Template_PTTK_AI_ChiTiet_API.doc",
+      "output_path": "knowledge\\bidv\\normalized\\template\\Template_PTTK_AI_ChiTiet_API.md",
+      "status": "converted",
+      "strategy": "mhtml_doc"
+    },
+    {
+      "source_path": "template/Template_RSD_AI.doc",
+      "output_path": "knowledge\\bidv\\normalized\\template\\Template_RSD_AI.md",
+      "status": "converted",
+      "strategy": "mhtml_doc"
+    },
+    {
+      "source_path": "template/Template_RSD_ChiTiet_AI.doc",
+      "output_path": "knowledge\\bidv\\normalized\\template\\Template_RSD_ChiTiet_AI.md",
+      "status": "converted",
+      "strategy": "mhtml_doc"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).md",
+      "status": "converted",
+      "strategy": "xlsx_profile"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).T_ng_h_p_chung.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Tổng hợp chung"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_Tester.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_Tester"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_Base.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_Base"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).T_ng_H_p_Test_Case_Theo_Sprint.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Tổng Hợp Test Case Theo Sprint"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).T_ng_H_p_Test_Case_Automation_T.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Tổng Hợp Test Case Automation T"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_VA.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_VA"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_CnR.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_CnR"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_DevPortal.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_DevPortal"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Squad_BO.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Squad_BO"
+    },
+    {
+      "source_path": "Tổng hợp Trạng Thái Test Case Paygates (1).xlsx",
+      "output_path": "knowledge\\bidv\\normalized\\Tổng hợp Trạng Thái Test Case Paygates (1).Sprint_8.tsv",
+      "status": "converted",
+      "strategy": "xlsx_sheet_tsv",
+      "sheet": "Sprint 8"
+    },
+    {
+      "source_path": "UI/UI_Gen_TC_For_UAT.txt",
+      "output_path": "knowledge\\bidv\\normalized\\UI\\UI_Gen_TC_For_UAT.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "UI/UI_Gen_TC_From_TD.txt",
+      "output_path": "knowledge\\bidv\\normalized\\UI\\UI_Gen_TC_From_TD.md",
+      "status": "converted",
+      "strategy": "text"
+    },
+    {
+      "source_path": "UI/UI_Gen_TD.txt",
+      "output_path": "knowledge\\bidv\\normalized\\UI\\UI_Gen_TD.md",
+      "status": "converted",
+      "strategy": "text"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+																				Total Manual Test Cases		Total Automation Test Cases	
+Sprint	Epic	Chức năng	Test case Status 						Trạng thái test hiện tại	Mức độ ưu tiên nghiệp vụ	Trạng thái Automation test hiện tại	Automation Test Estimate	Automation Test Cases	Test case Generate Type	Link test cases	Automation Test Type	Noted			Total API Test cases	2488	Total API Test cases	477
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases												Total  UI Test cases	1688	Total  UI Test cases	0
+1.0									Pending								
+2.0																	
+6.0	VA.06	API Gen QR insert vào kho	0	0	0	0	0	50	Pending	0.0				Manual	https:[REDACTED_SECRET]?gid=1783854848#gid=1783854848					Total  UI Test cases (priority 1)	1049
+	VA.06	API Gen QR KHÔNG insert vào kho	0	0	0	0	0	50	Pending	0.0				Manual	https:[REDACTED_SECRET]?gid=529372375#gid=529372375	API	
+7.0	VA_03	API chỉnh sửa mã đầu	72	0	0	0	2	74	Ready to UAT	1.0	Completed	Sprint 10	27.0	AI gen	https:[REDACTED_SECRET]?gid=1925706627#gid=1925706627	API	
+	VA_03	API Khai báo mã đầu tự động	60	0	0	0	1	60	Ready to UAT	1.0	Completed	Sprint 10	23.0	AI gen	https:[REDACTED_SECRET]?gid=262793615#gid=262793615	API	
+	VA_03	API Kiểm tra chỉnh sửa mã đầu	36	0	0	0	3	39	Ready to UAT	1.0	Completed	Sprint 10	25.0	AI gen	https:[REDACTED_SECRET]?gid=1245081864#gid=1245081864	API	
+	VA_01	API Kiểm tra thêm mã đầu TKĐ trong kho chờ	117	0	0	0	2	119	Ready to UAT	1.0	Completed	Sprint 12	79.0	AI gen	https:[REDACTED_SECRET]?gid=1976372372#gid=1976372372	API	
+	VA_03	API lấy danh sách mã đầu TKDD	64	0	0	0	1	65	Ready to UAT	1.0	Completed	Sprint 12	54.0	AI gen	https:[REDACTED_SECRET]?gid=661124919#gid=661124919	API	
+	VA_05	API Sửa tài khoản định danh bị chặn	26	0	0	0	0	26	Ready to UAT	1.0	Completed	Sprint 11	18.0	AI gen	https:[REDACTED_SECRET]?gid=734115631#gid=734115631	API	
+	VA_01	API thêm mã đầu vào kho mã đầu	79	0	0	0	1	80	Ready to UAT	1.0	Completed	Sprint 12	65.0	AI gen	https:[REDACTED_SECRET]?gid=856279624#gid=856279624	API	
+	VA_05	API Thêm mới tài khoản định danh bị chặn	39	0	0	0	1	40	Ready to UAT	1.0	Completed	Sprint 11	29.0	AI gen	https:[REDACTED_SECRET]?gid=2112520132#gid=2112520132	API	
+	VA_03	API truy vấn danh sách blacklist tài khoản định danh	45	0	0	0	0	45	Ready to UAT	1.0	Completed	Sprint 11	14.0	AI gen	https:[REDACTED_SECRET]?gid=529968183#gid=529968183	API	
+	VA_01	API xóa mã đầu TKDD trong kho mã đầu	79	0	0	0	1	31	Ready to UAT	1.0	Completed	Sprint 12	29.0	AI gen	https:[REDACTED_SECRET]?gid=56447979#gid=56447979	API	
+	VA_05	API xóa TKDD bị chặn	49	0	0	0	0	49	Ready to UAT	1.0	Completed	Sprint 11	21.0	AI gen	https:[REDACTED_SECRET]?gid=129626805#gid=129626805	API	
+	VA_02	API kích hoạt mã đầu	69	0	0	0	1	70	Ready to UAT	1.0	Completed	Sprint 12	56.0	AI gen	https:[REDACTED_SECRET]?gid=1993574293#gid=1993574293	API	
+	VA_02	API kiểm tra kích hoạt mã đầu	52	0	0	0	1	53	Ready to UAT	1.0	Completed	Sprint 12	37.0	AI gen	https:[REDACTED_SECRET]?gid=1224098224#gid=1224098224	API	
+8.0	VA_16	Danh sách TKDD GDV	151	0	0	0	0	151	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1498872998#gid=1498872998	UI	
+	VA_16	Danh sách TKDD KSV	118	0	0	0	0	118	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=73219736#gid=73219736	UI	
+	VA_17	Quay_Thêm mới mã đầu chủ động đơn lẻ	132	0	0	0	0	132	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1543950552#gid=1543950552	UI	
+	VA_17	Quay_Thêm mới mã đầu chủ động theo file	106	0	0	0	0	106	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1668191320#gid=1668191320	UI	
+	VA_07	Danh sách Thanhtoan_TruyvanthongtinDVcap1TKDD GDV	0	0	66	0	0	66	Pending	1.0				Manual	https:[REDACTED_SECRET]?gid=1993054223#gid=1993054223	API	
+	VA_07	Thanhtoan_Vantinhoadon	0	0	130	0	0	130	Test case out of date	1.0				Manual	https:[REDACTED_SECRET]?gid=1005722115#gid=1005722115	API	
+9.0	VA_07	Luồng vấn tin	21	0	0	0	0	21	Test case out of date	1.0				Manual	https:[REDACTED_SECRET]?gid=1846714410#gid=1846714410	API 	
+	VA_04	CHECKVAFORMAT	64	0	0	0	0	60	Ready to UAT	3.0				AI gen	https:[REDACTED_SECRET]?gid=1846714410#gid=1846714410	API	
+10.0	VA_07	Luồng vấn tin	42	0	0	0	0	42	Update test cases	1.0				Manual	https:[REDACTED_SECRET]?gid=1846714410#gid=1846714410	API	
+11.0	VA_08	V08 Luồng vấn tin	42	0	20	0	0	104	Ready to UAT	1.0				Manual	https:[REDACTED_SECRET]?gid=489961961#gid=489961961	API	
+	VA_08	Thanh toán	34	0	0	0	31	67	Ready to UAT	1.0				Manual	https:[REDACTED_SECRET]?gid=800620990#gid=800620990	API	
+	VA_18	Danh sach yeu cau KSV	141	0	0	0	2	143	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=831439230#gid=831439230	UI	
+	VA_18	Danh sach yeu cau GDV	140	0	0	0	3	143	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]	UI	
+12.0	VA_16	API Danh sach ma dau	31	0	0	0	3	34	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1709927125#gid=1709927125	API	
+	VA_17	API Thêm  mới chủ động theo file	44	0	0	0	11	57	In-Test	1.0				AI gen	https:[REDACTED_SECRET]?gid=1585423072#gid=1585423072	UI	
+	VA_18	API Danh sách yêu cầu KSV	0	0	0	0	0	184	Pending	2.0				AI gen	https:[REDACTED_SECRET]?gid=1410160754#gid=1410160754	API	
+	VA_19	API Thêm mới tự động đơn lẻ	10	10	0	0	1	59	In-Test	1.0				AI gen	https:[REDACTED_SECRET]?gid=279708531#gid=279708531	API	
+	VA_19	API Xem chi tiết thêm mới chủ động	32	0	0	0	2	34	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=520778428#gid=520778428	API	
+	VA_17	API Thêm mới chủ động đơn lẻ	0	0	0	0	0	227	Pending	1.0				AI gen	https:[REDACTED_SECRET]?gid=1706317719#gid=1706317719	API	
+	VA_19	Thêm mới tự động đơn lẻ	123	0	9	0	8	146	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=452189790#gid=452189790	UI	DỰ KIẾN BAN ĐẦU 187 CASE NHƯNG RSD BỎ PHẦN LƯU NHÁP -> TCs bị  OFD
+	VA_19	Xem chi tiết thêm  mới	49	0	0	0	8	58	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=58812671#gid=58812671	UI	
+	VA_08	V08 Luồng vấn tin_tính phí + nhiều hóa đơn	36	0	0	0	5	38	Ready to UAT	1.0				Manual	https:[REDACTED_SECRET]?gid=489961961#gid=489961961	API	
+	VA_08	Thanh toán Liên Ngân	32	0	0	0	17	49	Ready to UAT	1.0				Manual	https:[REDACTED_SECRET]?gid=800620990#gid=800620990	API	chưa đẩy testlink đã bàn giao UAt 
+13.0	VA_19	VA_19.004_ Xem chi tiết yêu cầu Thêm mới KSV	16	0	0	0	1	71	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1291774685#gid=1291774685	UI	
+	VA_20	VA_20.001 - Xem chi tiết mã đầu tài khoản định danh	22	2	0	0	14	42	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=859295357#gid=859295357	UI	k save được ngày/user tạo (api)	khi verify các bugs cần phải smoke lại luồng
+	VA_20	VA_20.002 - Xóa mã đầu tài khoản định danh	31	0	0	0	10	42	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=501127381#gid=501127381	UI	check lại xóa detail và xóa bên ngoài 
+	VA_19	 VA_19.005 - Duyệt yêu cầu thêm mới KSV	7	0	0	0	8	30	Test case out of date	1.0				AI gen	https:[REDACTED_SECRET]?gid=417333931#gid=417333931	UI	luồng chính ok . còn các case validtae 
+	VA_19	VA_19.006 - Từ chối duyệt yêu cầu thêm mới KSV	17	0	1	0	32	52	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=747692547#gid=747692547	UI	done
+	VA_thanh toán	VA_Vấn tin	16	0	0	0	0	121	In-Test	1.0				AI gen	https:[REDACTED_SECRET]?gid=832670212#gid=832670212	API	chưa đẩy Testlink
+	VA_thanh toán	VA_Thanh toán nội bộ	0	0	0	0	0	111	In-Test	1.0				AI gen	https:[REDACTED_SECRET]?gid=621901810#gid=621901810	API	chưa đẩy Testlink, SIT SOA, core k cần test -> PO test, cấu hình terminal: cấu hình ở redis

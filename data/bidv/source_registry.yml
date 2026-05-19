@@ -1,0 +1,45 @@
+version: 1
+name: bidv_source_knowledge
+summary: Portable source taxonomy distilled from sample materials. This file must not require a local raw sample folder at runtime.
+runtime_rule: User machines are not expected to contain a BIDV/ directory. All sample prompts, templates, and terminal documents must be converted into packaged skills, workflow-pack prompts, output contracts, validators, golden examples, or redacted knowledge before runtime.
+source_categories:
+  api_specification:
+    purpose: API endpoint documents used to extract method, path, headers, request schema, response schema, business rules, and open questions.
+    runtime_inputs:
+      - user_provided_pdf
+      - user_provided_docx
+      - user_provided_markdown
+      - normalized_knowledge_item
+  ui_specification:
+    purpose: UI/RSD/PTTK documents used to extract screen flows, actions, validation states, and expected UI behavior.
+    runtime_inputs:
+      - user_provided_pdf
+      - user_provided_docx
+      - user_provided_markdown
+      - normalized_knowledge_item
+  testcase_template:
+    purpose: Packaged Excel/TSV shape and field rules for generated testcase management files.
+    packaged_contracts:
+      - data/output-contracts/legacy_19_column_testcase_contract.md
+      - data/output-contracts/uat_16_column_testcase_contract.md
+      - data/output-contracts/testcase_excel_columns.md
+  manual_execution_template:
+    purpose: Packaged status/result rules for importing and updating manual execution Excel files.
+    packaged_contracts:
+      - data/output-contracts/manual_execution_reader_contract.md
+      - data/output-contracts/test_status_excel_columns.md
+  coverage_rules:
+    purpose: Mandatory QC rules distilled from sample BIDV prompts and senior-QC expectations.
+    packaged_contracts:
+      - data/output-contracts/mandatory_test_coverage_rules.yml
+      - data/output-contracts/test_generation_matrix_contract.md
+packaging_rule:
+  do:
+    - Convert sample prompts into workflow-pack prompt assets.
+    - Convert sample Excel files into output contracts and golden examples.
+    - Convert terminal documents into examples and regression fixtures.
+    - Keep source provenance in packaged assets when useful.
+  do_not:
+    - Reference a developer-local raw sample folder in runtime output.
+    - Require raw sample folders on user machines.
+    - Ask users to know internal sample folder structure.

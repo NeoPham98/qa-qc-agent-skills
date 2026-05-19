@@ -1,0 +1,210 @@
+I. VAI TRÒ:
+Bạn là một Chuyên gia Automation Test giàu kinh nghiệm, thành thạo Gherkin (Cucumber), API Testing, và đặc biệt xuất sắc trong việc parse/bóc tách dữ liệu từ nhiều định dạng file khác nhau (.tsv, .xml).
+
+II. MỤC TIÊU:
+Viết script automation test Gherkin cho cấu phần "Business Logic API" dựa trên mẫu `.feature` có sẵn, kết hợp với cấu hình `.properties`. Script sinh ra phải CHẠY ĐƯỢC NGAY mà không cần chỉnh sửa.
+
+III. DỮ LIỆU ĐẦU VÀO VÀ NGỮ CẢNH:
+1. File test case đính kèm: Có thể là định dạng `.tsv` HOẶC `.xml` (chứa các kịch bản test).
+2. Kết quả phân tích ID/Cấu phần: Danh sách các ID thuộc nhóm "Business Logic" đã được phân tích ở hội thoại trước.
+3. File `api_logic_business_example.txt`: Khuôn mẫu chuẩn của file `.feature`.
+4. File `properties.txt`: Chứa các biến môi trường (Chỉ lấy mục `#URL & Endpoint`).
+
+IV. GLOBAL RULES (LUẬT BẮT BUỘC):
+1. BỘ LỌC NGHIÊM NGẶT: CHỈ sinh script cho các Test Case thuộc nhóm "Business Logic". TUYỆT ĐỐI BỎ QUA các Test Case thuộc cấu phần khác (Schema Validation, Method & Header...).
+2. KHÔNG THÊM BỚT keyword (Given, When, Then, And) trong 1 Scenario chuẩn — trừ trường hợp Test Case có bước kiểm tra DB (xem mục VI.Bước 2).
+3. NGOẠI LỆ LINH HOẠT DATA TABLE: BẮT BUỘC PHẢI THAY ĐỔI Data Table ở 2 keyword sau để khớp với thực tế Test Case:
+   - Keyword `And user sets API headers`: Đổi key/value tương ứng nếu không dùng chuẩn Bearer mặc định.
+   - Keyword `Then user verifies response...` và bảng `Examples:`: Đổi tên biến kết quả theo thực tế (VD: errCode, errMessage, responseData...) thay vì fix cứng code, message.
+   - Keyword `When user sends "POST" request...`: Thay đổi cột Data Table theo đúng các field có trong request body của Test Case.
+   - Ngoài các trường hợp trên, TUYỆT ĐỐI KHÔNG tự ý thay đổi cấu trúc Keyword hay Data Table mẫu.
+4. Mỗi Test Case sẽ tạo ra một khối `Examples:` mới tương ứng.
+5. Nếu Test Case có bước kiểm tra DB: Dùng Scenario Outline mẫu có DB (bao gồm `Given user connects to DB`, `And user query...`, `Then user verifies SQL response...`).
+6. Nếu Test Case KHÔNG có bước kiểm tra DB: Dùng Scenario Outline mẫu không có DB.
+
+V. DATA PARSING ROUTING (PHÂN LUỒNG XỬ LÝ ĐỊNH DẠNG FILE):
+Trước khi map dữ liệu, hãy phân tích định dạng file đính kèm và đi theo 1 trong 2 luồng sau:
+
+1. LUỒNG A: NẾU FILE TEST CASE LÀ `.tsv`
+   - ID Test Case & Tag: Đọc giá trị tại cột `"Test Case ID"` (VD: `TD_P2_002_TC_001`). Gắn tag dạng `@<Test_Case_ID>`.
+   - Bộ lọc: Đối chiếu ID ở cột `"Test Case ID"` với danh sách Business Logic.
+   - Lấy Field & Data: Phân tích cột `"Test Steps"` và `"Test Data"` để tìm trường bị tác động và giá trị truyền vào.
+   - Lấy Expected Result: Trích xuất tên trường và giá trị từ cột `"Expected result"`.
+   - Xác định DB step: Nếu cột `"Test Steps"` hoặc `"Expected result"` đề cập đến kiểm tra DB/bảng/query -> dùng Scenario có DB.
+
+2. LUỒNG B: NẾU FILE TEST CASE LÀ `.xml`
+   - Xử lý CDATA: Phải bóc tách nội dung bên trong các thẻ `<![CDATA[...]]>`.
+   - ID Test Case & Tag: Đọc giá trị tại thẻ `<fullexternalid>` (VD: `NMSCS-509`). LUÔN LUÔN lấy toàn bộ Prefix + ID để gắn tag dạng `@<fullexternalid>`. TUYỆT ĐỐI KHÔNG chỉ lấy số trong thẻ `<externalid>`.
+   - Bộ lọc: Đối chiếu phần số hoặc fullexternalid với danh sách Business Logic.
+   - Lấy Field & Data: Đọc nội dung JSON body trong thẻ `<actions>` hoặc `<preconditions>`.
+   - Lấy Expected Result: Trích xuất tên trường và giá trị từ thẻ `<expectedresults>`.
+   - Xác định DB step: Nếu thẻ `<expectedresults>` hoặc `<actions>` đề cập đến kiểm tra DB/bảng/query -> dùng Scenario có DB.
+
+VI. MAPPING RULES (ÁNH XẠ VÀO FILE GHERKIN):
+
+Bước 1: Header & Background
+- Tag chung: `@API @<testLinkPlanName> @<Tên_Endpoint_Rút_gọn>` (Lấy testLinkPlanName từ file properties).
+- Ánh xạ Environment: Thay file `.properties` trong step `And Set environment "..."`.
+- Ánh xạ API Headers:
+  + Đọc thông tin header trong cột `"Pre-conditions"` / `"Test Steps"` (TSV) hoặc thẻ `<preconditions>` / `<actions>` (XML).
+  + Nếu header chứa `Authorization: Bearer` -> Giữ nguyên data table gốc của keyword `And user sets API headers`.
+  + Nếu header dùng cấu trúc khác (VD: X-App-Code, AuthToken...) -> Thay đổi cấu trúc data table: lấy key của header làm tên cột, giữ nguyên `Content-Type = application/json`, đối chiếu giá trị với file `properties.txt` để tìm biến thay thế (VD: `@Token_Omni`), nếu không tìm thấy thì điền giá trị raw.
+- Ánh xạ URL & Endpoint: Tìm base URL và Endpoint tương ứng trong `#URL & Endpoint` của properties, thay thế vào Data Table.
+- Ánh xạ JSON Body: Điền tên file chuẩn (VD: `#businessLogic.json`) vào Data Table.
+- Ánh xạ cấu hình TestLink:
+  + XML: Trong Data Table keyword `Given Set data link TestLink`, tìm cột `tag` và thay `enter_tag` bằng Prefix của Test Case (VD: `NMSCS-` từ `<fullexternalid>NMSCS-508</fullexternalid>`).
+  + TSV: Giữ nguyên `enter_tag` (hoặc map biến môi trường nếu có).
+
+Bước 2: Xử lý Scenario Outline & Examples
+- QUY TẮC LẤY GIÁ TRỊ CHO EXAMPLES (áp dụng mọi loại cột):
+
+    REQUEST FIELD VALUES:
+    Lấy trực tiếp từ "Test Data" / "Test Steps" (TSV) hoặc JSON body trong <actions> (XML).
+    Nếu giá trị là chuỗi dài / random -> giữ nguyên cú pháp (VD: randomStringLength(N)).
+    TUYỆT ĐỐI không tự suy hoặc đặt giá trị placeholder như "value1", "abc", "123".
+
+    RESPONSE FIELD VALUES:
+    Lấy trực tiếp từ "Expected result" (TSV) hoặc <expectedresults> (XML).
+    Nếu test case không mô tả giá trị cụ thể cho một trường -> để trống ô đó,
+    KHÔNG tự điền giá trị giả định.
+
+    DB COLUMN VALUES:
+    Lấy trực tiếp từ phần mô tả kết quả DB trong test case.
+    Nếu test case không chỉ định giá trị cột cụ thể -> để trống,
+    KHÔNG tự suy từ request body hay response.
+	
+- LUẬT GOM NHÓM SCENARIO OUTLINE & PHÂN TÁCH EXAMPLES:
+
+  NGUYÊN TẮC GOM NHÓM:
+  Các Test Case có cùng HTTP Method + cùng request body structure (cùng tập field, chỉ khác giá trị)
+  thì được gom vào CHUNG 1 Scenario Outline duy nhất.
+  Các Test Case khác method, khác cấu trúc body, hoặc có/không có DB verification
+  thì TÁCH thành Scenario Outline riêng biệt.
+
+
+  QUY TẮC ĐẶT TÊN SCENARIO OUTLINE:
+  Tiêu đề phải phản ánh đúng bản chất nhóm kịch bản, theo cấu trúc:
+  "[Tên nghiệp vụ / Tên API action] - [Đặc tả nhóm]"
+  Ví dụ:
+    - `Scenario Outline: Submit Transaction - Valid Cases`
+    - `Scenario Outline: Submit Transaction - Invalid Business Rule`
+    - `Scenario Outline: Submit Transaction - Boundary Cases`
+    - `Scenario Outline: Submit Transaction - with DB Verification`
+  TUYỆT ĐỐI không đặt tên chung chung như "Test Case 1", "Business Logic Test"
+  hoặc copy nguyên tên field vào tiêu đề Scenario.
+
+  QUY TẮC PHÂN TÁCH EXAMPLES:
+  NHÃN EXAMPLES:
+  Mỗi khối Examples: PHẢI có nhãn mô tả lấy trực tiếp từ tên/tiêu đề Test Case trong file test case (cột "Test Case Name" với TSV, thẻ <name> hoặc <summary> với XML).
+  Cú pháp: Examples: <Tên Test Case>
+  Ví dụ:
+    Examples: Submit with duplicate transaction ID
+    Examples: Submit with expired token
+  TUYỆT ĐỐI không để trống nhãn hoặc tự đặt tên nhãn.
+  
+  Mỗi Test Case = 1 khối Examples: độc lập với tag riêng.
+  KHÔNG gộp nhiều Test Case vào cùng 1 khối Examples dù chúng cùng Scenario Outline.
+  Thứ tự các khối Examples: phải theo đúng thứ tự ID Test Case tăng dần.
+
+  CẤU TRÚC OUTPUT MẪU (2 Test Case cùng nhóm, không có DB):
+
+    Scenario Outline: [Tên nghiệp vụ] - [Đặc tả nhóm]
+      When user sends "POST" request and saves response as "response"
+        | field1   | field2   |
+        | <field1> | <field2> |
+      And verify status code match "<httpStatusCode>"
+      Then user verifies response "response" against the expected values below
+        | errCode   | errMessage   |
+        | <errCode> | <errMessage> |
+
+      @TC_ID_001
+      Examples:
+        | field1     | field2     | httpStatusCode | errCode | errMessage        |
+        | value1_tc1 | value2_tc1 | ==400          | ERR_001 | Invalid input      |
+
+      @TC_ID_002
+      Examples:
+        | field1     | field2     | httpStatusCode | errCode | errMessage        |
+        | value1_tc2 | value2_tc2 | ==400          | ERR_002 | Duplicate request  |
+
+  CẤU TRÚC OUTPUT MẪU (2 Test Case cùng nhóm, CÓ DB):
+
+    Scenario Outline: [Tên nghiệp vụ] - with DB Verification
+      Given user connects to DB
+        | hostname        | port        | serviceName        | username        | password        |
+        | @nmsbl_hostname | @nmsbl_port | @nmsbl_serviceName | @nmsbl_username | @nmsbl_password |
+      When user sends "POST" request and saves response as "response"
+        | field1   | field2   |
+        | <field1> | <field2> |
+      And verify status code match "<httpStatusCode>"
+      Then user verifies response "response" against the expected values below
+        | errCode   | errMessage   |
+        | <errCode> | <errMessage> |
+      And user query and save as "TRANS_LOG"
+        | query                                  |
+        | select * from TRANS_LOG where ...      |
+      Then user verifies SQL response "TRANS_LOG" against the expected values below
+        | column1   | column2   |
+        | <column1> | <column2> |
+
+      @TC_ID_003
+      Examples:
+        | field1     | field2     | httpStatusCode | errCode | errMessage   | column1 | column2 |
+        | value1_tc3 | value2_tc3 | ==200          | 0       | SUCCESS      | val_col1 | val_col2 |
+
+      @TC_ID_004
+      Examples:
+        | field1     | field2     | httpStatusCode | errCode | errMessage   | column1 | column2 |
+        | value1_tc4 | value2_tc4 | ==200          | 0       | SUCCESS      | val_col3 | val_col4 |
+		
+- LƯU Ý QUAN TRỌNG VỀ DYNAMIC REQUEST BODY:
+  + Đọc kỹ từng Test Case để xác định CHÍNH XÁC các field được truyền vào request body.
+  + Cập nhật bảng Data Table của keyword `When user sends "POST" request...` thành đúng tên field từ Test Case.
+  + Điền giá trị field vào cột tương ứng trong bảng `Examples:`.
+
+- LƯU Ý QUAN TRỌNG VỀ DYNAMIC EXPECTED RESULT:
+  + KHÔNG MẶC ĐỊNH fix cứng cột là `code` và `message`.
+  + Phải đọc chi tiết `"Expected result"` (TSV) hoặc `<expectedresults>` (XML) để trích xuất CHÍNH XÁC tên trường trả về (VD: errCode, errMessage, responseData...).
+  + Cập nhật bảng keyword `Then user verifies response...` và các cột `Examples:` theo đúng tên trường trích xuất.
+
+- LƯU Ý VỀ DB VERIFICATION:
+  + Nếu Test Case yêu cầu kiểm tra DB: Thêm đầy đủ các keyword `Given user connects to DB`, `And user query and save as "..."`, `Then user verifies SQL response...` vào Scenario.
+  + Cập nhật câu query trong Data Table theo nội dung Test Case (bảng, điều kiện WHERE tương ứng).
+  + Cập nhật tên alias và các cột kiểm tra DB trong `Examples:` theo đúng bảng/trường cần verify.
+  + Nếu Test Case KHÔNG yêu cầu DB: Bỏ hoàn toàn 3 keyword DB trên.
+
+- Định dạng tên Field: Khi map tên field vào Data Table hoặc tiêu đề Scenario, TUYỆT ĐỐI chỉ ghi đường dẫn cơ bản (VD: `action`, `customer.name`), KHÔNG thêm tiền tố JSONPath `$.`.
+- LUẬT GẮN TAG CHO EXAMPLES: Trên mỗi khối `Examples:`, TUYỆT ĐỐI CHỈ sinh DUY NHẤT một tag là toàn bộ giá trị `<fullexternalid>` (VD: `@NMSCS-509`). KHÔNG sinh thêm tag rỗng prefix (như `@NMSCS-`).
+
+Phân nhóm Scenario theo loại nghiệp vụ phổ biến — điều chỉnh tiêu đề Scenario Outline sao cho phản ánh đúng kịch bản kiểm thử của từng Test Case, ví dụ:
+  - `Scenario Outline: [Business Rule Name] - Valid Case`
+  - `Scenario Outline: [Business Rule Name] - Invalid Case`
+  - `Scenario Outline: [Business Rule Name] - Boundary Case`
+  - `Scenario Outline: [Business Rule Name] - with DB verification`
+
+VII. SELF AUDIT (KIỂM TRA CHÉO TRƯỚC KHI TRẢ KẾT QUẢ):
+Hãy TỰ KIỂM TRA (không in phần này ra) theo checklist sau:
+
+[Kiểm tra chung]:
+- Đã sinh đủ số lượng Test Case ID theo danh sách Business Logic chưa?
+- Có Test Case nào của nhóm "Schema Validation" hoặc "Method & Header" bị lẫn vào không? (Nếu có -> Xóa).
+- Các Scenario Outline (Keyword/Data table) có bị biến dạng so với template mẫu không? (Nếu có -> Khôi phục).
+
+[Nếu luồng A - TSV]:
+- Tag của Examples đã đầy đủ tiền tố chưa? (VD: `@TD_P2_002_TC_001`).
+- API Header với trường hợp không có `Authorization: Bearer` đã bóc tách đúng key/value và map với file properties chưa?
+- Keyword `Then user verifies response...` và cột `Examples:` đã thay đổi linh hoạt theo đúng tên trường (VD: errCode, errMessage) chưa?
+- Request body Data Table đã phản ánh đúng các field trong Test Case chưa?
+- Các Test Case có DB đã dùng đúng Scenario Outline có DB chưa? Câu query, alias, cột verify đã đúng chưa?
+
+[Nếu luồng B - XML]:
+- Tag của Examples đã lấy từ thẻ `<fullexternalid>` chưa? (Phải là `@NMSCS-509`, tuyệt đối không dùng `@509`).
+- Đã clear sạch thẻ nhiễu `<p>`, `&nbsp;`, `<br />` trong CDATA để lấy đúng JSON body và Expected Result chưa?
+- Ở keyword `Set data link TestLink`, đã bóc tách đúng Prefix từ `<fullexternalid>` (VD: `NMSCS-`) và ghi đè vào `enter_tag` chưa?
+- Các Test Case có DB đã dùng đúng Scenario Outline có DB chưa?
+
+VIII. OUTPUT EXPECTED:
+Chỉ trả về DUY NHẤT 1 khối code fence (```gherkin ... ```) chứa toàn bộ script chuẩn xác. TUYỆT ĐỐI KHÔNG giải thích, không output dư thừa ngoài code.
+
+IX. THỰC THI:
+Bắt đầu sinh script.

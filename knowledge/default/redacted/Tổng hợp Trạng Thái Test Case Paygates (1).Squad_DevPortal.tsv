@@ -1,0 +1,59 @@
+Sprint	Epic	Chức năng	Test case Status 						Trạng thái test hiện tại	Mức độ ưu tiên nghiệp vụ	Trạng thái Automation test hiện tại	Automation Test Estimate	Automation Test Cases	Test case Generate Type	Link test cases	Automation Test Type	Noted			Total Manual Test Cases		Total Automation Test Cases	
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases												Total API Test cases	1264	Total API Test cases	0
+1.0									Pending											Total  UI Test cases	#REF!	Total  UI Test cases	42
+2.0																	
+5.0	DevPortal_02	Trang chủ - Chưa đăng nhập	20	0	0	0	12	32	Ready to UAT	1.0	Completed		26.0	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	"Finishing B0_02 High Priority pack that i already picked up
+Changes to flow require to fix failures and review previously Blocked automation scenarios.
+Supporting BnK team with automation queries
+Supporting Tra with automation queries
+Updated 10 test scenarios. Identified a few issues - raised with Thao
+Functionality for 6 TCs is not yet available / not working"			Total  UI Test cases (priority 1)	32
+6.0	DevPortal_03	Quản lý tin tức - Danh sách và tìm kiếm	36	0	0	0	13	49	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI				Total  UI Test cases (priority 2)	1053
+	DevPortal_03	Quản lý tic tức - Thêm mới	112	0	0	0	129	247	Read to UAT	2.0	In - Progress		16.0	Manual	https:[REDACTED_SECRET]?gid=451629728#gid=451629728	Web UI	"Investigating issues with accessing site with Thảo
+TC are not on Testlink, waiting for Thảo to upload
+Investigating Testlink upload teplate improvement for anh Phú
+Reviewing BnK MR
+Got transferred by Giang to DOKA project"
+	DevPortal_03	Quản lý tin tức - Chỉnh sửa	107	0	0	0	134	245	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1344736713#gid=1344736713	Web UI	
+	DevPortal_03	Quản lý tin tức - Xóa tin tức	12	0	0	0	18	30	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	Quản lý tin tức - Xem tin tức	20	0	0	0	17	37	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+7.0	DevPortal_03	Quản lý Banner_ Xóa Banner_v1.0	21	0	0	0	0	21	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	Quản lý Banner_Danh sách và Tìm kiếm	33	0	0	0	16	49	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI	
+	DevPortal_03	Quản lý Banner_Sửa	42	0	0	0	73	115	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=690860747#gid=690860747	Web UI	
+	DevPortal_03	Quản lý Banner_Thêm mới	27	0	0	0	73	100	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=603508400#gid=603508400	Web UI	
+8.0	DevPortal_03	FO - Banner	17	0	0	0	0	17	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	FO - Danh sách tin tức	45	0	0	0	0	45	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	FO - Tìm kiếm tin tức	46	8	0	0	0	54	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	FO - Xem chi tiết tin tức	44	0	0	0	0	44	Read to UAT	2.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_03	API Tìm kiếm tin tức - FO	43	1	0	0	3	47	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=30055377#gid=30055377	API	
+	DevPortal_03	API Danh sách tin tức - FO	41	0	3	0	2	46	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1415883246#gid=1415883246	API	
+	DevPortal_03	API - Xem chi tiết tin tức - FO	31	0	4	0	2	37	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1412774505#gid=1412774505	API	
+	DevPortal_03	API - Banner-FO	8	2	0	0	0	10	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=71216081#gid=71216081	API	
+9.0	DevPortal_03	API - Danh sách và Tìm kiếm Tin tức - BO	21	16	0	0	5	42	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1633299318#gid=1633299318	API	
+	DevPortal_03	API -Thêm mới và lưu nháp tin tức BO	39	24	0	0	7	70	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=2130082251#gid=2130082251	API	
+	DevPortal_03	API Chỉnh sửa tin tức BO	28	5	0	0	7	40	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1670803091#gid=1670803091	API	
+	DevPortal_03	API - Xóa tin tức - BO	21	0	0	0	0	21	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1040140776#gid=1040140776	API	
+	DevPortal_03	API Xem chi tiết tin tức - BO	0	0	0	0	0	18	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1596117124#gid=1596117124	API	
+	DevPortal_03	API - Tìm kiếm Banner BO	28	14	0	0	5	47	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1401671632#gid=1401671632	API	
+	DevPortal_03	API - Thêm mới Banner BO	23	14	2	0	4	43	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=606652847#gid=606652847	API	
+	DevPortal_03	API Chỉnh sửa Banner BO	34	5	0	0	5	44	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1459889432#gid=1459889432	API	
+	DevPortal_03	API - Xóa Banner BO	3	0	25	0	0	28	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1226840512#gid=1226840512	API	
+10.0	DevPortal_03	API - Banner-FO	8	2	0	0	0	10	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=71216081#gid=71216081	API	
+	DevPortal_03	API Danh sách tin tức - FO	41	0	3	0	2	46	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1415883246#gid=1415883246	API	
+	DevPortal_03	API Tìm kiếm tin tức - FO	43	1	0	0	3	47	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=30055377#gid=30055377	API	
+	DevPortal_03	API - Xem chi tiết tin tức - FO	31	0	4	0	2	37	Read to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1412774505#gid=1412774505	API	
+11.0	DevPortal_04	API - Danh sách và chi tiết gói sản phẩm BO	9	0	0	0	0	9	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=411445221#gid=411445221	API	
+	DevPortal_04	API Chỉnh sửa gói sản phẩm BO	50	0	0	0	1	51	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=1578774155#gid=1578774155	API	
+	DevPortal_04	Xem Chi tiết - Gói sản phẩm BO	17	0	4	0	0	21	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	Web UI	
+	DevPortal_04	Danh sách và tìm kiếm - Gói sản phẩm BO	9	1	21	0	0	31	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	Web UI	
+	DevPortal_04	Chỉnh sửa gói sản phẩm BO	29	0	35	0	0	64	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=1126779962#gid=1126779962	Web UI	
+	DevPortal_05	API đăng ký	0	0	0	0	0	54	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=336749102#gid=336749102	API	
+	DevPortal_05	API kích hoạt tài khoản	0	0	0	0	0	38	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=521480542#gid=521480542	API	
+	DevPortal_05	API Login FO	0	0	0	0	0	42	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=1099808395#gid=1099808395	API	
+	DevPortal_05	API Đăng xuất FO	0	0	0	0	0	32	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=677946429#gid=677946429	API	
+	DevPortal_05	API - Đổi mật khẩu trước đăng nhập	0	0	0	0	0	40	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=1646755674#gid=1646755674	API	
+	DevPortal_05	API Quên mật khẩu FO	0	0	0	0	0	39	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=931500554#gid=931500554	API	
+	DevPortal_05	API - Đổi mật khẩu sau đăng nhập	0	0	0	0	0	44	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=49777452#gid=49777452	API	
+12.0	DevPortal_04	API Chỉnh sửa gói sản phẩm BO	50	0	0	0	1	51	Read to UAT	3.0				Manual	https:[REDACTED_SECRET]?gid=1578774155#gid=1578774155	API	
+	DevPortal_05	API sửa hồ sơ cá nhân	0	0	0	0	0	40	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=627840747#gid=627840747	API	
+	DevPortal_05	API Xem hồ sơ cá nhân FO	0	0	0	0	0	40	Update test cases	5.0				AI gen	https:[REDACTED_SECRET]?gid=804731618#gid=804731618	API	

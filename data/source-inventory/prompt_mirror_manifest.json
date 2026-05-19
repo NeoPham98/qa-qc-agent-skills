@@ -1,0 +1,109 @@
+{
+  "prompts": [
+    {
+      "request_type": "API TD - Setup Context",
+      "source_path": "BIDV/Prompt/API/API_TD_1_Setup_Context.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_1_Setup_Context.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "006b57f36f583c40817b0137571a4d9b1acfd6d2fde3895c0e9f4a6b7a675b5d"
+    },
+    {
+      "request_type": "API TD - Method/Header",
+      "source_path": "BIDV/Prompt/API/API_TD_2_Method_Header.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_2_Method_Header.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "88198c6d44894199d33e9726c3a11ea1dc3bb1d8154d83a72e5e8234b2c1ac30"
+    },
+    {
+      "request_type": "API TD - Schema Validation",
+      "source_path": "BIDV/Prompt/API/API_TD_3_Schema_Validation.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_3_Schema_Validation.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "41ea7c3a1866439e33e3ef63607c8f7c186e2a0fe774665fe407094cdc75eee3"
+    },
+    {
+      "request_type": "API TD - Value/Business/Cross Logic",
+      "source_path": "BIDV/Prompt/API/API_TD_4_Value_Business_Cross_Logic.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_4_Value_Business_Cross_Logic.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "63f3fedea879731f8846fd5ee461bcb716572b1cc88278c69eb4a2c50f105b62"
+    },
+    {
+      "request_type": "API TD - Method/Header BreakDown",
+      "source_path": "BIDV/Prompt/API/API_TD_2_Method_Header_BreakDown.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_2_Method_Header_BreakDown.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "ee0ee87c5a9ccf73d1589294e524c55342c20e6376bd9e8c36d532c4e638eabf"
+    },
+    {
+      "request_type": "API TD - Schema Validation BreakDown",
+      "source_path": "BIDV/Prompt/API/API_TD_3_Schema_Validation_BreakDown.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_3_Schema_Validation_BreakDown.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "eb68ac1ab246d994fab17710365e14b5db2e273dd6cb866cda1455e2fa832a66"
+    },
+    {
+      "request_type": "API TD - Value/Business/Cross Logic BreakDown",
+      "source_path": "BIDV/Prompt/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt",
+      "owning_skill": "api-td-generate",
+      "sha256": "7d5b37dacf861397bbc31807dde863bd37c62d262a261b0f5f1b619ca4bce0ea"
+    },
+    {
+      "request_type": "API TC from TD",
+      "source_path": "BIDV/Prompt/API/API_Gen_TC_From_TD_v2.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/API_Gen_TC_From_TD_v2.txt",
+      "owning_skill": "tc-generate-from-td",
+      "sha256": "40470e3fa1b29c9f6cd744d31150932b328f698948722098667f2a708901de29"
+    },
+    {
+      "request_type": "UI TD",
+      "source_path": "BIDV/Prompt/UI/UI_Gen_TD.txt",
+      "runtime_prompt_path": "prompts-verbatim/UI/UI_Gen_TD.txt",
+      "owning_skill": "ui-td-generate",
+      "sha256": "ec4c8a6b947b6b8b8c3e56dfad70cf06ffcc66cafcb32b82f27d599bcbd3cce4"
+    },
+    {
+      "request_type": "UI TC from TD",
+      "source_path": "BIDV/Prompt/UI/UI_Gen_TC_From_TD.txt",
+      "runtime_prompt_path": "prompts-verbatim/UI/UI_Gen_TC_From_TD.txt",
+      "owning_skill": "tc-generate-from-td",
+      "sha256": "f134881282a433f04794820a10034a880aa453cb9e75fb42b642b4028f50aa12"
+    },
+    {
+      "request_type": "UAT TC",
+      "source_path": "BIDV/Prompt/UI/UI_Gen_TC_For_UAT.txt",
+      "runtime_prompt_path": "prompts-verbatim/UI/UI_Gen_TC_For_UAT.txt",
+      "owning_skill": "uat-tc-generate",
+      "sha256": "7896886c9af7b5719a0ced1b62ef44704e9f8800dcc981c7a8d7e8f6c3daea37"
+    },
+    {
+      "request_type": "API Testcase Analysis",
+      "source_path": "BIDV/Prompt/API/Gen Script/API_TestCase_Analysis.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/Gen Script/API_TestCase_Analysis.txt",
+      "owning_skill": "api-automation-support-generate",
+      "sha256": "428c6135e33ccf67f9af94b6563deb9131df869d914aec3eb9d4b368b2df2c2d"
+    },
+    {
+      "request_type": "API Script Validation Feature",
+      "source_path": "BIDV/Prompt/API/Gen Script/API_Gen_Script_Validation_Feature.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/Gen Script/API_Gen_Script_Validation_Feature.txt",
+      "owning_skill": "api-automation-support-generate",
+      "sha256": "8258a076ebcfd831962039054ff7739935ac5005dbbe6e7ea0048c74a406d50c"
+    },
+    {
+      "request_type": "API Script Method/Header Feature",
+      "source_path": "BIDV/Prompt/API/Gen Script/API_Gen_Script_Method_Header_Validation_Feature.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/Gen Script/API_Gen_Script_Method_Header_Validation_Feature.txt",
+      "owning_skill": "api-automation-support-generate",
+      "sha256": "9d030702d11c07f4499ca56384f6063ca9ceb0b5d1ce792967b7c30f97c2ee33"
+    },
+    {
+      "request_type": "API Script Logic Business Feature",
+      "source_path": "BIDV/Prompt/API/Gen Script/API_Gen_Script_Logic_Business_Feature.txt",
+      "runtime_prompt_path": "prompts-verbatim/API/Gen Script/API_Gen_Script_Logic_Business_Feature.txt",
+      "owning_skill": "api-automation-support-generate",
+      "sha256": "2e9c3447773b72d76e365b6056fc4a1f3428cc0b6c3c82270ab1f285ae3a7afa"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+Sprint	Epic	Chức năng	Test case Status 						Trạng thái test hiện tại	Mức độ ưu tiên nghiệp vụ	Trạng thái Automation test hiện tại	Automation Test Estimate	Automation Test Cases	Test case Generate Type	Link test cases	Automation Test Type	Noted			Total Manual Test Cases		Total Automation Test Cases	
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases												Total API Test cases	1321	Total API Test cases	0
+12.0	BASE_19	BASE_19.011_Service revert hạn mức	36	0	0	0	0	36	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=862978312#gid=862978312	API				Total  UI Test cases	0	Total  UI Test cases	0
+		BASE_19.010_Service push hạn mức	29	0	0	0	0	29	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1208257144#gid=1208257144	API	
+		BASE_20.003_Bổ sung thông tin terminal	15	0	0	0	0	15	Ready to UAT	1.0				AI Gen	https:[REDACTED_SECRET]?gid=1796058890#gid=1796058890	API	
+13.0		BASE_20.002_Bổ sung thông tin service + merchant type	27	0	0	0	0	27	Ready to UAT	1.0				AI Gen	https:[REDACTED_SECRET]?gid=993422901#gid=993422901	API	
+12.0		BASE_19.009_Service trả thông tin mô tả lỗi (đa ngôn ngữ)	16	0	0	0	0	16	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=967248238#gid=967248238	API	Dương 
+11.0		BASE_19.008_Cung cấp service gộp delete thông tin onboard theo batch	34	0	0	0	0	34	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=2080204153#gid=2080204153	API	Dương 
+		BASE_19.007_Cung cấp service gộp update thông tin onboard theo batch	39	0	0	0	0	39	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=2080204153#gid=2080204153	API	Dương 
+		BASE_19.006_Cung cấp service gộp insert thông tin onboard theo batch	44	0	0	0	0	44	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=2080204153#gid=2080204153	API	Dương 
+13.0	BASE_11	BASE_11_007_Thiết kế + Đồng bộ DIM_APP_PARAMS	76	0	0	0	0	76	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1164246057#gid=1164246057		
+		BASE_11_006_Thiết kế + Đồng bộ DIM_PAYMENT_SOURCE	38	0	0	0	0	38	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1374971932#gid=1374971932		
+		BASE_11_005_Thiết kế + Đồng bộ DIM_CHANNEL	38	0	0	0	0	38	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=783575647#gid=783575647		
+		BASE_11_004_Thiết kế + Đồng bộ DIM_TERMINAL (TERMINAL + TERMINAL_COLLECTION)	76	0	0	0	0	76	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1457834449#gid=1457834449		
+		BASE_11_003_Thiết kế + Đồng bộ DIM_SERVICE (SERVICE + SERVICE_COLLECTION)	76	0	0	0	0	76	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=116811012#gid=116811012		
+		BASE_11_002_Thiết kế + Đồng bộ DIM_PARTNER	38	0	0	0	0	38	Ready to UAT	2.0				AI gen	https:[REDACTED_SECRET]?gid=1046357741#gid=1046357741		
+11.0	BASE_07	BASE_07.008_Code service CRUD, unit test thông tin dịch vụ gắn với các mệnh giá SERVICE_PAR_VALUE	135	0	0	0	0	135	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=16660642#gid=16660642	API	minh
+		BASE_07.007_Code service CRUD, unit test thông tin kỹ thuật kết nối đối tác thu hộ SERVIVE_PARAMETER	172	0	0	0	0	172	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1659412113#gid=1659412113	API	minh
+13.0	BASE_15	BASE_15.003_Cấu hình events thay đổi các dữ liệu master lên topic Kafka phục vụ cho các Squad khác đồng bộ	332	0	0	0	0	332	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=31960242#gid=31960242		
+		BASE_15.002_Chuẩn hóa đẩy dữ liệu lên REDIS	252	0	0	0	0	252	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=955989972#gid=955989972		
+12.0		BASE_15.001_Xây dựng service gộp tích hợp thông tin dịch vụ 1, dịch vụ cấp 2 và thông tin bổ sung cần thiết cho squad thanh toán CNR, VA	75	0	0	0	0	75	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=727903101#gid=727903101	API	
+12.0	BASE_08	BASE_08.017_ Xây dựng service Danh sách dịch vụ cấp 1	146	0	0	0	0	146	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1301933655#gid=1301933655	API	
+		BASE_08.016_ Xây dựng service Danh sách thư mục dịch vụ	84	0	0	0	0	84	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=795703339#gid=795703339	API	
+11.0		BASE_08.005_Code service CRUD, unit test SERVICE_CATALOG	53	0	0	0	0	53	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=739456075#gid=739456075	API	
+	BASE_07	BASE_07.017_ Service Thêm mới Hạn mức EKYC	22	0	0	0	0	22	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_07	BASE_07.018_ Service Sửa Hạn mức EKYC	30	0	0	0	0	30	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_07	BASE_07.019_Service xóa Hạn mức EKYC	5	0	0	0	0	5	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API		Trangntn: Đã đẩy testlink
+	BASE_07	BASE_07.020 Service Thêm mới cấu hình nội dung giao dịch	28	0	0	0	0	28	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_07	BASE_07.021_ Service Sửa cấu hình nội dung giao dịch	22	0	0	0	0	22	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API		Trangntn: Đã đẩy testlink
+	BASE_07	BASE_07.022_Service xóa Cấu hình nội dung giao dịch	5	0	0	0	0	5	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_19	BASE_19.012_Service lấy thông tin GL phí tương ứng	10	8	0	0	0	18	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API	"Còn bug: https:[REDACTED_SECRET]
+https:[REDACTED_SECRET]"	Trangntn: Đã đẩy testlink
+	BASE_07	Service chi tiết Hạn mức EKYC	8	0	0	0	0	8	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=120463542#gid=120463542	API		Trangntn: Đã đẩy testlink
+	BASE_07	Service Thêm mới Hạn mức EKYC_theo lô	18	0	0	0	0	18	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1515564936#gid=1515564936	API		Trangntn: Đã đẩy testlink
+	BASE_07	Service xem chi tiết cấu hình nội dung giao dịch  	6	0	0	0	0	6	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1889548793#gid=1889548793	API		Trangntn: Đã đẩy testlink
+	BASE_08	BASE_08.020_CR thay đổi thông tin đối tác	95	0	0	0	0	95	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API		Trangntn: Đã đẩy testlink
+	BASE_08	BASE_08.020_CR thay đổi thông tin đối tác_Cập nhật	61	0	0	0	0	61	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_08	BASE_08.020_CR thay đổi thông tin đối tác_Xóa	8	0	0	0	0	8	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=1679520073#gid=1679520073	API		Trangntn: Đã đẩy testlink
+	BASE_08	BASE_08.020_CR thay đổi thông tin đối tác_Lấy chi tiết	8	0	0	0	0	8	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API		Trangntn: Đã đẩy testlink
+	BASE_08	BASE_08.020_CR thay đổi thông tin đối tác_Thêm mới theo lô	0	1	0	0	0	57	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API	Còn bug block hết luồng: https:[REDACTED_SECRET]	Trangntn: Đã đẩy testlink
+	BASE_08	BASE_07.015_ Service Thêm mới Danh mục quản lý tài khoản	0	0	0	0	0	25	Ready to UAT	1.0				AI gen	https:[REDACTED_SECRET]?gid=519434308#gid=519434308	API	Chưa test. Sang support BO trước	Trangntn: Đã đẩy testlink

@@ -1,0 +1,90 @@
+lifecycle_states:
+  draft:
+    directory: artifacts/default/draft
+    writer: generator
+    approval_required: false
+  reviewed:
+    directory: artifacts/default/reviewed
+    writer: reviewer
+    requires:
+      - validation_report
+      - OutputReview.md
+  approved:
+    directory: artifacts/default/approved
+    writer: supervisor
+    requires:
+      - validation_report
+      - OutputReview.md
+      - SupervisorApproval.md
+      - no_secret_report
+  rejected:
+    directory: artifacts/default/rejected
+    writer: supervisor
+    requires:
+      - failure_reason
+  archive:
+    directory: artifacts/default/archive
+    writer: publisher
+    requires:
+      - superseded_artifact
+profiles:
+  api_test_design:
+    final_outputs:
+      - API_OperationInventory.md
+      - API_TestDesign.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  api_testcase:
+    final_outputs:
+      - API_OperationInventory.md
+      - API_TestDesign.md
+      - TestCaseSource.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+      - OutputReview.md
+      - SupervisorApproval.md
+  ui_test_design:
+    final_outputs:
+      - UI_TestDesign.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  ui_testcase:
+    final_outputs:
+      - UI_TestDesign.md
+      - TestCaseSource.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+      - OutputReview.md
+      - SupervisorApproval.md
+  uat_testcase:
+    final_outputs:
+      - UAT_TestCaseSource.md
+      - UAT_TestCase.generated.tsv
+      - OutputReview.md
+      - SupervisorApproval.md
+  api_automation:
+    final_outputs:
+      - API_TestCase_Analysis.md
+      - api_method_header_validation.feature
+      - api_validation.feature
+      - api_logic_business.feature
+      - OutputReview.md
+      - SupervisorApproval.md
+  execution_import:
+    final_outputs:
+      - TestExecution.from-manual.tsv
+      - OutputReview.md
+      - SupervisorApproval.md
+  paygates_dashboard:
+    final_outputs:
+      - TestExecution.from-manual.tsv
+      - PaygatesDashboard.generated.tsv
+      - PaygatesDashboard.generated.xlsx
+      - OutputReview.md
+      - SupervisorApproval.md
+  coverage_audit:
+    final_outputs:
+      - CoverageMatrix.md
+      - GapAnalysis.md
+      - OutputReview.md
+      - SupervisorApproval.md

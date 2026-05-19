@@ -1,0 +1,26 @@
+Squad	Chức năng	Test case Status 						Trạng thái test hiện tại	Test case Generate Type	Link test cases
+		Passed	Failed	Untested	Accepted	N/A	Total Test cases			
+VA	Danh sách TKDD GDV	151	0	0	0	0	151	Pending	AI gen	https://docs.google.com/spreadsheets/d/1i29dmkVkPrIOCJq2RqqqBa_I7OfL0plNjdgB137RqKI/edit?gid=1498872998#gid=1498872998
+	Danh sách TKDD KSV	118	0	0	0	0	118	Pending	AI gen	https://docs.google.com/spreadsheets/d/1sG8yeOOgr45Gu2IjH1W8AbNBp19M-YiTij9R_Af4W94/edit?gid=73219736#gid=73219736
+	Quay_Thêm mới mã đầu chủ động đơn lẻ	132	0	0	0	0	132	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1MI5x1TicTvikT1J9EgbshCqggPuSjGODpW5tF9F5lBs/edit?gid=1543950552#gid=1543950552
+	Quay_Thêm mới mã đầu chủ động theo file	106	0	0	0	0	106	Pending	AI gen	https://docs.google.com/spreadsheets/d/1QBx-F7FDJ0SzVRhK4YmUS-MQ5wYAKeD1D56geI91YmY/edit?gid=1668191320#gid=1668191320
+	Danh sách Thanhtoan_TruyvanthongtinDVcap1TKDD GDV	0	0	66	0	0	66		AI gen	https://docs.google.com/spreadsheets/d/11c7Gbdm4073_2F5RH8MQPKrDR4vEuEgbq3s-V4euzNA/edit?gid=1993054223#gid=1993054223
+	Thanhtoan_Vantinhoadon	0	0	130	0	0	130		AI gen	https://docs.google.com/spreadsheets/d/1wfb8eiS4kK5DcxoK4s416TiGn2dDHkYOL0nbwwP0VTs/edit?gid=1005722115#gid=1005722115
+BO	BO_03.001_Danh sách tham số ( tìm kiếm, phân trang)	117	0	0	0	0	117		Manual	https://docs.google.com/spreadsheets/d/1lHoXFo35D0EHJlWaf7V6juNLKMwAPiNdzdYgSiYYAT8/edit?gid=1750880876#gid=1750880876
+	BO_03.002 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng thêm mới	73	3	0	0	0	76		Manual	https://docs.google.com/spreadsheets/d/1RcQGHI90iydJFP6z6Ywb0Cv8_c0bY4wh-paRELKNud0/edit?gid=1750880876#gid=1750880876
+	BO_03.003 màn hình 'QL loại dịch vụ đối tác' - Chức năng chỉnh sửa	75	0	0	0	0	75		Manual	https://docs.google.com/spreadsheets/d/1m-YKJ4D8LkrIVdUMUxsMQUpnh_ljJ0O8HJZUjSB5zAo/edit?gid=1750880876#gid=1750880876
+	BO_03.004 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng xem chi tiết	18	0	0	0	0	18		Manual	https://docs.google.com/spreadsheets/d/10Ho-rtaSuhQ3JcZcsL21cPtLlDb5JM_CLn3y6gpFaKA/edit?gid=1750880876#gid=1750880876
+	BO_03.005_Tích hợp service Base (Thêm, Sửa )	15	0	0	0	0	15		Manual	https://docs.google.com/spreadsheets/d/11BEwMk6fpYg5QCxqNzYhs4wvqxwjSqJ3Mm3Rg5LcZiA/edit?gid=1750880876#gid=1750880876
+	BO_05.001_Quản lý tham số kỹ thuật_Chức năng tìm kiếm, phân trang	102	0	0	0	0	102		Manual	https://docs.google.com/spreadsheets/d/1lo_uKkPfRgZ4vkv6Ea5HGzseT4XsF_Vh-bRediOzpsc/edit?gid=1750880876#gid=1750880876
+	BO_05.002 _Testcase_QL tham số kỹ thuật_Chức năng thêm mới	204	3	0	0	0	207		Manual	https://docs.google.com/spreadsheets/d/1EyMZlTpgJxc-o8JKTGoVEXs3fPlyOA1Z3KXy2OW4lCo/edit?gid=1750880876#gid=1750880876
+	BO_05.003_SIT_Testcases_QL Tham số kỹ thuật_Chức năng chỉnh sửa	168	9	0	0	0	177		Manual	https://docs.google.com/spreadsheets/d/1OCBNJitv8Yw0xO_v1CtueJTPCmeY3TJ56k3gvhhSZJ8/edit?gid=1750880876#gid=1750880876
+	BO_05.004_SIT_Testcases_QL Tham số kỹ thuật_Chức năng xem chi tiết	22	0	0	0	0	22		Manual	https://docs.google.com/spreadsheets/d/10K4mwE_weHnilaLTzMMZ6WHguleXlKIOhLFgojujLEI/edit?gid=1750880876#gid=1750880876
+	BO_05.005_Tích hợp service Base (Thêm, Sửa )	28	0	0	0	0	28		Manual	https://docs.google.com/spreadsheets/d/15foppG96SdJWfPHPWF_D80FRr82H9FoPluwfKaJoZdk/edit?gid=1750880876#gid=1750880876
+CnR	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https://docs.google.com/spreadsheets/d/1LFjSdqF5BWhZiFmXP0SxqayyWAbT4Iu2pYp1_GWTjjU/edit?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https://docs.google.com/spreadsheets/d/1LFjSdqF5BWhZiFmXP0SxqayyWAbT4Iu2pYp1_GWTjjU/edit?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https://docs.google.com/spreadsheets/d/1LFjSdqF5BWhZiFmXP0SxqayyWAbT4Iu2pYp1_GWTjjU/edit?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https://docs.google.com/spreadsheets/d/1LFjSdqF5BWhZiFmXP0SxqayyWAbT4Iu2pYp1_GWTjjU/edit?gid=722895941#gid=722895941
+Dev Portal	FO - Banner	17	0	0	0	0	17	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1VaW00FCuzy7ytfK3l2C_2DCrli--gdSVRcDFFCEgOXg/edit?gid=1750880876#gid=1750880876
+	FO - Danh sách tin tức	45	0	0	0	0	45	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1bZF_9JPzOlP1Q7AZ1vM_GVb5bsv9WQEABRq8wWrBHPY/edit?gid=1750880876#gid=1750880876
+	FO - Tìm kiếm tin tức	46	8	0	0	0	54	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1OJ6nMebnz3E5cd7lNGpXW1sde-qW9S_3qYguq_a3LGI/edit?gid=1750880876#gid=1750880876
+	FO - Xem chi tiết tin tức	44	0	0	0	0	44	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1seklMxWXZPTXOBQZRIsIQ6ynf7vyDNnQjzFZr48rTqU/edit?gid=1750880876#gid=1750880876

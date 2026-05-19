@@ -1,0 +1,13 @@
+tools:
+  read_only:
+    - source file lookup
+    - markdown review
+    - TSV validation
+  write_outputs:
+    - markdown artifacts
+    - TSV exports
+    - review reports
+  forbidden_without_approval:
+    - Jira/Xray writes
+    - production automation execution
+    - modifying source BIDV documents

@@ -1,0 +1,62 @@
+validators:
+  source-manifest.yml:
+    command: scripts/build_source_manifest.py
+    stage: source_inventory
+  knowledge/default/redacted:
+    command: scripts/validate_normalized_knowledge.py
+    stage: knowledge_validation
+  redaction-report.yml:
+    command: scripts/redact_secrets.py
+    stage: secret_redaction
+  API_TestDesign.md:
+    command: scripts/validate_test_design.py
+    args:
+      - --type
+      - api
+    stage: api_td_validation
+  UI_TestDesign.md:
+    command: scripts/validate_test_design.py
+    args:
+      - --type
+      - ui
+    stage: ui_td_validation
+  Legacy19TestCase.generated.tsv:
+    command: scripts/validate_testcase_contract.py
+    args:
+      - --profile
+      - legacy_19_column_testcase
+    stage: legacy_19col_export
+  UAT_TestCase.generated.tsv:
+    command: scripts/validate_testcase_contract.py
+    args:
+      - --profile
+      - uat_16_column_testcase
+    stage: uat_16col_export
+  TestExecution.from-manual.tsv:
+    command: scripts/validate_output_contract.py
+    args:
+      - --execution
+    stage: manual_execution_reader
+  PaygatesDashboard.generated.tsv:
+    command: scripts/validate_paygates_dashboard.py
+    stage: paygates_dashboard
+  TrackerValidation.json:
+    command: scripts/validate_tracker.py
+    stage: tracker_validation
+  TestGenerationMatrix.md:
+    command: scripts/validate_test_generation_matrix.py
+    stage: test_generation_matrix_validation
+  mandatory_test_coverage_rules.yml:
+    command: scripts/validate_mandatory_coverage_rules.py
+    stage: mandatory_coverage_rule_validation
+  TestcaseGranularity.json:
+    command: scripts/validate_testcase_granularity.py
+    stage: testcase_granularity_validation
+  published-artifact-manifest.yml:
+    command: scripts/validate_artifact_manifest.py
+    stage: artifact_publish
+required_gate_order:
+  - validation
+  - output_review
+  - supervisor_approval
+  - artifact_publish

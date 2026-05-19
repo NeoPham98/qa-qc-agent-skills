@@ -1,0 +1,26 @@
+Squad	Chức năng	Test case Status 						Trạng thái test hiện tại	Test case Generate Type	Link test cases
+		Passed	Failed	Untested	Accepted	N/A	Total Test cases			
+VA	Danh sách TKDD GDV	151	0	0	0	0	151	Pending	AI gen	https:[REDACTED_SECRET]?gid=1498872998#gid=1498872998
+	Danh sách TKDD KSV	118	0	0	0	0	118	Pending	AI gen	https:[REDACTED_SECRET]?gid=73219736#gid=73219736
+	Quay_Thêm mới mã đầu chủ động đơn lẻ	132	0	0	0	0	132	In-Test	AI gen	https:[REDACTED_SECRET]?gid=1543950552#gid=1543950552
+	Quay_Thêm mới mã đầu chủ động theo file	106	0	0	0	0	106	Pending	AI gen	https:[REDACTED_SECRET]?gid=1668191320#gid=1668191320
+	Danh sách Thanhtoan_TruyvanthongtinDVcap1TKDD GDV	0	0	66	0	0	66		AI gen	https:[REDACTED_SECRET]?gid=1993054223#gid=1993054223
+	Thanhtoan_Vantinhoadon	0	0	130	0	0	130		AI gen	https:[REDACTED_SECRET]?gid=1005722115#gid=1005722115
+BO	BO_03.001_Danh sách tham số ( tìm kiếm, phân trang)	117	0	0	0	0	117		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_03.002 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng thêm mới	73	3	0	0	0	76		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_03.003 màn hình 'QL loại dịch vụ đối tác' - Chức năng chỉnh sửa	75	0	0	0	0	75		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_03.004 _Testcase của màn hình 'QL loại dịch vụ đối tác' - Chức năng xem chi tiết	18	0	0	0	0	18		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_03.005_Tích hợp service Base (Thêm, Sửa )	15	0	0	0	0	15		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_05.001_Quản lý tham số kỹ thuật_Chức năng tìm kiếm, phân trang	102	0	0	0	0	102		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_05.002 _Testcase_QL tham số kỹ thuật_Chức năng thêm mới	204	3	0	0	0	207		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_05.003_SIT_Testcases_QL Tham số kỹ thuật_Chức năng chỉnh sửa	168	9	0	0	0	177		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_05.004_SIT_Testcases_QL Tham số kỹ thuật_Chức năng xem chi tiết	22	0	0	0	0	22		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	BO_05.005_Tích hợp service Base (Thêm, Sửa )	28	0	0	0	0	28		Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+CnR	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https:[REDACTED_SECRET]?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https:[REDACTED_SECRET]?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https:[REDACTED_SECRET]?gid=722895941#gid=722895941
+	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	#REF!	Pending	Manual	https:[REDACTED_SECRET]?gid=722895941#gid=722895941
+Dev Portal	FO - Banner	17	0	0	0	0	17	Update test cases	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	FO - Danh sách tin tức	45	0	0	0	0	45	Update test cases	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	FO - Tìm kiếm tin tức	46	8	0	0	0	54	Update test cases	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876
+	FO - Xem chi tiết tin tức	44	0	0	0	0	44	Update test cases	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876

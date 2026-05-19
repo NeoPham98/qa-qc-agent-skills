@@ -1,0 +1,25 @@
+API_TD_2 — Method & Header Validation		
+	Tham số	Giá trị hợp lệ & ý nghĩa		Phần còn lại
+	METHOD_CHECK	DEFAULT / ON	Sinh case gọi sai HTTP Method	[Security] Auth và [Basic] Custom Header bắt buộc sinh hết, không có tham số kiểm soát
+		OFF	Bỏ qua toàn bộ	
+	CONTENT_TYPE_CHECK	DEFAULT / ON	Sinh case sai Content-Type (HTTP 415)	—
+		OFF	Bỏ qua toàn bộ	
+API_TD_3 — Schema Validation		
+	MANDATORY_CHECK	DEFAULT / BOTH	Sinh cả Missing key và Empty value	Các tham số độc lập nhau, có thể kết hợp tự do. SCOPE_FIELDS ảnh hưởng đồng thời tất cả tham số còn lại trong cấu phần này
+		MISSING_ONLY	Chỉ sinh case thiếu key	
+		EMPTY_ONLY	Chỉ sinh case truyền rỗng	
+		OFF	Bỏ qua toàn bộ check bắt buộc	
+	TYPE_CHECK	DEFAULT / ON	Sinh 1 case sai kiểu cơ bản	
+		STRICT	Sinh thêm case sai kiểu thứ 2	
+		OFF	Bỏ qua toàn bộ check kiểu dữ liệu	
+	LENGTH_CHECK	DEFAULT / MAX_ONLY	Chỉ sinh case N+1 (nếu có Max Length)	
+		MIN_ONLY	Chỉ sinh case N-1 (nếu có Min Length)	
+		BOTH	Sinh cả N+1 và N-1 nếu tài liệu có đủ	
+		OFF	Bỏ qua toàn bộ check độ dài	
+	SCOPE_FIELDS	DEFAULT	Duyệt toàn bộ field trong payload	
+		[field_1, field_2]	Chỉ chạy trên các field được liệt kê	
+API_TD_4 — Business Logic & Cross Logic		
+	EG_CHECK	DEFAULT	Sinh đủ 2 case: Injection → Emoji	[BVA], [ECP], [DT], [ST] bắt buộc sinh đầy đủ, không có tham số kiểm soát
+		INJECTION_ONLY	Chỉ sinh case SQL/XSS Injection	
+		EMOJI_ONLY	Chỉ sinh case Emoji và Unicode đặc biệt	
+		OFF	Bỏ qua toàn bộ Error Guessing	

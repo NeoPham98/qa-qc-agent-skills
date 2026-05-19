@@ -1,0 +1,16 @@
+skills:
+  - xray-test-workflow
+  - test-plan-generate
+  - api-td-generate
+  - ui-td-generate
+  - tc-generate-from-td
+  - uat-tc-generate
+  - test-set-build
+  - test-execution-pack-generate
+  - paygates-dashboard-generate
+  - legacy-xlsx-exporter
+  - manual-execution-reader
+  - paygates-dashboard-sync
+  - coverage-audit
+  - output-verify
+  - api-automation-support-generate

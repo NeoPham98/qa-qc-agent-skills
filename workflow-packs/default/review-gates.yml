@@ -1,0 +1,24 @@
+schema_version: '1.0'
+output_review:
+  required: true
+  reviewer_must_not_be_generator: true
+  finding_severities:
+    - blocker
+    - major
+    - minor
+  block_publish_on:
+    - blocker
+    - major
+  blocking_quality_gates:
+    - testcase_granularity
+  requires_actionable_findings: true
+supervisor_approval:
+  required: true
+  must_follow: output_review
+  approve_only_if:
+    - all_validators_passed
+    - review_passed
+    - source_trace_present
+    - no_secrets_detected
+    - artifact_manifest_valid
+  on_failure: route_back_to_owner_until_retry_limit_then_reject

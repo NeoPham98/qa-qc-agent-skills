@@ -1,0 +1,44 @@
+Test Case Ready to UAT ở các squad					Trạng thái Manual testcases ở các squad						
+	Epic Ready to UAT	Số lượng TCs Ready to UAT				Pass	Fail	Untested	Accepted	N/A	Total Testcases
+Squad Base	38	2247			Squad Base	2157	9	0	0	0	2247
+Squad VA	37	2575			Squad VA	2406	19	226	0	184	6695
+Squad CnR	27	1614			Squad CnR	1431	116	1309	11	244	3238
+Squad Dev Portal	1	32			Squad Dev Portal	1407	194	385	0	575	5208
+Squad BO	45	3471			Squad BO	4639	196	0	0	78	6560														
+API Automation Test case đã hoàn thành ở các squad										
+	Số lượng API TCs Automation Test đã hoàn thành	Tổng số API TCs	Automation Test Coverage					API Automation Test Coverage	UI Automation Test Coverage	
+Squad Base	215	1321	0.1627554883	1106	774.2		Squad Base	0.2449	0.0	
+Squad VA	477	2488	0.1917202572	2011	1407.7		Squad VA	0.29	0.0	
+Squad CnR	77	3238	0.02378011118	3161	2212.7		Squad CnR	0.0	0.0	
+Squad Dev Portal	0	1264	0	1264	884.8		Squad Dev Portal	0.0	0.0257	
+Squad BO	0	1229	0	1229	860.3		Squad BO	0.0	0.0	
+	769	9540	0.08060796646	8771	6139.7					
+UI Automation Test case đã hoàn thành ở các squad										
+	Số lượng TCs Automation Test đã hoàn thành	Tổng số UI TCs	Automation Test Coverage							
+Squad Base	0.0	0.0	0.0				4480	0.03258339798		
+Squad VA	0	1688	0							
+Squad CnR	0	0	0.0							
+Squad Dev Portal	42	#REF!	#REF!							
+Squad BO	397	4954	0.08013726282							
+Số lượng test case Gen AI			
+	Tổng TCs gen bằng AI	Tổng TCs	Tỉ lệ GenAI/Tổng Tcs
+Squad Base	2247	2247	100
+Squad VA	3630	6695	54.21956684
+Squad CnR	1309	3238	40.42618901
+Squad Dev Portal	1451	5208	27.8609831
+Squad BO	377	6560	5.74695122
+	9014	23948	0.3763988642							
+Tổng hợp SIT Bug Sprint 11							
+	Open	Closed	Dev Completed	In Dev	In-test	Test Failed	Total
+Squad Base	0.0	0.0	0.0	0.0	0.0	0.0	0
+Squad VA	0.0	6.0	0.0	0.0	0.0	0.0	6			
+Squad CnR	2.0	0.0	0.0	0.0	1.0	0.0	3			
+Squad Dev Portal	3.0	19.0	4.0	2.0	0.0	2.0	30			
+Squad BO	2.0	2.0	0.0	6.0	0.0	0.0	10			
+Tổng hợp SIT Bug Sprint 12										
+	Open	Closed	Dev Completed	In Dev	In-test	Test Failed	Total			
+Squad Base	0.0	1.0	0.0	0.0	0.0	0.0	1			
+Squad VA	0.0	1.0	0.0	1.0	0.0	0.0	2			
+Squad CnR	3.0	3.0	1.0	1.0	0.0	1.0	9			
+Squad Dev Portal	1.0	6.0	4.0	0.0	0.0	0.0	11			
+Squad BO	4.0	12.0	0.0	0.0	1.0	0.0	17			

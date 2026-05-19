@@ -1,0 +1,50 @@
+Sprint	Squad	Chức năng	Test case Status 						Trạng thái test hiện tại	Test case Generate Type	Link test cases	Automation Test Cases	Automation Test Type	Noted
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases						
+1.0														
+2.0														
+3.0	VA	API Kích hoạt mã đầu	0	0	29	0		29	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1kP7Ad2iwxjJUw24JqJUR9LsNJxLS8xzhuKfFFNUiwRU/edit?usp=drive_link			Bản cũ
+		API Kiểm tra kích hoạt mã đầu	0	0	0	0		29	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/166PZm69kJjve4ioy5lkLhf4nIof03sDkdveyxEv5_a0/edit?gid=1363567446#gid=1363567446			Bản cũ
+4.0	VA	API Bóc tách TKDD	0	0	18	0		18	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1VZ-JQDDjCyemQZBEyYVZF_cfYnWpbUuo5przIwYxfCQ/edit?gid=2093366869#gid=2093366869			Bản cũ
+		API Check VAform	0	0	34	0		34	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1aoXUdC-dhCjTU4kRqqSn2diBcL2OOfKsWrYbUnNg_YE/edit?gid=1069785901#gid=1069785901			
+		API Chỉnh sửa mã đầu	0	0	25	0		25	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1_T14iwhrjc7wCvhi6u18H_fgtdXsR1gaOwyIQmn5yQo/edit?gid=1722179199#gid=1722179199			Bản cũ
+		API Kiểm tra chỉnh sửa mã đầu	0	0	25	0		25	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1viNwnEMQ5QpJnkZWDWECw4JLqvdHN7D3gm4BZZ0oG98/edit?gid=1113095509#gid=1113095509			Bản cũ
+		API Kiểm tra Kích hoạt mã đầu	0	0	29	0		29	Test case out of date	Manual	https://docs.google.com/spreadsheets/d/1LIRSfYJGcyepNeewT8lyD_58_zKpuD9BjIezNf2NH2U/edit?gid=134287245#gid=134287245			Bản cũ
+5.0	VA	API lấy danh sách mã đầu TKDD	0	0	45	0		45	Test case out of date	AI gen	https://docs.google.com/spreadsheets/d/1qXS9KNEEP1_N10EQcztvTAxPJkxcbeHOrtzlLAPgN_s/edit?gid=2122024856#gid=2122024856			Bản cũ
+		API Sửa tài khoản VA chặn	0	0	15	0		15	Test case out of date	AI gen	https://docs.google.com/spreadsheets/d/1VprZdQj-DIaTKHU3_E6sockdQJ9mTAZ9_fYzzwVmVig/edit?gid=1726314809#gid=1726314809			
+		API Thêm tk VA bị chặn	0	0	16	0		16	Test case out of date	AI gen	https://docs.google.com/spreadsheets/d/15uAXZuWZx_TmWhdoLgc6lQgH2ancsxhIrPn5NvT-xJU/edit?gid=1789603827#gid=1789603827			
+		API Vấn tin TK VA chặn	0	0	15	0		15	Test case out of date	AI gen	https://docs.google.com/spreadsheets/d/1v1Xoqmit1ex-mqAgueDAfOXz-KvppgjHWmujaID3l7k/edit?gid=1409644211#gid=1409644211			
+		API Xóa tk VA bị chặn	0	0	14	0		14	Test case out of date	AI gen	https://docs.google.com/spreadsheets/d/16d2U4FSJWuqaAijwTZ7kTIVZV4qNc6hFr1vB2WIa8Ys/edit?gid=1571097386#gid=1571097386			
+	CnR	CNR01.1-API vấn tin hóa đơn	111	0	0	0	0	111	Ready to UAT	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+		CNR01.1-API Truy vấn tt DV cấp	16	0	0	0	4	20	Ready to UAT	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+		CNR01.2-API bóc tách TKDD	28	0	0	0	1	29	In-Test	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+		CNR_01.2-API gửi sang Adapter g	33	0	0	0	5	38	In-Test	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+		CNR_01.3 INQ_Check tham số cấu 	54	0	0	0	24	78	In-Test	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+		CNR_01.4 INQ_Kiểm tra điều kiện	56	5	0	0	6	67	In-Test	Manual	https://docs.google.com/spreadsheets/d/1ptAerkHDQTqKt_73U1Z-qpGeyCm5A0rv4YFbwpmlSk0/edit?gid=398621237#gid=398621237			
+	Dev Portal	Trang chủ - Chưa đăng nhập	20	0	0	0	12	32	Ready to UAT	Manual	https://docs.google.com/spreadsheets/d/1CqddkHIykQ1aTgyEdbb5K-nSgOa0dmxKbex1FiXdh3M/edit?gid=1750880876#gid=1750880876	30	Web UI	Đã assign cho Auto
+6.0	VA	API Gen QR insert vào kho	0	0	0	0	0	50	Pending	AI gen	https://docs.google.com/spreadsheets/d/1f0i6o-OroiWUJ4y8bUQnpeunyLKNpGRHlEJ5ySezxxU/edit?gid=1783854848#gid=1783854848			
+		API Gen QR KHÔNG insert vào kho	0	0	0	0	0	50	Pending	AI gen	https://docs.google.com/spreadsheets/d/1ZJ6x4tSyxOW079ABZLw37CGWyAhdr6pSEzrMyYWdxTk/edit?gid=529372375#gid=529372375			
+	CnR	CNR01.1-API vấn tin hóa đơn	195	0	0	0	0	195	Read to UAT	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+		CNR01.1-API Truy vấn tt DV cấp	21	0	0	0	0	21	Read to UAT	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+		CNR01.2-API bóc tách TKDD	47	0	0	0	0	47	In-Test	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+		CNR_01.2-API gửi sang Adapter g	39	0	0	0	0	39	In-Test	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+		CNR_01.3 INQ_Check tham số cấu 	73	0	0	0	36	109	In-Test	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+		CNR_01.4 INQ_Kiểm tra điều kiện	73	0	0	0	0	73	In-Test	Manual	https://docs.google.com/spreadsheets/d/15gT_z5fwj9QLgJYpviLHJmuGRCRXheTH-YDEKjbv9Z8/edit?gid=398621237#gid=398621237			
+	Dev Portal	Quản lý tin tức - Xem tin tức	20	0	0	0	17	37	Update test cases	Manual	https://docs.google.com/spreadsheets/d/11gGghHa4qIbtmQhDFyZIBBkaAKHcdDVfNTmTWi84PZc/edit?gid=1750880876#gid=1750880876			
+			0	0	0	18	Tester1	12	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1ABqZ9u88dyoPRGvA-eBvQJqidxdx5oPQruQZomrrSd8/edit?gid=1679520073#gid=1679520073			
+		Quản lý tin tức - Chỉnh sửa	107	4	0	0	134	245	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1PdD3k72t2vjr-bb0uIOrid7S6vmbw5HxvzkJdA531nc/edit?gid=1344736713#gid=1344736713			
+		Quản lý tin tức - Danh sách và tìm kiếm	36	0	0	0	13	49	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1borS9lcSQLd8__1kGNfotrav3XYA_8vtBpiUANH862w/edit?gid=1679520073#gid=1679520073			
+			6	0	0	129	Tester1	112	Update test cases	Manual	https://docs.google.com/spreadsheets/d/1CerUOcri6s_CeLr5_OvM9aBQQRNPIW0qpeSLv5hXaM0/edit?gid=416992027#gid=416992027			
+7.0	VA	API chỉnh sửa mã đầu	72	0	0	0	2	74	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1JrV7Egsg1PMq5KryR4JHMvpLPbj0B3BopJ1F-lv-vDw/edit?gid=1925706627#gid=1925706627			Có thể assign Auto
+		API Khai báo mã đầu tự động	60	0	0	0	1	60	In-Test	AI gen	https://docs.google.com/spreadsheets/d/16LmAQMzTtiXEdQGT7NVo1T2tmf4EfvM7jBcRn9mXuAE/edit?gid=262793615#gid=262793615			Có thể assign Auto
+		API Kiểm tra chỉnh sửa mã đầu	36	0	0	0	3	39	Ready to UAT	AI gen	https://docs.google.com/spreadsheets/d/1AGn6GnNc5FY_ico16pl7FQbE7OoiDKjF4ebGNtHj8yc/edit?gid=1245081864#gid=1245081864	25	API	Đã assign cho Auto
+		API Kiểm tra thêm mã đầu TKĐ trong kho chờ	117	0	0	0	2	119	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1pH9DpSUTZJL1AtswECl1zGIP9fM-0wbIUMWoFXrZulg/edit?gid=1976372372#gid=1976372372			Có thể assign Auto
+		API lấy danh sách mã đầu TKDD	64	0	0	0	1	65	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1bB5P3_xd2plKJNROkjtH21AoogBM5BYACpcNjEiUrlI/edit?gid=661124919#gid=661124919			Có thể assign Auto
+		API Sửa tài khoản định danh bị chặn	26	0	0	0	0	26	Ready to UAT	AI gen	https://docs.google.com/spreadsheets/d/1tMdJkDITkpRj51faH3ZEEZVuZ_jFKbHP7w8UklxfGrQ/edit?gid=734115631#gid=734115631	19	API	Đã assign cho Auto
+		API thêm mã đầu vào kho mã đầu	79	0	0	0	1	80	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1SFWjc_-u3F0V03Fu7kEZCq4vIBzj0b9981VwvkterAU/edit?gid=856279624#gid=856279624			Có thể assign Auto
+		API Thêm mới tài khoản định danh bị chặn	39	0	0	0	1	40	Ready to UAT	AI gen	https://docs.google.com/spreadsheets/d/13KenZ_23ea83jYdWqKu6gGsb6EFLW8N5beRafQ6U6T4/edit?gid=2112520132#gid=2112520132	27	API	Đã assign cho Auto
+		API truy vấn danh sách blacklist tài khoản định danh	45	0	0	0	0	45	Ready to UAT	AI gen	https://docs.google.com/spreadsheets/d/14Gd4b4WRnp-VMccmVVUuO3ZALZu32Le13XGydYj5g3Y/edit?gid=529968183#gid=529968183	31	API	Đã assign cho Auto
+		API xóa mã đầu TKDD trong kho mã đầu	79	0	0	0	1	80	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1gWgfMeZT7W_5SiQHmA7FyABW_-iYEFgNY1oHNo_oBJs/edit?gid=56447979#gid=56447979			Có thể assign Auto
+		API xóa TKDD bị chặn	49	0	0	0	0	49	Ready to UAT	AI gen	https://docs.google.com/spreadsheets/d/1aU1CvLgp4t2PbHuBHgCbgapf69DjDoZORZRSZBmm5XI/edit?gid=129626805#gid=129626805	43	API	Đã assign cho Auto
+		API kích hoạt mã đầu	69	0	0	0	1	70	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1yN0NEh3KmHfIFaFWhQfx9fvWOfkC4D2LcJJVpmei0T8/edit?gid=1993574293#gid=1993574293			Có thể assign Auto
+		API kiểm tra kích hoạt mã đầu	52	0	0	0	1	53	In-Test	AI gen	https://docs.google.com/spreadsheets/d/1VrdyyZRc0BjKIFpdM83wqgqphXBmz1CBViNm4kUeYKE/edit?gid=1224098224#gid=1224098224			Có thể assign Auto
+	BO	BO_01.001_SIT_Testcases_QLMHTS_Danh sách màn hình tham số (có tìm kiếm và phân trang)	107	13	0	0	0	120	Ready to UAT	Manual	https://docs.google.com/spreadsheets/d/1digQgjBsz3DzpL6Fn_GDaPuy49lR4hEA_9j885XggSo/edit?gid=1750880876#gid=1750880876	111	Web UI	Đã assign cho Auto

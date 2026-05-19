@@ -1,0 +1,46 @@
+Số lượng test case sẵn sàng cho Automation Test							Assign Task			
+Epic		UI	API	Trạng Thái Automation Test			Assignee	Number of Test cases	API	Trạng Thái Automation Test
+		718	276				Andrej	718	0		90.0	4.090909091	0.5
+							DucVM	120			24.0	1.090909091	1.0
+							Duong	1540			102.6666667	4.666666667	1.0
+							Minh
+Squad	Epic	Chức năng	Test case Status 						Trạng thái test hiện tại	Test case Generate Type	Link test cases	Automation Test Cases	Automation Test Type	Automation Test Status	Noted	"Planned 
+Dates"
+			Passed	Failed	Untested	Accepted	N/A	Total Test cases								
+Dev Portal		Trang chủ - Chưa đăng nhập	20	0	0	0	12	32	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	30	Web UI	Done	Andrej	"From: 12/16/2025
+To: 12/22/2025"
+VA		API Kiểm tra chỉnh sửa mã đầu	36	0	0	0	3	39	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=1245081864#gid=1245081864	25.0	API	Done	DucVM		VA_03_003
+		API Sửa tài khoản định danh bị chặn	26	0	0	0	0	26	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=734115631#gid=734115631	18.0	API	Done	DucVM	
+		API Thêm mới tài khoản định danh bị chặn	39	0	0	0	1	40	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=2112520132#gid=2112520132	27	API	Done	DucVM	
+		API truy vấn danh sách blacklist tài khoản định danh	45	0	0	0	0	45	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=529968183#gid=529968183	14.0	API	Done	DucVM	
+		API xóa TKDD bị chặn	49	0	0	0	0	49	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=129626805#gid=129626805	21.0	API	Done	DucVM	
+BO		BO_01.001_SIT_Testcases_QLMHTS_Danh sách màn hình tham số (có tìm kiếm và phân trang)	107	13	0	0	0	120	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	111	Web UI	In-Progress	Andrej	"From: 12/23/2025
+To: 1/9/2026"
+		BO_01.002_SIT_Testcases_QLMHTS_Thêm mới màn hình tham số	112	7	0	0	0	119	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=539144836#gid=539144836	119	Web UI		Andrej	"From: 1/12/2026
+To: 1/30/2026"
+		BO_01.003_SIT_Testcases_QLMHTS_Chỉnh sửa màn hình tham số	71	0	0	0	0	71	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=979649417#gid=979649417	67	Web UI		Andrej	"From: 2/2/2026
+To: 2/11/2026"
+		BO_01.004_SIT_Testcases_QLMHTS_Chi tiết màn hình tham số	17	0	0	0	0	17	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	15	Web UI		Andrej	"From: 2/12/2026
+To: 2/13/2026"
+		BO_01.005_SIT_Testcase_Tích hợp service Base (Create, update, view) Màn hình tham số	19	0	0	0	0	19	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	19	Web UI		Andrej	"From: 2/16/2026
+To: 2/17/2026"
+		BO_02.001_SIT_Testcases_QLTSC_Danh sách tham số ( tìm kiếm, phân trang)	96	12	0	0	0	88	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	88	Web UI		Andrej	"From: 2/18/2026
+To: 3/5/2026"
+		BO_02.002_SIT_Testcases_QLTSC_Thêm mới tham số chung	125	2	0	0	0	127	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1782778992#gid=1782778992	127	Web UI		Andrej	"From: 3/6/2026
+To: 3/27/2026"
+		BO_02.003_QLTSC_Chỉnh sửa màn hình tham số	109	8	0	0	0	117	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	113	Web UI		Andrej	"From: 3/30/2026
+To: 4/15/2026"
+		BO_02.004: Xem chi tiết tham số chung	29	0	0	0	0	29	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	29	Web UI		Andrej	"From: 4/16/2026
+To: 4/21/2026"
+		BO_02.005_SIT_Testcase_Tích hợp service Base (Create, update, view) tham số chung	15	0	0	0	0	15	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1750880876#gid=1750880876	15	API		DucVM	ko dùng đc api get token để gọi api, tạm thời pending. chặn do idm
+VA		API chỉnh sửa mã đầu	72	0	0	0	2	74	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=1925706627#gid=1925706627		API		DucVM
+		API Khai báo mã đầu tự động	60	0	0	0	1	60	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=262793615#gid=262793615		API		DucVM
+		API Kiểm tra thêm mã đầu TKĐ trong kho chờ	117	0	0	0	2	119	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=1976372372#gid=1976372372		API		DucVM
+		API lấy danh sách mã đầu TKDD	64	0	0	0	1	65	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=661124919#gid=661124919		API		DucVM
+		API thêm mã đầu vào kho mã đầu	79	0	0	0	1	80	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=856279624#gid=856279624		API		DucVM
+		API xóa mã đầu TKDD trong kho mã đầu	79	0	0	0	1	80	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=56447979#gid=56447979		API		DucVM
+		API kích hoạt mã đầu	69	0	0	0	1	70	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=1993574293#gid=1993574293		API		DucVM
+		API kiểm tra kích hoạt mã đầu	52	0	0	0	1	53	Ready to UAT	AI gen	https:[REDACTED_SECRET]?gid=1224098224#gid=1224098224		API		DucVM
+		Quay_Thêm mới mã đầu chủ động đơn lẻ	132	0	0	0	0	132	In-Test	AI gen	https:[REDACTED_SECRET]?gid=1543950552#gid=1543950552				DucVM
+		Quay_Thêm mới mã đầu chủ động theo file	106	0	0	0	0	106	Pending	AI gen	https:[REDACTED_SECRET]?gid=1668191320#gid=1668191320				DucVM
+		CHECKVAFORMAT	64	0	0	0	0	0	Ready to UAT	Manual	https:[REDACTED_SECRET]?gid=1846714410#gid=1846714410		API		DucVM

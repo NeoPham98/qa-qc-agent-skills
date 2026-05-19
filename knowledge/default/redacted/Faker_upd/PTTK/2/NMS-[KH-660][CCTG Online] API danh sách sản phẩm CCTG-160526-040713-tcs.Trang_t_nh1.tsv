@@ -1,0 +1,483 @@
+Test Case ID	Function	Group Tests	Scenario Outline	"Test Case
+Summary"	Pre-conditions	Test Data	Test Steps	"Expected
+result"	Environment	Priority	Regression	Automation	"Manual Test Results
+Round 1"	Manual Test Results Round 2	Automation Test Results	"Actual
+result"	BugID	Notes
+ TD_P1_002_TC_001	"Cấu phần 1: Kiểm thử Phương thức &
+Header"	Method & Header	Happy Path (Method và Header hoàn toàn hợp lệ)	"Kiểm
+tra gọi API thành công khi sử dụng Method POST và đầy đủ Header authToken,
+requestID, X-App-Code hợp lệ"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+requestID, X-App-Code\n6. Pre-Data: Dữ liệu sản phẩm CCTG đã được cấu hình trên
+môi trường SIT"	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Thiết lập dữ liệu Request Body từ file
+product_list.json.\n4. Gọi API product_list với Method POST.\n5. Kiểm tra giá
+trị trả về của các trường trong Response Body:\n- HTTP Status: 200\n- $.code =
+""0""\n- $.message = ""SUCCESS""\n- $.success = true\n- $.data: Chứa danh sách
+các sản phẩm (term, prodCode, curCode, minCrd, maxCrd, frequencies, pmo,
+depositAmount, interestCode, interestRate)"	"5.\nHTTP Status: 200\nResponse
+Body:\n{\n ""code"": ""0"",\n ""message"": ""SUCCESS"",\n ""errors"": null,\n
+""traceId"": ""[REDACTED_SECRET]"",\n
+""responseTime"": ""2025-01-02T11:09:03.109+07:00"",\n ""data"": [\n {\n
+""term"": ""12M"",\n ""prodCode"": ""CCTG001"",\n ""curCode"": ""VND"",\n
+""minCrd"": ""1000000"",\n ""maxCrd"": ""500000000"",\n ""frequencies"":
+""Monthly"",\n ""pmo"": ""Roll"",\n ""depositAmount"": ""10000000"",\n
+""interestCode"": ""INT01"",\n ""interestRate"": ""6.5""\n }\n ],\n ""success"":
+true\n}"	SIT	High	Yes	Yes
+ TD_P1_002_TC_002	"Cấu
+phần 1: Kiểm thử Phương thức & Header"	Method & Header	"Gọi API với sai HTTP
+Method (GET)"	"Kiểm tra hệ thống từ chối yêu cầu và trả về lỗi phù hợp khi sử
+dụng Method GET thay vì POST"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+requestID, X-App-Code"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list với Method GET.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 405 (Method Not Allowed) hoặc 404"	"4.\nHTTP
+Status: 405\nResponse Body:\n{\n ""code"": ""405"",\n ""message"": ""Method Not
+Allowed"",\n ""success"": false\n}"	SIT	Medium	No	Yes
+TD_P1_003_TC_003	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Gọi API với sai HTTP Method (PUT)	"Kiểm tra hệ thống từ chối yêu cầu
+khi sử dụng Method PUT"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+requestID, X-App-Code"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list với Method PUT.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 405 (Method Not Allowed)"	"4.\nHTTP
+Status: 405\nResponse Body:\n{\n ""code"": ""405"",\n ""message"": ""Method Not
+Allowed"",\n ""success"": false\n}"	SIT	Medium	No	Yes
+TD_P1_004_TC_004	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Header authToken bị Missing	"Kiểm tra hệ thống trả về lỗi Unauthorized
+(401) khi không truyền header authToken"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3.
+URL: http:[REDACTED_SECRET]\n4.
+Endpoint: /v1/product/list\n5. Header: Content-Type=application/json, requestID,
+X-App-Code"	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+requestID=""REQ_001"", X-App-Code=""CCTG_WEB"" (Bỏ qua authToken).\n3. Gọi API
+product_list với Method POST.\n4. Kiểm tra giá trị trả về:\n- HTTP
+Status: 401\n- $.success = false"	"4.\nHTTP Status: 401\nResponse Body:\n{\n
+""code"": ""401"",\n ""message"": ""Unauthorized"",\n ""success"":
+false\n}"	SIT	High	Yes	Yes
+ TD_P1_005_TC_005	"Cấu
+phần 1: Kiểm thử Phương thức & Header"	Method & Header	"Header authToken
+chứa giá trị không hợp lệ"	"Kiểm tra hệ thống trả về lỗi 401 khi truyền
+authToken là chuỗi ký tự không hợp lệ"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3.
+URL: http:[REDACTED_SECRET]\n4.
+Endpoint: /v1/product/list\n5. Header: Content-Type=application/json, requestID,
+X-App-Code"	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""INVALID_TOKEN_ABC"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list với Method POST.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 401\n- $.success = false"	"4.\nHTTP
+Status: 401\nResponse Body:\n{\n ""code"": ""401"",\n ""message"": ""Invalid
+Token"",\n ""success"": false\n}"	SIT	High	Yes	Yes
+TD_P1_006_TC_006	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Header authToken đã hết hạn (Expired)	"Kiểm tra hệ thống trả về
+lỗi 401 khi truyền authToken đã hết thời gian hiệu lực"	"1. Env: SIT\n2. DB:
+[PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, requestID,
+X-App-Code"	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""EXPIRED_TOKEN_XYZ"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list với Method POST.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 401\n- $.success = false"	"4.\nHTTP
+Status: 401\nResponse Body:\n{\n ""code"": ""401"",\n ""message"": ""Token
+Expired"",\n ""success"": false\n}"	SIT	High	Yes	Yes
+TD_P1_007_TC_007	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Truyền sai Content-Type (text/plain)	"Kiểm tra hệ thống trả về lỗi 415
+khi Header Content-Type là text/plain thay vì application/json"	"1. Env: SIT\n2.
+DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: authToken, requestID, X-App-Code"	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=text/plain,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list với Method POST.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 415 (Unsupported Media Type)\n- $.success =
+false"	"4.\nHTTP Status: 415\nResponse Body:\n{\n ""code"": ""415"",\n
+""message"": ""Unsupported Media Type"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P1_008_TC_008	"Cấu
+phần 1: Kiểm thử Phương thức & Header"	Method & Header	"Truyền sai
+Content-Type (application/xml)"	"Kiểm tra hệ thống trả về lỗi 415 khi Header
+Content-Type là application/xml"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: authToken, requestID, X-App-Code"	"1. File:
+product_list.json\n2. Body: 6856078"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/xml,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""CCTG_WEB"".\n3. Gọi API product_list with Method POST.\n4. Kiểm tra
+giá trị trả về:\n- HTTP Status: 415 (Unsupported Media Type)"	"4.\nHTTP
+Status: 415\nResponse Body:\n{\n ""code"": ""415"",\n ""message"": ""Unsupported
+Media Type"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P1_009_TC_009	"Cấu
+phần 1: Kiểm thử Phương thức & Header"	Method & Header	"Thiếu Custom Header
+'requestID'"	"Kiểm tra hệ thống trả về lỗi 400 khi thiếu header bắt buộc
+requestID để trace log"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+X-App-Code\n6. [ASSUMPTION: requestID là bắt buộc để trace log]"	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", X-App-Code=""CCTG_WEB"" (Bỏ qua requestID).\n3.
+Gọi API product_list với Method POST.\n4. Kiểm tra giá trị trả về:\n- HTTP
+Status: 400\n- $.success = false"	"4.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""400"",\n ""message"": ""Bad Request: Missing requestID"",\n
+""success"": false\n}"	SIT	Medium	No	Yes
+TD_P1_010_TC_010	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Thiếu Custom Header 'X-App-Code'	"Kiểm tra hệ thống trả về lỗi 400 khi
+thiếu header bắt buộc X-App-Code để định danh ứng dụng"	"1. Env: SIT\n2. DB:
+[PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+requestID\n6. [ASSUMPTION: X-App-Code là bắt buộc để định danh ứng dụng gọi
+API]"	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"" (Bỏ qua X-App-Code).\n3.
+Gọi API product_list với Method POST.\n4. Kiểm tra giá trị trả về:\n- HTTP
+Status: 400\n- $.success = false"	"4.\nHTTP Status: 400\nResponse Body:\n{\n
+""code"": ""400"",\n ""message"": ""Bad Request: Missing X-App-Code"",\n
+""success"": false\n}"	SIT	Medium	No	Yes
+TD_P1_011_TC_011	Cấu phần 1: Kiểm thử Phương thức & Header	"Method &
+Header"	Header 'X-App-Code' chứa giá trị không hợp lệ	"Kiểm tra hệ thống trả
+về lỗi Forbidden (403) khi header X-App-Code không nằm trong whitelist"	"1.
+Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken,
+requestID, X-App-Code\n6. [ASSUMPTION: X-App-Code được check whitelist tại lớp
+Gateway/Controller]"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": ""productCode""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""VALID_TOKEN_123"", requestID=""REQ_001"",
+X-App-Code=""HACKER_APP"".\n3. Gọi API product_list với Method POST.\n4. Kiểm
+tra giá trị trả về:\n- HTTP Status: 403\n- $.success = false"	"4.\nHTTP
+Status: 403\nResponse Body:\n{\n ""code"": ""403"",\n ""message"": ""Forbidden:
+Invalid App Code"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+TD_P2_002_TC_001	"Cấu phần 2: Schema
+Validation"	Schema Validation	Happy Path Full Flow (Valid Schema)	"Kiểm tra
+gọi API thành công khi Request Body chứa đầy đủ các trường hợp lệ (requestCif
+đúng 12 chữ số, productCode hợp lệ)"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3.
+URL: http:[REDACTED_SECRET]\n4.
+Endpoint: /v1/product/list\n5. Header: Content-Type=application/json,
+authToken=Valid, requestID=Valid, X-App-Code=Valid\n6. Pre-Data: Khách hàng có
+CIF 6856078 tồn tại và có sản phẩm CCTG tương ứng trong DB"	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""CCTG01""}"	"1. Thực hiện kết nối tới Database [PENDING_DOC].\n2. Thiết lập
+URL: http:[REDACTED_SECRET],
+Endpoint: /v1/product/list.\n3. Thiết lập Header: Content-Type=application/json,
+authToken=""TOKEN_123"", requestID=""REQ_001"", X-App-Code=""WEB_APP"".\n4.
+Thiết lập dữ liệu Request Body từ file product_list.json.\n5. Gọi API
+product_list với Method POST và giữ nguyên data từ file.\n6. Kiểm tra giá trị
+trả về của các trường trong Response Body:\n- HTTP Status: 200\n- $.code =
+""0""\n- $.message = ""SUCCESS""\n- $.success = true\n- $.data[0].prodCode =
+""CCTG01""\n7. Truy vấn thông tin tại bảng CCTG_PRODUCTS với điều kiện cif =
+'6856078'.\n8. Verify thông tin dữ liệu trong Database:\n- Table:
+CCTG_PRODUCTS\n- PRODUCT_CODE = $.data[0].prodCode"	"6.\nHTTP
+Status: 200\nResponse Body:\n{\n ""code"": ""0"",\n ""message"": ""SUCCESS"",\n
+""errors"": null,\n ""traceId"":
+""[REDACTED_SECRET]"",\n ""responseTime"":
+""2025-01-02T11:09:03.109+07:00"",\n ""data"": [\n {\n ""term"": ""12M"",\n
+""prodCode"": ""CCTG01"",\n ""curCode"": ""VND"",\n ""minCrd"": ""1000000"",\n
+""maxCrd"": ""500000000"",\n ""frequencies"": ""Monthly"",\n ""pmo"":
+""Roll"",\n ""depositAmount"": ""10000000"",\n ""interestCode"": ""INT01"",\n
+""interestRate"": ""6.5""\n }\n ],\n ""success"": true\n}\n\n8.\nTable:
+CCTG_PRODUCTS\n- Record tồn tại khớp với dữ liệu Response.\n- Column
+PRODUCT_CODE = ""CCTG01"""	SIT	High	Yes	Yes																		
+TD_P2_002_TC_002	Cấu phần 2: Schema Validation	Schema Validation	"Field
+Missing Validation"	"Kiểm tra hệ thống trả về lỗi 400 khi Request Body thiếu
+trường bắt buộc 'requestCif' (Missing key)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list\n4. Header: Content-Type=application/json, authToken=Valid"	"1.
+File: product_list.json\n2. Body: {""productCode"": ""CCTG01""}"	"1. Thiết lập
+URL: http:[REDACTED_SECRET],
+Endpoint: /v1/product/list.\n2. Thiết lập Header: Content-Type=application/json,
+authToken=""TOKEN_123"".\n3. Thiết lập dữ liệu Request Body từ file
+product_list.json.\n4. Gọi API product_list với Method POST và override
+field:\n- requestCif = null (Mô tả lý do: Missing key)\n5. Kiểm tra giá trị trả
+về của các trường trong Response Body:\n- HTTP Status: 400\n- $.success =
+false\n- $.message: ""requestCif is required"""	"5.\nHTTP Status: 400\nResponse
+Body:\n{\n ""code"": ""400"",\n ""message"": ""requestCif is required"",\n
+""errors"": [],\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P2_003_TC_003	"Cấu
+phần 2: Schema Validation"	Schema Validation	Field Empty Validation	"Kiểm
+tra hệ thống trả về lỗi 400 khi trường 'requestCif' truyền giá trị rỗng (Empty
+value)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body: {""requestCif"": """",
+""productCode"": ""CCTG01""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Thiết lập Header: Content-Type=application/json.\n3. Gọi
+API product_list với Method POST và override field:\n- requestCif = """" (Mô tả
+lý do: Empty value)\n4. Kiểm tra giá trị trả về của các trường trong Response
+Body:\n- HTTP Status: 400\n- $.success = false"	"4.\nHTTP Status: 400\nResponse
+Body:\n{\n ""code"": ""400"",\n ""message"": ""requestCif must not be empty"",\n
+""success"": false\n}"	SIT	Medium	No	Yes																																																																								
+TD_P2_004_TC_004	Cấu phần 2: Schema Validation	Schema Validation	"Field
+Type Validation"	"Kiểm tra hệ thống trả về lỗi 400 khi trường 'requestCif' sai
+kiểu dữ liệu (truyền String thay vì Number)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body: {""requestCif"":
+""CIF123456789"", ""productCode"": ""CCTG01""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Gọi API product_list với Method POST và override field:\n-
+requestCif = ""CIF123456789"" (Mô tả lý do: Invalid type String)\n3. Kiểm tra
+giá trị trả về của các trường trong Response Body:\n- HTTP Status: 400\n-
+$.success = false\n- $.message: ""requestCif must be a number"""	"3.\nHTTP
+Status: 400\nResponse Body:\n{\n ""code"": ""400"",\n ""message"": ""requestCif
+must be a number"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes																																																																								
+ TD_P2_005_TC_005	"Cấu
+phần 2: Schema Validation"	Schema Validation	"Field Max Length
+Validation"	"Kiểm tra hệ thống trả về lỗi 400 khi trường 'requestCif' vượt quá
+độ dài tối đa (13 ký tự)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 1234567890123, ""productCode"": ""CCTG01""}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Gọi API product_list với Method POST và override field:\n-
+requestCif = 1234567890123 (Mô tả lý do: Length 13 characters, exceed
+max 12)\n3. Kiểm tra giá trị trả về của các trường trong Response Body:\n- HTTP
+Status: 400\n- $.success = false\n- $.message: ""requestCif length must
+be 12"""	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""400"",\n
+""message"": ""requestCif length must be 12"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes																																																																								
+ TD_P2_006_TC_006	"Cấu
+phần 2: Schema Validation"	Schema Validation	"Field Missing
+Validation"	"Kiểm tra hệ thống trả về lỗi 400 khi Request Body thiếu trường
+bắt buộc 'productCode' (Missing key)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Gọi API product_list với Method POST và override field:\n-
+productCode = null (Mô tả lý do: Missing key)\n3. Kiểm tra giá trị trả về của
+các trường trong Response Body:\n- HTTP Status: 400\n- $.success =
+false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""400"",\n
+""message"": ""productCode is required"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes																																																																								
+ TD_P2_007_TC_007	"Cấu
+phần 2: Schema Validation"	Schema Validation	Field Empty Validation	"Kiểm
+tra hệ thống trả về lỗi 400 khi trường 'productCode' truyền giá trị rỗng (Empty
+value)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": """"}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Gọi API product_list với Method POST và override field:\n-
+productCode = """" (Mô tả lý do: Empty value)\n3. Kiểm tra giá trị trả về của
+các trường trong Response Body:\n- HTTP Status: 400\n- $.success =
+false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""400"",\n
+""message"": ""productCode must not be empty"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P2_008_TC_008	"Cấu
+phần 2: Schema Validation"	Schema Validation	Field Type Validation	"Kiểm
+tra hệ thống trả về lỗi 400 khi trường 'productCode' sai kiểu dữ liệu (truyền
+Number thay vì String)"	"1. Env: SIT\n2. URL:
+http:[REDACTED_SECRET]\n3. Endpoint:
+/v1/product/list"	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": 99999}"	"1. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n2. Gọi API product_list với Method POST và override field:\n-
+productCode = 99999 (Mô tả lý do: Invalid type Number)\n3. Kiểm tra giá trị trả
+về của các trường trong Response Body:\n- HTTP Status: 400\n- $.success =
+false"	"3.\nHTTP Status: 400\nResponse Body:\n{\n ""code"": ""400"",\n
+""message"": ""productCode must be a string"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P3_002_TC_001	"Value, Business Logic, Cross
+Logic"	Value, Business Logic, Cross Logic	"Happy Path (Dữ liệu và Trạng thái
+hợp lệ)"	"Kiểm tra lấy thông tin sản phẩm CCTG thành công với requestCif và
+productCode hợp lệ, đang hoạt động"	"1. Env: SIT\n2. DB: [PENDING_DOC]\n3. URL:
+http:[REDACTED_SECRET]\n4. Endpoint:
+/v1/product/list\n5. Header: Content-Type=application/json, authToken=Valid\n6.
+Pre-Data: Khách hàng 6856078 tồn tại (ACTIVE). Sản phẩm 'CCTG_VND_12M' có hiệu
+lực."	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""CCTG_VND_12M""}"	"1. Thực hiện kết nối tới Database
+[PENDING_DOC].\n2. Thiết lập URL:
+http:[REDACTED_SECRET], Endpoint:
+/v1/product/list.\n3. Thiết lập Header: Content-Type=application/json,
+authToken=""TOKEN_VALID"".\n4. Thiết lập dữ liệu Request Body từ file
+product_list.json.\n5. Gọi API product_list với Method POST và giữ nguyên data
+từ file.\n6. Kiểm tra giá trị trả về của các trường trong Response Body:\n-
+HTTP Status: 200\n- $.code = ""0""\n- $.message = ""SUCCESS""\n- $.success =
+true\n- $.data: Chứa đầy đủ thông tin kỳ hạn, lãi suất, số tiền gửi tối
+thiểu/tối đa.\n7. Truy vấn thông tin sản phẩm tại bảng CCTG_PRODUCT_MASTER
+và INTEREST_RATE_CONFIG.\n8. Verify thông tin dữ liệu trong Database:\n- Table:
+CCTG_PRODUCT_MASTER\n- Column PROD_CODE = $.data[0].prodCode\n- Table:
+INTEREST_RATE_CONFIG\n- Column RATE = $.data[0].interestRate"	"6.\nHTTP
+Status: 200\nResponse Body:\n{\n ""code"": ""0"",\n ""message"": ""SUCCESS"",\n
+""errors"": null,\n ""traceId"":
+""[REDACTED_SECRET]"",\n ""responseTime"":
+""2025-01-02T11:09:03.109+07:00"",\n ""data"": [\n {\n ""term"": ""12M"",\n
+""prodCode"": ""CCTG_VND_12M"",\n ""curCode"": ""VND"",\n ""minCrd"":
+""1000000"",\n ""maxCrd"": ""500000000"",\n ""frequencies"": ""Monthly"",\n
+""pmo"": ""Roll"",\n ""depositAmount"": ""10000000"",\n ""interestCode"":
+""INT_12M"",\n ""interestRate"": ""6.5""\n }\n ],\n ""success"":
+true\n}\n\n8.\nTable: CCTG_PRODUCT_MASTER\n- Record tồn tại khớp với dữ liệu
+Response.\n- Column PROD_CODE = ""CCTG_VND_12M""\n- Column CUR_CODE =
+""VND"""	SIT	High	Yes	Yes																																																																																																																														
+ TD_P3_002_TC_002	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"requestCif
+không tồn tại trên hệ thống core"	"Kiểm tra hệ thống trả về mã lỗi 106 khi
+truyền requestCif không tồn tại trong hệ thống Core Banking"	"1. Env: SIT\n2.
+URL: http:[REDACTED_SECRET]\n3.
+Pre-Data: CIF 999999999999 không tồn tại trong DB ngân hàng."	"1. File:
+product_list.json\n2. Body: {""requestCif"": 999999999999, ""productCode"":
+""CCTG_VND_12M""}"	"1. Thiết lập URL, Endpoint, Header.\n2. Thiết lập dữ liệu
+Request Body từ file.\n3. Gọi API product_list với Method POST và override
+field:\n- requestCif = 999999999999 (Fake CIF)\n4. Kiểm tra giá trị trả về của
+các trường trong Response Body:\n- HTTP Status: 404\n- $.code = ""106""\n-
+$.message = ""Không tìm thấy sản phẩm phù hợp""\n- $.success = false"	"4.\nHTTP
+Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n ""message"": ""Không tìm
+thấy sản phẩm phù hợp"",\n ""errors"": [],\n ""success"":
+false\n}"	SIT	High	Yes	Yes																																																																																																																														
+ TD_P3_003_TC_003	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"requestCif
+thuộc tài khoản đang bị khóa"	"Kiểm tra hệ thống từ chối yêu cầu khi khách hàng
+(requestCif) đang ở trạng thái INACTIVE"	"1. Env: SIT\n2. Pre-Data: Khách
+hàng 6856078 có trạng thái 'INACTIVE' trong DB Core."	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""CCTG_VND_12M""}"	"1. Thiết lập URL, Endpoint, Header.\n2. Gọi API product_list
+với Method POST và override field:\n- requestCif = 6856078 (Trạng thái
+Inactive)\n3. Kiểm tra giá trị trả về:\n- HTTP Status: 403\n- $.success =
+false"	"3.\nHTTP Status: 403\nResponse Body:\n{\n ""code"": ""403"",\n
+""message"": ""Customer is inactive"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes																																																																																																																														
+ TD_P3_004_TC_004	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"productCode
+không tồn tại"	"Kiểm tra hệ thống trả lỗi 106 khi truyền mã sản phẩm productCode
+không có trong danh mục"	"1. Env: SIT\n2. Pre-Data: Mã 'FAKE_PROD_99' không tồn
+tại trong DB sản phẩm."	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": ""FAKE_PROD_99""}"	"1. Thiết lập URL,
+Endpoint, Header.\n2. Gọi API product_list với Method POST và override field:\n-
+productCode = ""FAKE_PROD_99""\n3. Kiểm tra giá trị trả về:\n- HTTP
+Status: 404\n- $.code = ""106""\n- $.message = ""Không tìm thấy sản phẩm phù
+hợp"""	"3.\nHTTP Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n
+""message"": ""Không tìm thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Medium	Yes	Yes																																																																																																																														
+TD_P3_005_TC_005	Value, Business Logic, Cross Logic	"Value, Business Logic,
+Cross Logic"	productCode đã hết hạn triển khai	"Kiểm tra hệ thống không trả về
+thông tin sản phẩm đã quá ngày kết thúc hiệu lực"	"1. Env: SIT\n2. Pre-Data: Sản
+phẩm 'CCTG_EXPIRED' có ngày hết hạn là 2024-01-01 (nhỏ hơn ngày hiện tại)."	"1.
+File: product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""CCTG_EXPIRED""}"	"1. Thiết lập URL, Endpoint, Header.\n2. Gọi API product_list
+với Method POST và override field:\n- productCode = ""CCTG_EXPIRED""\n3. Kiểm
+tra giá trị trả về:\n- HTTP Status: 400 hoặc 404\n- $.code = ""106"""	"3.\nHTTP
+Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n ""message"": ""Không tìm
+thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P3_006_TC_006	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"productCode
+chứa chuỗi SQL Injection"	"Kiểm tra tính an toàn của hệ thống khi productCode
+chứa mã lệnh SQL Injection"	1. Env: SIT	"1. File: product_list.json\n2.
+Body: {""requestCif"": 6856078, ""productCode"": ""' OR 1=1; DROP TABLE
+CCTG_PRODUCTS; --""}"	"1. Thiết lập URL, Endpoint, Header.\n2. Gọi API
+product_list với Method POST và override field:\n- productCode = ""' OR 1=1;
+DROP TABLE CCTG_PRODUCTS; --""\n3. Kiểm tra giá trị trả về của các trường trong
+Response Body:\n- HTTP Status: 400 hoặc 404\n- $.code = ""106"" hoặc
+""ERR_INVALID_INPUT""\n- Tuyệt đối không trả về HTTP 500."	"3.\nHTTP
+Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n ""message"": ""Không tìm
+thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Low	No	Yes
+ TD_P3_007_TC_007	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"productCode
+chứa ký tự Emoji"	"Kiểm tra hệ thống xử lý ổn định khi productCode chứa ký tự
+Emoji đặc biệt"	1. Env: SIT	"1. File: product_list.json\n2. Body:
+{""requestCif"": 6856078, ""productCode"": ""PROD_🔥_🚨""}"	"1. Thiết lập URL,
+Endpoint, Header.\n2. Gọi API product_list với Method POST và override field:\n-
+productCode = ""PROD_🔥_🚨""\n3. Kiểm tra giá trị trả về:\n- HTTP Status: 400
+hoặc 404"	"3.\nHTTP Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n
+""message"": ""Không tìm thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Low	No	Yes
+ TD_P3_008_TC_008	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"requestCif
+không khớp với phiên đăng nhập"	"Kiểm tra bảo mật: Ngăn chặn việc truy vấn
+thông tin CIF của người dùng khác qua API"	"1. Env: SIT\n2. Header: authToken
+thuộc về User A (CIF_A).\n3. Body: requestCif truyền CIF_B của User B."	"1.
+File: product_list.json\n2. Body: {""requestCif"": 77778888, ""productCode"":
+""CCTG_VND_12M""}"	"1. Thiết lập Header authToken của User A.\n2. Thiết lập
+Request Body với requestCif = 77778888 (User B).\n3. Gọi API product_list.\n4.
+Kiểm tra giá trị trả về:\n- HTTP Status: 403\n- $.message =
+""Forbidden"""	"4.\nHTTP Status: 403\nResponse Body:\n{\n ""code"": ""403"",\n
+""message"": ""Forbidden"",\n ""success"":
+false\n}"	SIT	High	Yes	Yes
+ TD_P3_009_TC_009	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"productCode
+không phù hợp nhóm khách hàng"	"Kiểm tra lỗi 106 khi khách hàng Standard truy
+cập sản phẩm được cấu hình riêng cho VIP"	"1. Env: SIT\n2. Pre-Data: Khách
+hàng 6856078 hạng Standard; Sản phẩm 'CCTG_VIP_ONLY' chỉ dành cho hạng
+VIP."	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""CCTG_VIP_ONLY""}"	"1. Thiết lập URL, Endpoint, Header.\n2.
+Gọi API product_list với Method POST và override field:\n- productCode =
+""CCTG_VIP_ONLY""\n3. Kiểm tra giá trị trả về:\n- HTTP Status: 404\n- $.code =
+""106"""	"3.\nHTTP Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n
+""message"": ""Không tìm thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes
+ TD_P3_010_TC_010	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Kiểm tra
+frequencies khi pmo là cuối kỳ"	"Kiểm tra dữ liệu trả về: frequencies phải là
+null nếu hình thức trả lãi (pmo) là cuối kỳ"	"1. Env: SIT\n2. Pre-Data: Sản phẩm
+'CCTG_CK' được cấu hình pmo = 'cuối kỳ' trong Database."	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""CCTG_CK""}"	"1. Thực hiện kết nối Database.\n2. Gọi API product_list.\n3. Kiểm
+tra giá trị trả về của các trường trong Response Body:\n- HTTP Status: 200\n-
+$.data[0].pmo = ""cuối kỳ""\n- $.data[0].frequencies = null (Theo quy tắc RSD:
+nếu pmo cuối kỳ -> frequencies null)\n4. Verify thông tin dữ liệu trong
+Database:\n- Table: CCTG_PRODUCTS\n- Column PMO_TYPE = 'END_OF_TERM'"	"3.\nHTTP
+Status: 200\nResponse Body:\n{\n ""code"": ""0"",\n ""message"": ""SUCCESS"",\n
+""data"": [\n {\n ""prodCode"": ""CCTG_CK"",\n ""frequencies"": null,\n ""pmo"":
+""cuối kỳ""\n }\n ],\n ""success"":
+true\n}"	SIT	High	Yes	Yes
+ TD_P3_011_TC_011	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Kiểm tra
+frequencies khi pmo là quay vòng"	"Kiểm tra dữ liệu trả về: frequencies không
+được null nếu hình thức trả lãi (pmo) là quay vòng"	"1. Env: SIT\n2.
+Pre-Data: Sản phẩm 'CCTG_ROLL' được cấu hình pmo = 'Quay vòng' và frequencies =
+'Monthly'."	"1. File: product_list.json\n2. Body: {""requestCif"": 6856078,
+""productCode"": ""CCTG_ROLL""}"	"1. Gọi API product_list.\n2. Kiểm tra giá trị
+trả về:\n- HTTP Status: 200\n- $.data[0].pmo = ""Quay vòng""\n-
+$.data[0].frequencies = ""Monthly"" (Không được null)"	"2.\nHTTP
+Status: 200\nResponse Body:\n{\n ""code"": ""0"",\n ""message"": ""SUCCESS"",\n
+""data"": [\n {\n ""prodCode"": ""CCTG_ROLL"",\n ""frequencies"": ""Monthly"",\n
+""pmo"": ""Quay vòng""\n }\n ],\n ""success"":
+true\n}"	SIT	High	Yes	Yes
+ TD_P3_012_TC_012	"Value,
+Business Logic, Cross Logic"	Value, Business Logic, Cross Logic	"Sản phẩm ở
+trạng thái ngưng hoạt động (Disabled)"	"Kiểm tra hệ thống không trả về sản
+phẩm khi trạng thái sản phẩm trong DB là ngưng hoạt động"	"1. Env: SIT\n2.
+Pre-Data: Sản phẩm 'CCTG_OFF' có status = 'DISABLED' trong Database."	"1. File:
+product_list.json\n2. Body: {""requestCif"": 6856078, ""productCode"":
+""CCTG_OFF""}"	"1. Gọi API product_list với mã sản phẩm đã bị ngưng hoạt
+động.\n2. Kiểm tra giá trị trả về:\n- HTTP Status: 404\n- $.code =
+""106"""	"2.\nHTTP Status: 404\nResponse Body:\n{\n ""code"": ""106"",\n
+""message"": ""Không tìm thấy sản phẩm phù hợp"",\n ""success"":
+false\n}"	SIT	Medium	No	Yes

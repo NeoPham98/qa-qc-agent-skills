@@ -1,0 +1,45 @@
+schema_version: '1.0'
+artifact_root: artifacts/default
+naming_pattern: '{project}/{squad}/{epic}/{artifact_type}/{yyyy-mm-dd}/{artifact_id}.{ext}'
+states:
+  draft:
+    directory: artifacts/default/draft
+    writer: generator
+    approval_required: false
+  reviewed:
+    directory: artifacts/default/reviewed
+    writer: reviewer
+    requires:
+      - validation_report
+      - OutputReview.md
+  approved:
+    directory: artifacts/default/approved
+    writer: supervisor
+    requires:
+      - validation_report
+      - OutputReview.md
+      - SupervisorApproval.md
+      - no_secret_report
+  rejected:
+    directory: artifacts/default/rejected
+    writer: supervisor
+    requires:
+      - failure_reason
+  archive:
+    directory: artifacts/default/archive
+    writer: publisher
+    requires:
+      - superseded_artifact
+publish_rules:
+  generator_writes_only: draft
+  reviewer_pass_moves_to: reviewed
+  supervisor_pass_moves_to: approved
+  critical_failure_moves_to: rejected
+  max_retries: 2
+  approved_overwrite_policy: forbid_overwrite_use_archive_or_version_suffix
+required_approved_evidence:
+  - validation_report
+  - OutputReview.md
+  - SupervisorApproval.md
+  - no_secret_report
+  - source_trace

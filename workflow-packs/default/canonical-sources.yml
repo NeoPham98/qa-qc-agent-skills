@@ -1,0 +1,135 @@
+schema_version: '1.0'
+source_root: packaged_source_knowledge
+runtime_knowledge_root: knowledge/default/redacted
+canonical_status_policy:
+  default_runtime_statuses:
+    - canonical
+    - control_source
+  excluded_statuses:
+    - legacy_reference
+    - sensitive_reference
+
+api_test_design:
+  canonical_prompts:
+    setup_context:
+      source_path: Prompt/API/API_TD_1_Setup_Context.txt
+      runtime_prompt: prompts/API/API_TD_1_Setup_Context.txt
+      canonical_status: canonical
+    method_header:
+      source_path: Prompt/API/API_TD_2_Method_Header_BreakDown.txt
+      runtime_prompt: prompts/API/API_TD_2_Method_Header_BreakDown.txt
+      canonical_status: canonical
+    schema_validation:
+      source_path: Prompt/API/API_TD_3_Schema_Validation_BreakDown.txt
+      runtime_prompt: prompts/API/API_TD_3_Schema_Validation_BreakDown.txt
+      canonical_status: canonical
+    value_business_cross_logic:
+      source_path: Prompt/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt
+      runtime_prompt: prompts/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt
+      canonical_status: canonical
+  control_sources:
+    api_new_parameter_guideline:
+      source_path: Prompt/API/API_NewParameterGuideline.xlsx
+      canonical_status: control_source
+      required_controls:
+        - METHOD_CHECK
+        - CONTENT_TYPE_CHECK
+        - MANDATORY_CHECK
+        - TYPE_CHECK
+        - LENGTH_CHECK
+        - SCOPE_FIELDS
+        - EG_CHECK
+
+api_testcase:
+  canonical_prompts:
+    api_tc_from_td:
+      source_path: Prompt/API/API_Gen_TC_From_TD_v2.txt
+      runtime_prompt: prompts/API/API_Gen_TC_From_TD_v2.txt
+      canonical_status: canonical
+  output_contracts:
+    - legacy_19_column_testcase
+    - test_generation_matrix
+
+api_automation_gherkin:
+  canonical_prompts:
+    testcase_analysis:
+      source_path: Prompt/API/Gen Script/API_TestCase_Analysis.txt
+      runtime_prompt: prompts/API/Gen Script/API_TestCase_Analysis.txt
+      canonical_status: canonical
+    method_header_feature:
+      source_path: Prompt/API/Gen Script/API_Gen_Script_Method_Header_Validation_Feature.txt
+      runtime_prompt: prompts/API/Gen Script/API_Gen_Script_Method_Header_Validation_Feature.txt
+      canonical_status: canonical
+    schema_validation_feature:
+      source_path: Prompt/API/Gen Script/API_Gen_Script_Validation_Feature.txt
+      runtime_prompt: prompts/API/Gen Script/API_Gen_Script_Validation_Feature.txt
+      canonical_status: canonical
+    logic_business_feature:
+      source_path: Prompt/API/Gen Script/API_Gen_Script_Logic_Business_Feature.txt
+      runtime_prompt: prompts/API/Gen Script/API_Gen_Script_Logic_Business_Feature.txt
+      canonical_status: canonical
+
+ui_test_design:
+  canonical_prompts:
+    ui_td:
+      source_path: Prompt/UI/UI_Gen_TD.txt
+      alternate_source_path: UI/UI_Gen_TD.txt
+      runtime_prompt: prompts/UI/UI_Gen_TD.txt
+      canonical_status: canonical
+  id_policy: '### TD_001 - [Technique] - <condition summary>'
+
+ui_testcase:
+  canonical_prompts:
+    ui_tc_from_td:
+      source_path: Prompt/UI/UI_Gen_TC_From_TD.txt
+      alternate_source_path: UI/UI_Gen_TC_From_TD.txt
+      runtime_prompt: prompts/UI/UI_Gen_TC_From_TD.txt
+      canonical_status: canonical
+  output_contracts:
+    - legacy_19_column_testcase
+    - test_generation_matrix
+
+uat_testcase:
+  canonical_prompts:
+    uat_tc:
+      source_path: Prompt/UI/UI_Gen_TC_For_UAT.txt
+      alternate_source_path: UI/UI_Gen_TC_For_UAT.txt
+      runtime_prompt: prompts/UI/UI_Gen_TC_For_UAT.txt
+      canonical_status: canonical
+  output_contracts:
+    - uat_16_column_testcase
+    - test_generation_matrix
+
+templates:
+  rsd:
+    source_path: template/Template_RSD_AI.doc
+    canonical_status: canonical
+  rsd_detail:
+    source_path: template/Template_RSD_ChiTiet_AI.doc
+    canonical_status: canonical
+  pttk:
+    source_path: template/Template_PTTK_AI.doc
+    canonical_status: canonical
+  pttk_api_detail:
+    source_path: template/Template_PTTK_AI_ChiTiet_API.doc
+    canonical_status: canonical
+
+tracker:
+  paygates_status:
+    source_path: Tổng hợp Trạng Thái Test Case Paygates (1).xlsx
+    canonical_status: canonical
+    contract: paygates_dashboard
+
+sensitive_sources:
+  properties:
+    source_path: Prompt/API/Gen Script/properties.txt
+    canonical_status: sensitive_reference
+    runtime_policy: redact_before_use
+
+legacy_sources:
+  old_api_prompts:
+    canonical_status: legacy_reference
+    source_paths:
+      - Prompt/API/[Old]_API_Gen_TD_v1.2.txt
+      - Prompt/API/[Old]_API_Gen_TC_From_TD.txt
+    runtime_policy: never_default_route

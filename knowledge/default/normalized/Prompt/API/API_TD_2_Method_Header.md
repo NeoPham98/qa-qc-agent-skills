@@ -1,0 +1,60 @@
+---
+source_path: Prompt/API/API_TD_2_Method_Header.txt
+source_role: api_prompt
+canonical_status: reference
+redaction_status: unredacted
+---
+================= LỆNH THỰC THI - CẤU PHẦN 1: KIỂM THỬ PHƯƠNG THỨC & HEADER (MARKMAP FORMAT) =================
+
+Sử dụng toàn bộ kiến thức, tài liệu (RSD & PTTK) và quy tắc định dạng Markmap bạn đã ghi nhớ ở PROMPT 0: NẠP KIẾN THỨC VÀ THIẾT LẬP VAI TRÒ (SETUP CONTEXT). Hãy thực thi việc sinh Test Design cho API chỉ định trong mục III. QUY TẮC ĐỌC HIỂU & PHÂN TÍCH TÀI LIỆU (GLOBAL RULES) -> 4. Giới hạn phạm vi dữ liệu (SCOPE LIMITATION - QUAN TRỌNG)
+
+I. MỤC TIÊU VÀ ĐỘ PHỦ (CHỈ TẬP TRUNG GIAO THỨC & HEADER)
+Giả định rằng: Request Body đã hợp lệ hoàn toàn. Hãy focus 100% vào việc bẻ gãy giao thức kết nối và quyền truy cập (API Gateway / Middleware Level):
+- [Protocol] HTTP Method: Kiểm tra việc gọi sai phương thức (VD: API yêu cầu POST nhưng gọi GET/PUT/DELETE).
+- [Security] Authorization/Authentication: Kiểm tra các trường hợp Token/Bearer/API-Key (Missing, Invalid, Expired, Không đủ quyền).
+- [Format] Content-Type & Accept: Kiểm tra định dạng payload truyền lên (VD: Yêu cầu application/json nhưng truyền text/plain hoặc multipart/form-data).
+- [Basic] Custom Headers: Kiểm tra sự tồn tại và định dạng của các Header bắt buộc khác định nghĩa trong PTTK (VD: X-Client-ID, X-Signature, Device-ID).
+
+II. LỆNH CẤM (CONSTRAINTS - NGHIÊM NGẶT)
+1. CẤM test các field nằm trong Request Body/Payload. Mọi lỗi về cấu trúc JSON (Missing field, Data type, Max length) KHÔNG ĐƯỢC sinh ra ở đây (Đã dành cho Cấu phần 2).
+2. CẤM test logic nghiệp vụ, giá trị biên, hay logic chéo. (Đã dành cho Cấu phần 3, 4).
+3. CẤM Verify Database cho TẤT CẢ các test case trong phần này. (Lý do: Request sai Method hoặc sai Token sẽ bị chặn ngay tại Gateway/Controller, không bao giờ chạm được tới Database).
+
+III. THUẬT TOÁN TƯ DUY (INTERNAL ALGORITHM)
+Chạy ngầm quy trình sau trước khi xuất kết quả:
+- Bước 1: Quét tài liệu PTTK để xác định HTTP Method chuẩn và danh sách các Header yêu cầu. Khởi tạo TD_001 Happy Path (Valid Method & Headers).
+- Bước 2: Sinh test case vi phạm HTTP Method (Thường trả về HTTP 405 Method Not Allowed hoặc 404).
+- Bước 3: Duyệt phần Authorization ((Nếu tài liệu PTTK yêu cầu API này phải có Token/Auth). Sinh các case: Thiếu Token (401), Token sai format (401), Token hết hạn (401), Token không có quyền truy cập API này (403).
+- Bước 4: Duyệt phần Content-Type. Sinh case sai Media Type (Thường trả về HTTP 415 Unsupported Media Type).
+- Bước 5: Duyệt các Custom Header khác (nếu có). Sinh case Missing và Invalid Format cho các header đó.
+
+IV. VÍ DỤ MẪU OUTPUT (GOLDEN SAMPLE)
+Bắt buộc xuất theo format Markmap như ví dụ (chú ý giữ đúng các ký tự #, ##, ###, -):
+# POST /v1/trans/minval - Tạo yêu cầu cập nhật ngưỡng
+## Method & Header
+### TD_P1_001 - [ST] - Happy Path (Method và Header hoàn toàn hợp lệ)
+- **Steps**: Gọi API với method POST, truyền đầy đủ Token hợp lệ và Content-Type: application/json.
+- **Expected**: HTTP 200 (Request vượt qua lớp Gateway, đi vào xử lý logic).
+<!-- BƯỚC 1: KIỂM THỬ HTTP METHOD -->
+### TD_P1_002 - [Protocol] - Gọi API với sai HTTP Method (GET)
+- **Steps**: Gửi request với Method là GET thay vì POST.
+- **Expected**: HTTP 405 'Method Not Allowed' hoặc HTTP 404.
+<!-- BƯỚC 2: KIỂM THỬ AUTHORIZATION -->
+### TD_P1_003 - [Security] - Header Authorization bị Missing
+- **Steps**: Gửi request nhưng KHÔNG truyền header Authorization.
+- **Expected**: HTTP 401, Code 'ERR_UNAUTHORIZED'.
+### TD_P1_004 - [Security] - Header Authorization chứa Token không hợp lệ/hết hạn
+- **Steps**: Gửi request với Token đã bị thay đổi ký tự hoặc đã hết hạn.
+- **Expected**: HTTP 401, Code 'ERR_TOKEN_INVALID'.
+<!-- BƯỚC 3: KIỂM THỬ CONTENT-TYPE -->
+### TD_P1_005 -[Format] - Truyền sai Content-Type (text/plain)
+- **Steps**: Gửi request với Header Content-Type là 'text/plain'.
+- **Expected**: HTTP 415 'Unsupported Media Type'.
+<!-- BƯỚC 4: KIỂM THỬ CUSTOM HEADER (Ví dụ X-Client-ID) -->
+### TD_P1_006 - [Basic] - Thiếu Custom Header 'X-Client-ID' bắt buộc
+- **Steps**: Gửi request thiếu header 'X-Client-ID'.
+- **Expected**: HTTP 400, Code 'ERR_MISSING_CLIENT_ID'.
+
+V. THỰC THI CUỐI
+1. Tự Self-Audit: Có test condition nào đang test một field trong Request Body không? (Nếu có -> Xóa ngay). Có dòng nào verify DB thay đổi không? (Nếu có -> Xóa ngay).
+2. Rendering: Xuất kết quả dưới dạng MỘT FILE MARKDOWN DUY NHẤT nằm trong code fence. KHÔNG in thêm bất kỳ văn bản/bảng biểu nào khác ngoài luồng.

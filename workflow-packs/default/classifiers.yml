@@ -1,0 +1,67 @@
+source_roles:
+  api_spec:
+    extensions: [.pdf, .docx, .doc, .txt, .md, .json, .yaml, .yml]
+    filename_keywords: [api, swagger, openapi, endpoint, service, sdk]
+    content_keywords: [endpoint, request, response, method, header, schema, authorization, content-type, http]
+  ui_spec:
+    extensions: [.pdf, .docx, .doc, .txt, .md, .xlsx]
+    filename_keywords: [ui, screen, màn hình, mh, frontend, giao diện]
+    content_keywords: [màn hình, field, button, nút, validation, message, thông báo, tìm kiếm, thêm mới, chỉnh sửa]
+  rsd:
+    extensions: [.pdf, .docx, .doc, .txt, .md]
+    filename_keywords: [rsd, requirement, yêu cầu]
+    content_keywords: [use case, actor, luồng, nghiệp vụ, điều kiện, ngoại lệ]
+  pttk:
+    extensions: [.pdf, .docx, .doc, .txt, .md]
+    filename_keywords: [pttk, thiết kế, technical, api]
+    content_keywords: [database, sequence, api, request, response, service, table]
+  urd:
+    extensions: [.pdf, .docx, .doc, .txt, .md]
+    filename_keywords: [urd, business, nghiệp vụ]
+    content_keywords: [mục tiêu, phạm vi, business, người dùng, quy trình]
+  test_design:
+    extensions: [.md, .txt, .docx]
+    filename_keywords: [testdesign, test_design, td]
+    content_keywords: [TD_P1, TD_P2, TD_P3, test condition, markmap]
+  api_test_design:
+    extends: test_design
+    content_keywords: [TD_P1, TD_P2, TD_P3, Method, Header, Schema, Business Logic]
+  ui_test_design:
+    extends: test_design
+    content_keywords: [UI, màn hình, field, action, state transition]
+  legacy_testcase:
+    extensions: [.xlsx, .csv, .tsv, .txt, .md]
+    filename_keywords: [testcase, test_case, 19col, va_]
+    headers: [Test Case ID, Function, Group Tests, Scenario Outline, Test Case Summary, Pre-conditions, Test Datas, Test Steps, Expected result]
+  api_testcase:
+    extensions: [.xlsx, .csv, .tsv, .txt, .md]
+    content_keywords: [endpoint, request body, response, http status, TD_P]
+  executed_workbook:
+    extensions: [.xlsx, .csv, .tsv]
+    headers: [Manual Test Results Round 1, Manual Test Results Round 2, Automation Test Results, Actual result, BugID, Notes]
+  manual_execution_result:
+    extensions: [.xlsx, .csv, .tsv]
+    headers: [Status, Actual Result, Tester, Execution Date, BugID]
+  google_sheet_execution:
+    source_kinds: [google_sheet]
+    headers: [Manual Test Results Round 1, Manual Test Results Round 2, Status, Actual result, BugID]
+
+prompt_intents:
+  test_design: [test design, td, thiết kế test, sinh td, markmap]
+  testcase: [testcase, test case, test cases, ca kiểm thử, sinh tc]
+  manual_testcase: [manual, tester execute, execute manual, kiểm thử thủ công]
+  excel_19_col: [19 cột, 19 column, excel, xlsx, legacy file]
+  uat: [uat, acceptance, nghiệm thu]
+  acceptance_test: [acceptance test, business test, nghiệp vụ]
+  automation_script: [automation, script, sinh script, auto test]
+  gherkin: [gherkin, cucumber, feature, .feature]
+  api_test: [test api, api test, kiểm thử api]
+  manual_execution: [đọc kết quả, execution result, import result, execute result]
+  execution_result: [round 1, round 2, actual result, bugid, status]
+  dashboard: [dashboard, tổng hợp, report, báo cáo]
+  status: [trạng thái, status, pass, fail, untested]
+  paygates_summary: [paygates, tổng hợp trạng thái test case]
+  coverage_audit: [coverage, độ phủ, audit]
+  gap_analysis: [gap, thiếu, đủ chưa]
+  review: [review, đánh giá, kiểm tra]
+  full_delivery: [full, end-to-end, từ đầu đến cuối]

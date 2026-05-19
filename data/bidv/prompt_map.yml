@@ -1,0 +1,64 @@
+version: 1
+name: packaged_prompt_map
+summary: Runtime prompt-stage mapping distilled from sample prompts and packaged inside qa-qc-agent-skills.
+runtime_rule: Do not load prompts from a local raw sample folder at runtime. Use packaged workflow-pack prompts or skill instructions.
+stages:
+  api_setup_context:
+    distilled_from: BIDV API setup/context prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/api_td_setup_context.md
+    route_stages:
+      - source_inventory
+      - api_operation_inventory
+  api_method_header_design:
+    distilled_from: BIDV API Method/Header prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/api_td_method_header.md
+    route_stages:
+      - api_td_method_header
+      - test_generation_matrix
+    required_phase: TD_P1
+  api_schema_validation_design:
+    distilled_from: BIDV API Schema Validation prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/api_td_schema_validation.md
+    route_stages:
+      - api_td_schema_validation
+      - test_generation_matrix
+    required_phase: TD_P2
+  api_business_cross_logic_design:
+    distilled_from: BIDV API Value/Business/Cross Logic prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/api_td_business_logic.md
+    route_stages:
+      - api_td_business_logic
+      - test_generation_matrix
+    required_phase: TD_P3
+  api_testcase_from_td:
+    distilled_from: BIDV API testcase-from-test-design prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/api_tc_from_td.md
+    route_stages:
+      - api_tc_from_td
+      - legacy_19col_export
+  ui_test_design:
+    distilled_from: BIDV UI test design prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/ui_td.md
+    route_stages:
+      - ui_td
+      - test_generation_matrix
+  ui_testcase_from_td:
+    distilled_from: BIDV UI testcase-from-test-design prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/ui_tc_from_td.md
+    route_stages:
+      - ui_tc_from_td
+      - legacy_19col_export
+  uat_testcase:
+    distilled_from: BIDV UAT testcase prompt samples
+    runtime_assets:
+      - workflow-packs/default/prompts/uat_tc.md
+    route_stages:
+      - uat_tc
+      - uat_export

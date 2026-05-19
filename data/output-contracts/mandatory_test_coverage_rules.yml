@@ -1,0 +1,75 @@
+version: 1
+name: mandatory_test_coverage_rules
+summary: Mandatory QC coverage rules for Test Design and Test Case generation.
+default_profile: expanded_qc_handoff
+principles:
+  - Happy-path coverage is required but never sufficient for final QC handoff.
+  - Each testcase validates one primary condition.
+  - Independent conditions must not be compacted into a broad testcase.
+  - Missing expected behavior is documented as [PENDING_DOC] and an Open Question; coverage is not dropped.
+  - Existing canonical testcase IDs must not be repurposed.
+api_rules:
+  operation:
+    required:
+      - valid_request_success
+      - documented_exception_or_business_failure
+      - success_response_envelope
+      - failure_response_envelope
+  method_header:
+    required_when_applicable:
+      - valid_method
+      - invalid_method
+      - content_type_valid
+      - content_type_missing_or_invalid
+      - required_header_present
+      - required_header_missing
+      - required_header_empty
+      - required_header_invalid
+      - accepted_language_supported_values
+      - accepted_language_unsupported_value
+  schema_validation:
+    required_when_applicable:
+      - required_field_present
+      - required_field_missing
+      - null_value
+      - empty_value
+      - wrong_type
+      - wrong_format
+      - min_length_boundary
+      - max_length_boundary
+      - below_min_boundary
+      - above_max_boundary
+      - enum_supported_value
+      - enum_unsupported_value
+  business_logic:
+    required:
+      - one_case_per_documented_business_rule
+      - one_case_per_documented_error_code
+    required_when_applicable:
+      - cross_field_rule
+      - state_dependent_rule
+      - time_window_rule
+      - environment_or_fixture_dependent_rule
+ui_rules:
+  flow:
+    required:
+      - happy_path
+      - validation_error_path
+      - cancel_or_back_path_when_applicable
+      - permission_or_role_path_when_applicable
+      - state_transition_path_when_applicable
+manual_execution_rules:
+  status_update:
+    required:
+      - preserve_testcase_id
+      - preserve_manual_result_rounds
+      - preserve_actual_result_bugid_notes
+      - reject_unknown_status_without_mapping
+review_blockers:
+  - happy_case_only_output
+  - bundled_independent_conditions
+  - missing_exception_cases_for_documented_errors
+  - missing_negative_validation_for_documented_required_inputs
+  - missing_boundary_cases_for_documented_length_or_range
+  - missing_response_error_coverage
+  - repurposed_canonical_testcase_id

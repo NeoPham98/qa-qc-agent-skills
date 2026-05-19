@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Edit",
+      "Write",
+      "Bash(python scripts/*)",
+      "Bash(python -m py_compile *)",
+      "Bash(python sdk/*)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git reset --hard *)",
+      "Bash(git push * --force*)",
+      "Bash(git branch -D *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/verify_prompt_mirrors.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/verify_prompt_mirrors.py"
+          }
+        ]
+      }
+    ]
+  }
+}

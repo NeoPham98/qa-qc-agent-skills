@@ -1,0 +1,50 @@
+schema_version: '1.0'
+
+status_domains:
+  tracker_status:
+    canonical_values:
+      - Ready to UAT
+      - Pending
+      - In-Test
+      - Update test cases
+      - Test case out of date
+      - Completed
+      - In-Progress
+    aliases:
+      Read to UAT: Ready to UAT
+    validation_policy:
+      alias_usage: warn
+      unknown_value: fail_final_artifact
+
+  testcase_generate_type:
+    canonical_values:
+      - AI gen
+      - Manual
+      - AI gen + Manual
+    aliases:
+      AI Gen: AI gen
+    validation_policy:
+      alias_usage: warn
+      unknown_value: fail_final_artifact
+
+  automation_status:
+    canonical_values:
+      - Not Started
+      - In-Progress
+      - Completed
+      - N/A
+    aliases:
+      In - Progress: In-Progress
+    validation_policy:
+      alias_usage: warn
+      unknown_value: fail_final_artifact
+
+  automation_type:
+    canonical_values:
+      - API
+      - Web UI
+    aliases:
+      UI: Web UI
+    validation_policy:
+      alias_usage: warn
+      unknown_value: fail_final_artifact

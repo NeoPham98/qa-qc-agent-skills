@@ -1,129 +1,282 @@
-# API Test Design / Test Conditions
+# API Test Design / Điều kiện kiểm thử chi tiết
 
-**Project**: CCTG Online  
+**Dự án**: CCTG Online  
 **Epic**: Customer Validate  
-**Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf  
+**Tài liệu căn cứ**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf  
 
-## Control parameter coverage
+## Danh mục chỉ số bao phủ điều kiện (Control Parameters)
 
 METHOD_CHECK, CONTENT_TYPE_CHECK, MANDATORY_CHECK, TYPE_CHECK, LENGTH_CHECK, SCOPE_FIELDS, EG_CHECK
 
-## Coverage Obligations
+---
 
-- METHOD: Source-derived - `POST /v1/customer/validate` is documented. Other HTTP methods are rejected.
-- CONTENT_TYPE: Source-derived - request/response body is JSON with `Content-Type=application/json`.
-- AUTH: Source-derived - `authToken` header is required for authorization.
-- MANDATORY_HEADERS: Source-derived - `requestID`, `X-App-Code`, `Accept-language` headers are required.
-- LANGUAGE: Source-derived - `Accept-language` supports `vi` and `en`.
-- BODY_SCHEMA: Source-derived - request body requires `requestCif` field.
-- BOUNDARY: Source-derived - `requestCif` length must be exactly 12 characters.
-- BUSINESS_ERROR: Source-derived - errors 101, 102, 103, 104, 109 are mapped.
-- RESPONSE_SCHEMA: Source-derived - response envelope includes code, message, success, errors, traceId, responseTime.
-- ERROR_PRIORITY: Source-derived - validations are prioritized.
+## 1. Giao thức, Phương thức & Tiêu đề (Protocol, Method & Headers)
 
-### Operation Card - POST /v1/customer/validate
+### POST /v1/customer/validate
 
-- **Source reference**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1
-- **Method/Endpoint**: `POST /v1/customer/validate`
-- **Headers**: `authToken`, `requestID`, `X-App-Code`, `Accept-language`
-- **Required request fields**: `requestCif`
-- **Response schema assertions**: `code`, `message`, `errors`, `traceId`, `responseTime`, `success`
-- **Known business errors**: `101=quốc tịch không hợp lệ`, `102=tuổi không hợp lệ`, `103=loại khách hàng không hợp lệ`, `104=tình trạng cư trú không hợp lệ`, `109=Hiện tại đã hết giờ giao dịch`
+### TD_P1_001 - [ST] - POST /v1/customer/validate với thông tin hợp lệ
+- **Steps**: 
+  1. Sử dụng phương thức `POST` gửi tới endpoint `/v1/customer/validate`.
+  2. Đính kèm đầy đủ các header bắt buộc hợp lệ:
+     - `authToken`: "ValidToken_QA_2026"
+     - `requestID`: "REQ-20260520-001"
+     - `X-App-Code`: "CCTG_ONLINE_PORTAL"
+     - `Accept-language`: "vi"
+     - `Content-Type`: "application/json"
+  3. Gửi request body hợp lệ: `{ "requestCif": "685607800001" }` (Khách hàng thỏa mãn tất cả các điều kiện nghiệp vụ).
+- **Expected**: 
+  - HTTP Status: `200` OK.
+  - Cấu trúc response body dạng JSON khớp đặc tả, có success = true, code = "0", message = "SUCCESS", errors = null, traceId dạng UUID, responseTime dạng ISO-8601.
+- **Source**: Trang 1, 2 của tài liệu đặc tả.
 
-## POST /v1/customer/validate - API check điều kiện KH
+### TD_P1_002 - [ECP] - Gọi API bằng các phương thức HTTP không được hỗ trợ (GET/PUT/DELETE/PATCH)
+- **Steps**: 
+  1. Sử dụng phương thức `GET` (hoặc `PUT`/`DELETE`/`PATCH`) gửi tới endpoint `/v1/customer/validate`.
+  2. Đính kèm đầy đủ headers và body hợp lệ như TD_P1_001.
+- **Expected**: 
+  - HTTP Status: `405` Method Not Allowed (hoặc `400` Bad Request tùy cấu hình API Gateway).
+  - Trả về mã lỗi mô tả phương thức không hợp lệ, success = false.
+- **Source**: Giả định tiêu chuẩn an toàn API Gateway.
 
-## Method & Header
+### TD_P1_003 - [ECP] - Header Content-Type không hợp lệ (không phải application/json)
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate`.
+  2. Thiết lập header `Content-Type`: "text/plain" hoặc "application/xml".
+  3. Gửi request body hợp lệ dạng chuỗi thô hoặc XML.
+- **Expected**: 
+  - HTTP Status: `415` Unsupported Media Type hoặc `400` Bad Request.
+  - Hệ thống báo lỗi kiểu dữ liệu không được hỗ trợ, success = false.
+- **Source**: Giả định tiêu chuẩn an toàn API Gateway.
 
-### TD_P1_001 - [ST] - POST /v1/customer/validate với header bắt buộc hợp lệ và method POST
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers `authToken`, `requestID`, `X-App-Code`, `Accept-language=vi` và request body `{ "requestCif": "123456789012" }`.
-- **Expected**: HTTP Status `200`; response body trả về `success=true`, `code="0"`, `message="SUCCESS"`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1, 2.
+### TD_P1_004 - [ST] - Thiếu hoặc rỗng header authToken
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate` nhưng loại bỏ header `authToken` (hoặc truyền giá trị rỗng `authToken` = "").
+  2. Các tham số khác hợp lệ.
+- **Expected**: 
+  - HTTP Status: `401` Unauthorized (hoặc `400` Bad Request).
+  - Response trả về success = false, thông tin chi tiết lỗi xác thực.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P1_002 - [ST] - GET /v1/customer/validate với method không được hỗ trợ
-- **Steps**: Gửi request `GET /v1/customer/validate` thay vì POST, sử dụng headers `authToken`, `requestID`, `X-App-Code`, `Accept-language=vi` và body rỗng.
-- **Expected**: HTTP Status `405` Method Not Allowed hoặc HTTP 400 Bad Request; response body trả về `success=false`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P1_005 - [ST] - Thiếu hoặc rỗng header requestID
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate` nhưng loại bỏ header `requestID` (hoặc truyền giá trị rỗng `requestID` = "").
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, mã lỗi và thông báo thiếu trường bắt buộc.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P1_003 - [ST] - POST /v1/customer/validate thiếu header authToken
-- **Steps**: Gửi request `POST /v1/customer/validate` không kèm theo header `authToken`, các headers khác hợp lệ và body có `requestCif` gồm 12 chữ số.
-- **Expected**: HTTP Status `401` Unauthorized hoặc HTTP 400 Bad Request; response body trả về `success=false`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P1_006 - [ST] - Thiếu hoặc rỗng header X-App-Code
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate` nhưng loại bỏ header `X-App-Code` (hoặc truyền giá trị rỗng `X-App-Code` = "").
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, mã lỗi báo thiếu app code.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P1_004 - [ST] - POST /v1/customer/validate thiếu header requestID
-- **Steps**: Gửi request `POST /v1/customer/validate` không kèm theo header `requestID`, các headers khác hợp lệ và body có `requestCif` gồm 12 chữ số.
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P1_007 - [ST] - Thiếu header Accept-language
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate` nhưng loại bỏ header `Accept-language`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request (hoặc mặc định sử dụng "vi").
+  - Response trả về success = false.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P1_005 - [ST] - POST /v1/customer/validate thiếu header X-App-Code
-- **Steps**: Gửi request `POST /v1/customer/validate` không kèm theo header `X-App-Code`, các headers khác hợp lệ và body có `requestCif` gồm 12 chữ số.
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P1_008 - [ECP] - Header Accept-language là giá trị không được hỗ trợ (ví dụ: "fr")
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate` với header `Accept-language`: "fr".
+- **Expected**: 
+  - HTTP Status: `400` Bad Request (hoặc tự động fallback về tiếng Anh/tiếng Việt).
+  - Response trả về thông báo lỗi ngôn ngữ không hỗ trợ hoặc phản hồi lỗi bằng ngôn ngữ mặc định.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P1_006 - [ST] - POST /v1/customer/validate với Accept-language là vi
-- **Steps**: Gửi request `POST /v1/customer/validate` với header `Accept-language=vi`, các headers khác hợp lệ và body có `requestCif` gồm 12 chữ số.
-- **Expected**: HTTP Status `200` OK; response body trả về `success=true`, `code="0"`, `message="SUCCESS"` hiển thị bằng tiếng Việt.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+---
 
-### TD_P1_007 - [ST] - POST /v1/customer/validate với Accept-language là en
-- **Steps**: Gửi request `POST /v1/customer/validate` với header `Accept-language=en`, các headers khác hợp lệ và body có `requestCif` gồm 12 chữ số.
-- **Expected**: HTTP Status `200` OK; response body trả về `success=true`, `code="0"`, `message="SUCCESS"` hiển thị bằng tiếng Anh.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+## 2. Ràng buộc cấu trúc Payload Request (Body Schema Validation)
 
-## Schema Validation
+### POST /v1/customer/validate
 
-### TD_P2_001 - [ST] - POST /v1/customer/validate thiếu trường requestCif trong request body
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ, request body rỗng `{}` hoặc thiếu trường bắt buộc (mandatory required field) `requestCif`.
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false` kèm chi tiết lỗi thiếu trường bắt buộc (required/mandatory parameter requestCif).
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P2_001 - [ST] - Request body rỗng {} hoặc thiếu trường requestCif
+- **Steps**: 
+  1. Gửi request `POST /v1/customer/validate`.
+  2. Gửi request body rỗng `{}` hoặc thiếu hoàn toàn key `requestCif`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi trường `requestCif` là bắt buộc.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P2_002 - [BVA] - POST /v1/customer/validate với trường requestCif có độ dài nhỏ hơn 12 ký tự
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ, request body chứa trường `requestCif` có độ dài 11 ký tự (length 11, ví dụ: "12345678901").
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false` kèm chi tiết lỗi độ dài (invalid length/format validation for param requestCif).
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P2_002 - [ECP] - Trường requestCif truyền sai kiểu dữ liệu (Number/Boolean/Object/Array)
+- **Steps**: 
+  1. Gửi request body có `requestCif` là kiểu số: `{ "requestCif": 685607800001 }`.
+  2. Gửi request body có `requestCif` là kiểu boolean: `{ "requestCif": true }`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi sai định dạng dữ liệu (Invalid type).
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P2_003 - [BVA] - POST /v1/customer/validate với trường requestCif có độ dài lớn hơn 12 ký tự
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ, request body chứa trường `requestCif` có độ dài 13 ký tự (length 13, ví dụ: "1234567890123").
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false` kèm chi tiết lỗi độ dài (invalid length/format validation for param requestCif).
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P2_003 - [BVA] - Trường requestCif rỗng "" (độ dài 0)
+- **Steps**: 
+  1. Gửi request body: `{ "requestCif": "" }`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi trường bắt buộc không được để trống.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P2_004 - [Type] - POST /v1/customer/validate với trường requestCif không phải kiểu string
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ, request body chứa trường `requestCif` không đúng kiểu dữ liệu string (invalid type/schema, ví dụ: kiểu số `123456789012` không để trong dấu ngoặc kép).
-- **Expected**: HTTP Status `400` Bad Request; response body trả về `success=false` mô tả lỗi kiểu dữ liệu hoặc cấu trúc request không hợp lệ.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1.
+### TD_P2_004 - [BVA] - Trường requestCif có độ dài nhỏ hơn 12 ký tự (Biên dưới - 11 ký tự)
+- **Steps**: 
+  1. Gửi request body với `requestCif` dài 11 ký tự: `{ "requestCif": "12345678901" }`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi độ dài `requestCif` không hợp lệ (yêu cầu đúng 12 ký tự).
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P2_005 - [ST] - POST /v1/customer/validate kiểm tra cấu trúc (schema) response thành công
-- **Steps**: Gửi request `POST /v1/customer/validate` với body có `requestCif` hợp lệ dài 12 ký tự, kiểm tra cấu trúc (response body schema) trả về.
-- **Expected**: HTTP Status `200` OK; response body trả về đầy đủ các trường: `code` (string), `message` (string), `errors` (null), `traceId` (string), `responseTime` (datetime), `success` (boolean=true).
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 1, 2.
+### TD_P2_005 - [BVA] - Trường requestCif có độ dài lớn hơn 12 ký tự (Biên trên - 13 ký tự)
+- **Steps**: 
+  1. Gửi request body với `requestCif` dài 13 ký tự: `{ "requestCif": "1234567890123" }`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi độ dài `requestCif` không hợp lệ.
+- **Source**: Trang 1 của đặc tả.
 
-### TD_P2_006 - [ST] - POST /v1/customer/validate kiểm tra cấu trúc (schema) response thất bại
-- **Steps**: Gửi request `POST /v1/customer/validate` gây ra lỗi nghiệp vụ (ví dụ: `requestCif` không thỏa mãn điều kiện mua), kiểm tra cấu trúc (response body schema) trả về.
-- **Expected**: HTTP Status `400` Bad Request; response body trả về đầy đủ các trường: `code` (string), `message` (string), `errors` (array of string hoặc null), `traceId` (string), `responseTime` (datetime), `success` (boolean=false).
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 2.
+### TD_P2_006 - [ECP] - Trường requestCif chứa ký tự không hợp lệ (chữ cái, khoảng trắng hoặc ký tự đặc biệt)
+- **Steps**: 
+  1. Gửi request body chứa chữ cái: `{ "requestCif": "12345678901a" }`.
+  2. Gửi request body chứa khoảng trắng: `{ "requestCif": "12345678901 " }`.
+  3. Gửi request body chứa ký tự đặc biệt: `{ "requestCif": "12345678901#" }`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response trả về success = false, thông báo lỗi định dạng CIF không hợp lệ.
+- **Source**: Trang 1 của đặc tả.
 
-## Value, Business Logic, Cross Logic
+---
 
-### TD_P3_001 - [ST] - POST /v1/customer/validate lỗi 101 quốc tịch không hợp lệ
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ và request body chứa `requestCif` của khách hàng có quốc tịch không phải Việt Nam (hoặc quốc tịch không thuộc danh sách cho phép của nghiệp vụ CCTG).
-- **Expected**: HTTP Status `400`; response body trả về trạng thái thất bại với `success=false`, `code="101"`, `message="quốc tịch không hợp lệ"`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 2 business rules.
+## 3. Quy tắc Nghiệp vụ Khách hàng (Customer Business Logic Validation)
 
-### TD_P3_002 - [ST] - POST /v1/customer/validate lỗi 102 tuổi không hợp lệ
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ và request body chứa `requestCif` của khách hàng chưa đủ tuổi (ví dụ dưới 18 tuổi hoặc không thỏa mãn quy định tuổi mua CCTG).
-- **Expected**: HTTP Status `400`; response body trả về trạng thái thất bại với `success=false`, `code="102"`, `message="tuổi không hợp lệ"`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 2 business rules.
+### POST /v1/customer/validate
 
-### TD_P3_003 - [ST] - POST /v1/customer/validate lỗi 103 loại khách hàng không hợp lệ
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ và request body chứa `requestCif` của khách hàng có loại khách hàng (customer type) không được phép giao dịch CCTG Online (ví dụ: Khách hàng định chế tài chính, Tổ chức...).
-- **Expected**: HTTP Status `400`; response body trả về trạng thái thất bại với `success=false`, `code="103"`, `message="loại khách hàng không hợp lệ"`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 2 business rules.
+### TD_P3_001 - [ECP] - Kiểm tra điều kiện quốc tịch của khách hàng (Lỗi 101)
+- **Steps**: 
+  1. Chuẩn bị thông tin khách hàng có quốc tịch nước ngoài (ví dụ: Hoa Kỳ - US).
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "101", message = "quốc tịch không hợp lệ".
+- **Source**: Trang 2 của đặc tả.
 
-### TD_P3_004 - [ST] - POST /v1/customer/validate lỗi 104 tình trạng cư trú không hợp lệ
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ và request body chứa `requestCif` của khách hàng có tình trạng cư trú (residency status) không hợp lệ (ví dụ: Không cư trú).
-- **Expected**: HTTP Status `400`; response body trả về trạng thái thất bại với `success=false`, `code="104"`, `message="tình trạng cư trú không hợp lệ"`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 3 business rules.
+### TD_P3_002 - [BVA] - Khách hàng chưa đủ 18 tuổi (Biên tuổi vi phạm - 17 tuổi)
+- **Steps**: 
+  1. Chuẩn bị khách hàng có ngày sinh tính đến thời điểm giao dịch hiện tại là tròn 17 tuổi.
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "102", message = "tuổi không hợp lệ".
+- **Source**: Trang 2 của đặc tả.
 
-### TD_P3_005 - [ST] - POST /v1/customer/validate lỗi 109 giao dịch ngoài giờ COT (hệ thống đã hết giờ giao dịch)
-- **Steps**: Gửi request `POST /v1/customer/validate` với headers hợp lệ và request body chứa `requestCif` hợp lệ tại thời điểm hệ thống nằm ngoài khung giờ giao dịch cho phép (giờ Cut-Off Time).
-- **Expected**: HTTP Status `400`; response body trả về trạng thái thất bại với `success=false`, `code="109"`, `message="Hiện tại đã hết giờ giao dịch. Quý khách vui lòng thực hiện từ {0} đến {1} hàng ngày."`.
-- **Source**: NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf page 3 business rules.
+### TD_P3_003 - [BVA] - Khách hàng vừa tròn 18 tuổi (Biên tuổi hợp lệ)
+- **Steps**: 
+  1. Chuẩn bị khách hàng có ngày sinh tính đến thời điểm hiện tại tròn đúng 18 tuổi.
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `200` OK.
+  - Response: success = true, code = "0", message = "SUCCESS".
+- **Source**: Trang 2 của đặc tả.
+
+### TD_P3_004 - [ECP] - Loại khách hàng không hợp lệ (Lỗi 103)
+- **Steps**: 
+  1. Chuẩn bị khách hàng là Tổ chức/Doanh nghiệp (không phải cá nhân hợp lệ).
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "103", message = "loại khách hàng không hợp lệ".
+- **Source**: Trang 2 của đặc tả.
+
+### TD_P3_005 - [ECP] - Tình trạng cư trú không hợp lệ (Lỗi 104)
+- **Steps**: 
+  1. Chuẩn bị khách hàng có tình trạng cư trú là "Không cư trú" (Non-resident).
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "104", message = "tình trạng cư trú không hợp lệ".
+- **Source**: Trang 3 của đặc tả.
+
+### TD_P3_006 - [ST] - Thực hiện giao dịch ngoài giờ giao dịch cho phép - Giờ COT (Lỗi 109)
+- **Steps**: 
+  1. Giả lập hệ thống đang nằm ngoài giờ giao dịch cho phép (ví dụ: 23:00 hoặc 05:00 sáng).
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` hợp lệ.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "109", message = "Hiện tại đã hết giờ giao dịch. Quý khách vui lòng thực hiện từ {0} đến {1} hàng ngày." (với `{0}` và `{1}` được thay thế bằng giờ mở/đóng cửa thực tế).
+- **Source**: Trang 3 của đặc tả.
+
+### POST /v1/customer/validate
+
+### TD_P3_007 - [BVA] - Biên giao dịch giờ COT: Giao dịch ngay trước giờ mở cửa (Ví dụ: 07:59)
+- **Steps**: 
+  1. Giả lập giờ giao dịch của hệ thống lúc 07:59 (COT cho phép từ 08:00 đến 17:00).
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "109", thông báo hết giờ giao dịch.
+- **Source**: Trang 3 của đặc tả.
+
+### TD_P3_008 - [BVA] - Biên giao dịch giờ COT: Giao dịch đúng giờ mở cửa (Ví dụ: 08:00)
+- **Steps**: 
+  1. Giả lập giờ giao dịch của hệ thống lúc đúng 08:00.
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `200` OK.
+  - Response: success = true, code = "0".
+- **Source**: Trang 3 của đặc tả.
+
+### TD_P3_009 - [BVA] - Biên giao dịch giờ COT: Giao dịch đúng giờ đóng cửa (Ví dụ: 17:00)
+- **Steps**: 
+  1. Giả lập giờ giao dịch của hệ thống lúc đúng 17:00.
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `200` OK.
+  - Response: success = true, code = "0".
+- **Source**: Trang 3 của đặc tả.
+
+### TD_P3_010 - [BVA] - Biên giao dịch giờ COT: Giao dịch ngay sau giờ đóng cửa (Ví dụ: 17:01)
+- **Steps**: 
+  1. Giả lập giờ giao dịch của hệ thống lúc 17:01.
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "109", thông báo hết giờ giao dịch.
+- **Source**: Trang 3 của đặc tả.
+
+### TD_P3_011 - [DT] - Độ ưu tiên kiểm tra lỗi: Khách hàng vừa sai Quốc tịch (101) vừa chưa đủ tuổi (102)
+- **Steps**: 
+  1. Chuẩn bị khách hàng có quốc tịch nước ngoài (vi phạm 101) VÀ đồng thời chỉ mới 16 tuổi (vi phạm 102).
+  2. Gửi request `POST /v1/customer/validate` với `requestCif` đại diện cho khách hàng này.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "101", message = "quốc tịch không hợp lệ" (Lỗi 101 được ưu tiên kiểm tra và trả về trước).
+- **Source**: Trang 2 của đặc tả (Quy tắc độ ưu tiên kiểm tra lỗi).
+
+### TD_P3_012 - [DT] - Độ ưu tiên kiểm tra lỗi: Khách hàng vừa chưa đủ tuổi (102) vừa sai loại khách hàng (103)
+- **Steps**: 
+  1. Chuẩn bị khách hàng chưa đủ 18 tuổi (vi phạm 102) VÀ đồng thời là loại khách hàng doanh nghiệp (vi phạm 103).
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "102", message = "tuổi không hợp lệ" (Lỗi 102 được trả về trước lỗi 103).
+- **Source**: Trang 2 của đặc tả.
+
+### TD_P3_013 - [DT] - Độ ưu tiên kiểm tra lỗi: Khách hàng vừa sai loại khách hàng (103) vừa sai tình trạng cư trú (104)
+- **Steps**: 
+  1. Chuẩn bị khách hàng là doanh nghiệp (vi phạm 103) VÀ đồng thời ở trạng thái Không cư trú (vi phạm 104).
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "103", message = "loại khách hàng không hợp lệ" (Lỗi 103 trả về trước lỗi 104).
+- **Source**: Trang 2, 3 của đặc tả.
+
+### TD_P3_014 - [DT] - Độ ưu tiên kiểm tra lỗi: Khách hàng vừa sai tình trạng cư trú (104) vừa ngoài giờ COT (109)
+- **Steps**: 
+  1. Giả lập hệ thống ngoài giờ COT (vi phạm 109) VÀ gửi request cho khách hàng có tình trạng Không cư trú (vi phạm 104).
+  2. Gửi request `POST /v1/customer/validate`.
+- **Expected**: 
+  - HTTP Status: `400` Bad Request.
+  - Response: success = false, code = "104", message = "tình trạng cư trú không hợp lệ" (Lỗi 104 được ưu tiên trả về trước lỗi 109).
+- **Source**: Trang 3 của đặc tả.

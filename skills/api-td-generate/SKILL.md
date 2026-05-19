@@ -77,10 +77,12 @@ Do not generate TD nodes from endpoint names alone. If a source or approved enri
 
 ## API TD specificity rules
 
+- Default Language: Vietnamese (`Tiếng Việt`) is the default language for all test design nodes, steps, and expected results.
 - `TD_P1` nodes must name the exact method/path/header/auth target under test.
-- `TD_P2` nodes must name the exact request/response field, schema rule, type, format, enum, null/empty, or boundary target when known.
-- `TD_P3` nodes must name the exact business rule, state transition, flow dependency, or error code/message when known.
-- Generic nodes such as “kiểm tra dữ liệu không hợp lệ”, “verify API works”, “validate invalid input”, or “check response is correct” are not acceptable when source facts exist.
+- `TD_P2` nodes must name the exact request/response field, schema rule, type, format, enum, null/empty, or boundary target.
+- `TD_P3` nodes must name the exact business rule, state transition, flow dependency, or error code/message.
+- Preceding Endpoint Headings: Every `TD_P*` node must be preceded by an HTTP method and endpoint heading (e.g. `### POST /v1/customer/validate`) within 3000 characters.
+- Forbidden Phrases: Vague phrases such as `verify api works`, `validate invalid input`, `check response is correct`, `valid data`, `invalid data`, `data hợp lệ`, `data không hợp lệ`, `kiểm tra dữ liệu không hợp lệ`, `kiểm tra dữ liệu hợp lệ`, `như trên`, `tương tự` are strictly forbidden.
 - Missing facts remain open questions; do not invent rules, but do not mark known facts as pending.
 
 ## Coverage Obligations

@@ -12,7 +12,7 @@
       "name": "api_td_specificity",
       "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\API_TestDesign.md",
       "status": "success",
-      "details": "API TD specificity validation passed (18 TD nodes)"
+      "details": "API TD specificity validation passed (28 TD nodes)"
     },
     {
       "name": "legacy_19col_tsv",
@@ -24,7 +24,7 @@
       "name": "api_tc_specificity",
       "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
       "status": "success",
-      "details": "API testcase specificity validation passed (21 rows)"
+      "details": "API testcase specificity validation passed (29 rows)"
     },
     {
       "name": "api_tc_granularity",
@@ -36,7 +36,7 @@
       "name": "testcase_coverage_api",
       "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
       "status": "success",
-      "details": "{\n  \"status\": \"passed\",\n  \"rows_checked\": 21,\n  \"profile\": \"api_legacy_19_column_testcase\",\n  \"coverage\": {\n    \"METHOD\": 2,\n    \"CONTENT_TYPE\": 1,\n    \"AUTH\": 1,\n    \"MANDATORY_HEADERS\": 3,\n    \"LANGUAGE\": 2,\n    \"BODY_SCHEMA\": 2,\n    \"BOUNDARY\": 2,\n    \"BUSINESS_ERROR\": 5,\n    \"RESPONSE_SCHEMA\": 2,\n    \"ERROR_PRIORITY\": 1\n  }\n}"
+      "details": "{\n  \"status\": \"passed\",\n  \"rows_checked\": 29,\n  \"profile\": \"api_legacy_19_column_testcase\",\n  \"coverage\": {\n    \"METHOD\": 1,\n    \"CONTENT_TYPE\": 1,\n    \"AUTH\": 1,\n    \"MANDATORY_HEADERS\": 2,\n    \"LANGUAGE\": 2,\n    \"BODY_SCHEMA\": 4,\n    \"BOUNDARY\": 4,\n    \"BUSINESS_ERROR\": 5,\n    \"RESPONSE_SCHEMA\": 5,\n    \"ERROR_PRIORITY\": 4\n  }\n}"
     },
     {
       "name": "output_review_required",

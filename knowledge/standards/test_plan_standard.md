@@ -54,6 +54,7 @@ A valid Test Plan must contain:
 - Out-of-scope must be explicit when partial coverage is intended.
 - If business facts are incomplete, record open questions instead of inventing them.
 - A Test Plan may summarize planned techniques, but it must not replace Test Design.
+- **Language Standard**: For domestic projects (e.g., BIDV, Paygates), all generated artifacts (Test Plan, Test Design, Test Cases, and their Excel sheets) must be written in Vietnamese (Tiếng Việt) to align with source documents.
 
 ## Handoff rules
 

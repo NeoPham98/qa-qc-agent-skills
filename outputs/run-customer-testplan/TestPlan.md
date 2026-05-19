@@ -1,92 +1,92 @@
-# Test Plan
+# Kế Hoạch Kiểm Thử
 
-**Test Plan ID**: TP-CCTG-ONLINE-001
-**Project**: CCTG_Online
-**Squad**: Squad_Customer
+**Mã Kế Hoạch Kiểm Thử**: TP-CCTG-ONLINE-001
+**Dự án**: CCTG_Online
+**Nhóm**: Squad_Customer
 **Epic**: Customer_Validate
-**Environment**: SIT
-**Build/Release**: 2026.05.20-rc1
+**Môi trường**: SIT
+**Phiên bản phát hành**: 2026.05.20-rc1
 
-## Scope In
+## Phạm vi áp dụng
 
-- Validate API customer condition checking (`POST /v1/customer/validate`) for the CCTG Online scope.
-- Include API Test Design, manual testcase export, and formatted Excel delivery.
+- Kiểm thử tính đúng đắn của API kiểm tra điều kiện khách hàng (`POST /v1/customer/validate`) thuộc phạm vi CCTG Online.
+- Bao gồm thiết kế kịch bản test (Test Design), xuất kịch bản thủ công ra file Excel định dạng chuẩn.
 
-## Scope Out
+## Phạm vi loại trừ
 
-- Production deployment sign-off and external system integration certification are excluded.
+- Phê duyệt triển khai Production và kiểm định tích hợp hệ thống bên ngoài không thuộc phạm vi kế hoạch này.
 
-## Source Baseline
+## Tài liệu căn cứ
 
-| Source Ref | Source Kind | Scope |
+| Mã tài liệu | Loại tài liệu | Phạm vi |
 |---|---|---|
-| source-manifest#source-1 | runtime_input | API check điều kiện KH mua CCTG OL PDF |
+| source-manifest#source-1 | runtime_input | Tài liệu đặc tả API check điều kiện KH mua CCTG OL PDF |
 
-## Requirement Baseline
+## Yêu cầu căn cứ
 
-| Requirement ID | Source Ref | Included | Note |
+| Mã yêu cầu | Tài liệu căn cứ | Trạng thái | Ghi chú |
 |---|---|---|---|
-| REQ-CCTG-001 | source-manifest#source-1 | Yes | Check conditions: citizenship (101), age (102), customer type (103), residency (104), COT (109) |
+| REQ-CCTG-001 | source-manifest#source-1 | Có | Kiểm tra các điều kiện: quốc tịch (101), tuổi (102), loại khách hàng (103), tình trạng cư trú (104), giờ giao dịch COT (109) |
 
-## Test Levels / Phases
+## Mức độ / Giai đoạn kiểm thử
 
-| Phase | Purpose | Owner | Environment | Entry Dependency | Exit Evidence |
+| Giai đoạn | Mục đích | Người thực hiện | Môi trường | Điều kiện bắt đầu | Sản phẩm đầu ra |
 |---|---|---|---|---|---|
-| SIT | Verify API validation codes and error priorities | QA Lead | SIT | Approved source document | Validated test design and test cases |
-| UAT | Verify business scenarios and integration correctness | BA Owner | UAT | SIT sign-off | UAT sign-off documentation |
+| SIT | Kiểm tra mã lỗi trả về và độ ưu tiên lỗi | Trưởng nhóm QA | SIT | Tài liệu căn cứ được duyệt | Test Design và Test Case được ký duyệt |
+| UAT | Xác nhận nghiệp vụ và tính đúng đắn tích hợp | BA Owner | UAT | SIT hoàn thành | Tài liệu bàn giao UAT |
 
-## Entry Criteria
+## Điều kiện bắt đầu
 
-- Target PDF document is normalized and available.
-- SIT environment is ready with customer CIF mock data.
+- Tài liệu baselines nguồn đã được chuẩn hóa và sẵn sàng.
+- Môi trường SIT đã sẵn sàng kết nối dữ liệu giả lập khách hàng.
 
-## Exit Criteria
+## Điều kiện kết thúc
 
-- 100% of planned test cases are executed.
-- No blocker or major defects are open.
-- Generated Test Plan, Test Design, and Test Case outputs are signed off.
+- 100% các kịch bản kiểm thử đã được chạy thành công.
+- Không còn lỗi nghiêm trọng (Blocker/Major) chưa được giải quyết.
+- Báo cáo Test Plan, Test Design và Test Cases được ký duyệt đầy đủ.
 
-## Deliverables
+## Sản phẩm bàn giao
 
-| Deliverable | Required | Owner | Output |
+| Sản phẩm | Bắt buộc | Người chịu trách nhiệm | File đầu ra |
 |---|---|---|---|
-| Test Plan | Yes | QA Lead | TestPlan.md and TestPlan.generated.xlsx |
-| Test Design | Yes | QA Lead | API_TestDesign.md and API_TestDesign.generated.xlsx |
-| Testcases | Yes | Tester | TestCaseSource.md and Legacy19TestCase.generated.xlsx |
+| Kế hoạch kiểm thử | Có | Trưởng nhóm QA | TestPlan.md và TestPlan.generated.xlsx |
+| Thiết kế kịch bản | Có | Trưởng nhóm QA | API_TestDesign.md và API_TestDesign.generated.xlsx |
+| Danh sách kịch bản | Có | Tester | TestCaseSource.md và Legacy19TestCase.generated.xlsx |
 
-## Roles and Responsibilities
+## Vai trò và Trách nhiệm
 
-| Role | Responsibility | Owner |
+| Vai trò | Trách nhiệm | Người thực hiện |
 |---|---|---|
-| QA Lead | Plan validation scope, approve deliverables | QA Lead |
-| Tester | Design, execute tests, report defects | Tester |
+| Trưởng nhóm QA | Lập kế hoạch, duyệt sản phẩm và điều phối | QA Lead |
+| Tester | Thiết kế kịch bản, chạy test và báo cáo lỗi | Tester |
 
-## Environment / Test Data / Dependencies
+## Môi trường / Dữ liệu / Phụ thuộc
 
-| Item | Value | Owner | Status |
+| Hạng mục | Giá trị | Người quản lý | Trạng thái |
 |---|---|---|---|
-| SIT Environment | SIT-cctg-online | Env Team | Ready |
-| Test Data | Customer CIFs matching validation rules | Data Team | Ready |
+| Môi trường SIT | SIT-cctg-online | Env Team | Sẵn sàng |
+| Dữ liệu test | Danh sách CIF thỏa mãn các mã lỗi | Data Team | Sẵn sàng |
 
-## Risks and Mitigations
+## Rủi ro và Giải pháp
 
-| Risk | Impact | Mitigation | Owner |
+| Rủi ro | Mức độ ảnh hưởng | Giải pháp giảm thiểu | Người chịu trách nhiệm |
 |---|---|---|---|
-| SIT Environment downtime | Delay in validation | Deploy local mocks for API validation codes | QA Lead |
+| Môi trường SIT gián đoạn | Chậm tiến độ | Sử dụng mock API kiểm tra lỗi tại local | QA Lead |
 
-## Schedule / Milestones
+## Lịch trình / Mốc thời gian
 
-| Milestone | Planned Date | Owner | Exit Evidence |
+| Mốc thời gian | Ngày dự kiến | Người thực hiện | Kết quả đầu ra |
 |---|---|---|---|
-| Test Plan Approval | 2026-05-20 | QA Lead | Signed TestPlan.md/xlsx |
-| Test Design & Test Cases | 2026-05-21 | Tester | Signed Test Design/Cases |
+| Phê duyệt Test Plan | 2026-05-20 | QA Lead | Ký duyệt TestPlan.md/xlsx |
+| Thiết kế kịch bản test | 2026-05-21 | Tester | Ký duyệt Test Design & Test Cases |
 
-## Coverage Strategy
+## Chiến lược độ bao phủ
 
-Traceability between requirements and test items will be maintained. Every business error code (101, 102, 103, 104, 109) must have at least one test design node.
+Tính liên kết giữa yêu cầu và kịch bản test sẽ được duy trì. Mỗi mã lỗi nghiệp vụ (101, 102, 103, 104, 109) phải được bao phủ tối thiểu bởi một Test Design node tương ứng.
 
-## Open Questions
+## Câu hỏi cần làm rõ
 
-| Question ID | Source Ref | Question | Owner | Needed By |
+| Mã câu hỏi | Tài liệu căn cứ | Nội dung câu hỏi | Người trả lời | Hạn trả lời |
 |---|---|---|---|---|
-| OQ-001 | source-manifest#source-1 | Are there any extra COT rules for non-residents? | BA Owner | 2026-05-21 |
+| OQ-001 | source-manifest#source-1 | Có áp dụng kiểm tra giờ giao dịch COT đối với người nước ngoài không? | BA Owner | 2026-05-21 |

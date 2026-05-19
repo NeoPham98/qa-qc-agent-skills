@@ -70,3 +70,18 @@ UI design must name the flow, screen, control, state, role, and validation/messa
 - Do not invent controls, states, messages, or error codes.
 - Do not skip source refs.
 - Do not hand off to testcase generation without matrix preparation in applicable routes.
+
+## Standard & Language Compliance
+- **Default Language**: Vietnamese (`Tiếng Việt`) must be used for all test design nodes, steps, and expected results.
+- **Control Parameters**: Every API Test Design document must contain the exact parameter list: `METHOD_CHECK`, `CONTENT_TYPE_CHECK`, `MANDATORY_CHECK`, `TYPE_CHECK`, `LENGTH_CHECK`, `SCOPE_FIELDS`, `EG_CHECK`.
+- **Exact Section Headings**: API Test Design sections must use these exact headings:
+  - `## Method & Header` (under which only `TD_P1_*` nodes reside)
+  - `## Schema Validation` (under which only `TD_P2_*` nodes reside)
+  - `## Value, Business Logic, Cross Logic` (under which only `TD_P3_*` nodes reside)
+- **Preceding Endpoint Headings**: Every `TD_P*` node must be preceded by an HTTP method and endpoint heading (e.g. `### POST /v1/customer/validate`) within 3000 characters of text. Add these subheadings at the start of each section.
+- **Forbidden Phrases**: Vague phrases such as `verify api works`, `validate invalid input`, `check response is correct`, `valid data`, `invalid data`, `data hợp lệ`, `data không hợp lệ`, `kiểm tra dữ liệu không hợp lệ`, `kiểm tra dữ liệu hợp lệ`, `như trên`, `tương tự` are strictly forbidden.
+- **Specificity rules**:
+  - `TD_P1` nodes must name the exact method/path/header/auth target under test.
+  - `TD_P2` nodes must name the exact request/response field, schema rule, type, format, enum, null/empty, or boundary target.
+  - `TD_P3` nodes must name the exact business rule, state transition, flow dependency, or error code/message.
+

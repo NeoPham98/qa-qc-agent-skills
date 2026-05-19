@@ -75,7 +75,7 @@ def normalize_row(row: dict[str, str]) -> dict[str, str]:
         "Automation Test Results": row.get("Automation Test Results", ""),
         "Actual result": first_present(row, "Actual result", "Actual Result"),
         "BugID": row.get("BugID", ""),
-        "Notes": "",
+        "Notes": first_present(row, "Notes", "Note", default=""),
     }
 
 

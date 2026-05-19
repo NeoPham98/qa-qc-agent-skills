@@ -5,9 +5,9 @@ validation_report: B:\Test\qa-qc-agent-skills\outputs\run-customer-validate\vali
 no_secret_report: B:\Test\qa-qc-agent-skills\outputs\run-customer-validate\no_secret_report.json
 source_trace: B:\Test\qa-qc-agent-skills\outputs\run-customer-validate\source_trace.md
 approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\API_OperationInventory.md
-previous_approved_artifact_path: null
+previous_approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\OutputReview.md
 files:
   OutputReview.md: B:\Test\qa-qc-agent-skills\outputs\run-customer-validate\OutputReview.md
   SupervisorApproval.md: B:\Test\qa-qc-agent-skills\outputs\run-customer-validate\SupervisorApproval.md
   approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\API_OperationInventory.md
-  previous_approved_artifact_path: null
+  previous_approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\OutputReview.md

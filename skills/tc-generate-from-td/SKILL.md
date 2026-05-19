@@ -90,7 +90,18 @@ Minimum expectations per endpoint, when source facts exist:
 - response schema assertion cases
 - documented business error/state-rule cases
 
-Do not collapse several required fields or several business errors into one vague testcase. Do not use placeholders such as “valid data”, “invalid data”, “correct response”, “appropriate error”, “như trên”, or “tương tự” when concrete values are available. For BIDV manual testcase output, write `Test Steps` and `Expected result` in Vietnamese unless the user explicitly requests another language.
+Do not collapse several required fields or several business errors into one vague testcase. Do not use placeholders such as “valid data”, “invalid data”, “correct response”, “appropriate error”, “như trên”, or “tương tự” when concrete values are available.
+
+## Standard & Language Compliance:
+- Default Language: Vietnamese (`Tiếng Việt`) is the default language for all manual testcase steps, preconditions, data, and expected results.
+- Verification Verbs: Every testcase must use verification action verbs (e.g. `kiểm tra` or `verify` / `assert`) in either the `Test Steps` or `Expected result` column.
+- Exact HTTP Status Format: Expected results must state the expected HTTP status matching the regex (e.g. `HTTP Status: 200` or `HTTP 200` or `Status: 400`). Avoid writing `HTTP Status Code: 200`.
+- Primary Condition Marker: Every testcase row must explicitly contain a `Primary Condition: <condition>` marker in the `Test Case Summary` column.
+- Negative Condition Specificity: For negative testcases, the `Primary Condition` must specify the exact target name (e.g. `requestCif`, `authToken`) and include keywords like `field`, `rule`, `method`, `header`, `body`, or `param`.
+- Coverage Category Marker: Every row must include `Coverage: <CATEGORY>` in the `Notes` column matching the exact required categories (e.g. `METHOD`, `CONTENT_TYPE`, `AUTH`, `MANDATORY_HEADERS`, `LANGUAGE`, `BODY_SCHEMA`, `BOUNDARY`, `BUSINESS_ERROR`, `RESPONSE_SCHEMA`, `ERROR_PRIORITY`).
+- Newline Word Boundary Rule: Since newline `\n` in markdown tables is escaped to `\n` literal in TSVs, always put spaces around `\n` when writing keywords (e.g. `\n response` instead of `\nresponse`) to prevent merging into `nresponse` and failing word boundary checks.
+- Forbidden Phrases: Vague phrases such as `valid data`, `invalid data`, `data hợp lệ`, `data không hợp lệ`, `correct response`, `appropriate error`, `như trên`, `tương tự` are strictly banned.
+
 
 ## Outputs
 

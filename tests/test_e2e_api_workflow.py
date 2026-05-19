@@ -20,6 +20,7 @@ from source_manifest import SourceFingerprint, SourceItem, SourceManifest
 FINAL_OUTPUTS = [
     "API_OperationInventory.md",
     "API_TestDesign.md",
+    "API_TestDesign.generated.xlsx",
     "TestCaseSource.md",
     "Legacy19TestCase.generated.tsv",
     "Legacy19TestCase.generated.xlsx",
@@ -114,6 +115,14 @@ def test_api_e2e_workflow_generates_valid_approved_artifacts() -> None:
             "--formatted",
         )
         assert_true(export_result.returncode == 0, export_result.stdout + export_result.stderr)
+        
+        export_td_result = run_script(
+            "export_test_design_xlsx.py",
+            str(output_dir / "API_TestDesign.md"),
+            str(output_dir / "API_TestDesign.generated.xlsx"),
+        )
+        assert_true(export_td_result.returncode == 0, export_td_result.stdout + export_td_result.stderr)
+
         workbook = load_workbook(output_dir / "Legacy19TestCase.generated.xlsx")
         worksheet = workbook["API Test Cases"]
         assert_true(worksheet["H2"].alignment.wrap_text is True, "formatted workbook must wrap test steps")

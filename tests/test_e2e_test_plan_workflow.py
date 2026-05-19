@@ -16,7 +16,7 @@ sys.path.insert(0, str(SDK))
 from source_manifest import SourceFingerprint, SourceItem, SourceManifest
 
 
-FINAL_OUTPUTS = ["TestPlan.md", "OutputReview.md", "SupervisorApproval.md"]
+FINAL_OUTPUTS = ["TestPlan.md", "TestPlan.generated.xlsx", "OutputReview.md", "SupervisorApproval.md"]
 
 
 def run_script(script: str, *args: str) -> subprocess.CompletedProcess[str]:
@@ -55,7 +55,7 @@ def write_manifest(path: Path, output_dir: Path) -> None:
 
 def copy_seed_outputs(output_dir: Path) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
-    for name in FINAL_OUTPUTS:
+    for name in ["TestPlan.md", "OutputReview.md", "SupervisorApproval.md"]:
         shutil.copy2(EXAMPLE / name, output_dir / name)
 
 
@@ -75,6 +75,13 @@ def test_test_plan_e2e_workflow_generates_valid_approved_artifacts() -> None:
         plan_result = run_script("validate_test_plan.py", str(output_dir / "TestPlan.md"))
         assert_true(plan_result.returncode == 0, plan_result.stdout + plan_result.stderr)
         assert_no_raw_bidv(output_dir)
+
+        export_tp_result = run_script(
+            "export_test_plan_xlsx.py",
+            str(output_dir / "TestPlan.md"),
+            str(output_dir / "TestPlan.generated.xlsx"),
+        )
+        assert_true(export_tp_result.returncode == 0, export_tp_result.stdout + export_tp_result.stderr)
 
         approved_root = ROOT / "artifacts" / "default" / "approved" / "PAYGATES_E2E" / "Squad_Base" / "TEST_PLAN"
         reviewed_root = ROOT / "artifacts" / "default" / "reviewed" / "PAYGATES_E2E" / "Squad_Base" / "TEST_PLAN"

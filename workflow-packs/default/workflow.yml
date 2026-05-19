@@ -124,6 +124,7 @@ routes:
     - artifact_publish
     final_outputs:
     - TestPlan.md
+    - TestPlan.generated.xlsx
     - OutputReview.md
     - SupervisorApproval.md
     max_retries: 2
@@ -154,6 +155,7 @@ routes:
     final_outputs:
     - API_OperationInventory.md
     - API_TestDesign.md
+    - API_TestDesign.generated.xlsx
     - OutputReview.md
     - SupervisorApproval.md
     max_retries: 2
@@ -191,6 +193,7 @@ routes:
     final_outputs:
     - API_OperationInventory.md
     - API_TestDesign.md
+    - API_TestDesign.generated.xlsx
     - TestCaseSource.md
     - CoverageMatrix.md
     - GapAnalysis.md
@@ -258,6 +261,7 @@ routes:
     - artifact_publish
     final_outputs:
     - UI_TestDesign.md
+    - UI_TestDesign.generated.xlsx
     - OutputReview.md
     - SupervisorApproval.md
     max_retries: 2
@@ -293,6 +297,7 @@ routes:
     - artifact_publish
     final_outputs:
     - UI_TestDesign.md
+    - UI_TestDesign.generated.xlsx
     - TestCaseSource.md
     - CoverageMatrix.md
     - GapAnalysis.md
@@ -434,6 +439,7 @@ routes:
     final_outputs:
     - API_OperationInventory.md
     - API_TestDesign.md
+    - API_TestDesign.generated.xlsx
     - TestCaseSource.md
     - CoverageMatrix.md
     - GapAnalysis.md

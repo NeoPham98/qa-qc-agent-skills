@@ -137,6 +137,7 @@
   "final_outputs": [
     "API_OperationInventory.md",
     "API_TestDesign.md",
+    "API_TestDesign.generated.xlsx",
     "TestCaseSource.md",
     "Legacy19TestCase.generated.tsv",
     "Legacy19TestCase.generated.xlsx",

@@ -20,6 +20,7 @@ from source_manifest import SourceFingerprint, SourceItem, SourceManifest
 
 LEGACY_OUTPUTS = [
     "UI_TestDesign.md",
+    "UI_TestDesign.generated.xlsx",
     "TestCaseSource.md",
     "Legacy19TestCase.generated.tsv",
     "Legacy19TestCase.generated.xlsx",
@@ -167,6 +168,13 @@ def test_ui_and_uat_e2e_workflows_generate_valid_artifacts() -> None:
 
         ui_td_result = run_script("validate_test_design.py", str(ui_out / "UI_TestDesign.md"), "--type", "ui")
         assert_true(ui_td_result.returncode == 0, ui_td_result.stdout + ui_td_result.stderr)
+
+        export_td_result = run_script(
+            "export_test_design_xlsx.py",
+            str(ui_out / "UI_TestDesign.md"),
+            str(ui_out / "UI_TestDesign.generated.xlsx"),
+        )
+        assert_true(export_td_result.returncode == 0, export_td_result.stdout + export_td_result.stderr)
         ui_export_result = run_script(
             "export_legacy_19col_xlsx.py",
             str(ui_out / "TestCaseSource.md"),

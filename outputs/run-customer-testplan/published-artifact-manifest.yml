@@ -1,0 +1,13 @@
+schema_version: '1.0'
+status: approved
+supervisor_decision: approved
+validation_report: B:\Test\qa-qc-agent-skills\outputs\run-customer-testplan\validation_report.json
+no_secret_report: B:\Test\qa-qc-agent-skills\outputs\run-customer-testplan\no_secret_report.json
+source_trace: B:\Test\qa-qc-agent-skills\outputs\run-customer-testplan\source_trace.md
+approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\TestPlan.md
+previous_approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\OutputReview.md
+files:
+  OutputReview.md: B:\Test\qa-qc-agent-skills\outputs\run-customer-testplan\OutputReview.md
+  SupervisorApproval.md: B:\Test\qa-qc-agent-skills\outputs\run-customer-testplan\SupervisorApproval.md
+  approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\TestPlan.md
+  previous_approved_artifact_path: B:\Test\qa-qc-agent-skills\artifacts\default\approved\CCTG_Online\Squad_Customer\Customer_Validate\md\OutputReview.md

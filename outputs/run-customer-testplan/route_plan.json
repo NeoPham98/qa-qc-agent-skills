@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "workflow_pack": "default",
+  "route_id": "source_to_test_plan",
+  "confidence": 1.0,
+  "source_roles": [
+    "api_spec"
+  ],
+  "prompt_intents": [],
+  "stages": [
+    {
+      "id": "test_plan",
+      "kind": "agent",
+      "prompt": null,
+      "outputs": [
+        "TestPlan.md"
+      ],
+      "validators": []
+    },
+    {
+      "id": "test_plan_validation",
+      "kind": "validation",
+      "prompt": null,
+      "outputs": [
+        "TestPlan.validation.json"
+      ],
+      "validators": [
+        "test_plan_contract"
+      ]
+    },
+    {
+      "id": "output_review",
+      "kind": "review",
+      "prompt": null,
+      "outputs": [
+        "OutputReview.md"
+      ],
+      "validators": [
+        "output_review_required"
+      ]
+    },
+    {
+      "id": "supervisor_approval",
+      "kind": "approval",
+      "prompt": null,
+      "outputs": [
+        "SupervisorApproval.md"
+      ],
+      "validators": [
+        "supervisor_approval_required",
+        "artifact_manifest"
+      ]
+    },
+    {
+      "id": "artifact_publish",
+      "kind": "publish",
+      "prompt": null,
+      "outputs": [
+        "published-artifact-manifest.yml"
+      ],
+      "validators": [
+        "artifact_manifest"
+      ]
+    }
+  ],
+  "final_outputs": [
+    "TestPlan.md",
+    "TestPlan.generated.xlsx",
+    "OutputReview.md",
+    "SupervisorApproval.md"
+  ],
+  "support_outputs": [
+    "source_manifest.json",
+    "route_plan.json",
+    "validation_report.json",
+    "handoff_summary.md"
+  ]
+}

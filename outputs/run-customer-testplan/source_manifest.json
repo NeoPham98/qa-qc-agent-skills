@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run-testplan-20260520",
+  "user_prompt": "Sinh Test Plan cho CCTG Online",
+  "output_directory": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-testplan",
+  "workflow_pack": "default",
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "local_file",
+      "original_locator": "b:\\Test\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf",
+      "local_path": "B:\\Test\\NMS-[KH-660][CCTG Online] API check điều kiện KH-160526-040553.pdf",
+      "google_sheet": null,
+      "extension": ".pdf",
+      "size_bytes": 308345,
+      "sha256": "69f0d5e65d94278ab1fca340806249bde6859b232b0d0f7f8e96b111f2052b28",
+      "fingerprint": {
+        "candidate_roles": [
+          "api_spec"
+        ],
+        "detected_headers": [],
+        "detected_keywords": [],
+        "content_hints": []
+      }
+    }
+  ],
+  "user_context": {
+    "project": null,
+    "squad": null,
+    "sprint": null,
+    "epic": null,
+    "environment": null,
+    "tester": null,
+    "build_version": null
+  }
+}

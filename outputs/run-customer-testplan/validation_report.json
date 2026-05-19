@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "status": "warnings",
+  "checks": [
+    {
+      "name": "test_plan_contract",
+      "target": "test_plan_validation",
+      "status": "warning",
+      "details": "No target output found for validator"
+    },
+    {
+      "name": "output_review_required",
+      "target": "output_review",
+      "status": "success",
+      "details": "Policy-only validator"
+    },
+    {
+      "name": "supervisor_approval_required",
+      "target": "supervisor_approval",
+      "status": "success",
+      "details": "Policy-only validator"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "supervisor_approval",
+      "status": "success",
+      "details": "Deferred until approved publish manifest exists"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "artifact_publish",
+      "status": "success",
+      "details": "Deferred until approved publish manifest exists"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-testplan\\published-artifact-manifest.yml",
+      "status": "success",
+      "details": "{\"status\": \"passed\", \"path\": \"B:\\\\Test\\\\qa-qc-agent-skills\\\\outputs\\\\run-customer-testplan\\\\published-artifact-manifest.yml\"}"
+    }
+  ],
+  "warnings": [],
+  "open_questions": []
+}

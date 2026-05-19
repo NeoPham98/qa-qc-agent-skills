@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "status": "success",
+  "checks": [
+    {
+      "name": "api_td_contract",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\API_TestDesign.md",
+      "status": "success",
+      "details": "{\"status\": \"passed\", \"type\": \"api\", \"path\": \"B:\\\\Test\\\\qa-qc-agent-skills\\\\outputs\\\\run-customer-validate\\\\API_TestDesign.md\"}"
+    },
+    {
+      "name": "api_td_specificity",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\API_TestDesign.md",
+      "status": "success",
+      "details": "API TD specificity validation passed (18 TD nodes)"
+    },
+    {
+      "name": "legacy_19col_tsv",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
+      "status": "success",
+      "details": "legacy 19-column validation passed"
+    },
+    {
+      "name": "api_tc_specificity",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
+      "status": "success",
+      "details": "API testcase specificity validation passed (21 rows)"
+    },
+    {
+      "name": "api_tc_granularity",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
+      "status": "success",
+      "details": "{\"status\": \"passed\", \"profile\": \"api_legacy_19_column_testcase\", \"path\": \"B:\\\\Test\\\\qa-qc-agent-skills\\\\outputs\\\\run-customer-validate\\\\Legacy19TestCase.generated.tsv\"}"
+    },
+    {
+      "name": "testcase_coverage_api",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\Legacy19TestCase.generated.tsv",
+      "status": "success",
+      "details": "{\n  \"status\": \"passed\",\n  \"rows_checked\": 21,\n  \"profile\": \"api_legacy_19_column_testcase\",\n  \"coverage\": {\n    \"METHOD\": 2,\n    \"CONTENT_TYPE\": 1,\n    \"AUTH\": 1,\n    \"MANDATORY_HEADERS\": 3,\n    \"LANGUAGE\": 2,\n    \"BODY_SCHEMA\": 2,\n    \"BOUNDARY\": 2,\n    \"BUSINESS_ERROR\": 5,\n    \"RESPONSE_SCHEMA\": 2,\n    \"ERROR_PRIORITY\": 1\n  }\n}"
+    },
+    {
+      "name": "output_review_required",
+      "target": "output_review",
+      "status": "success",
+      "details": "Policy-only validator"
+    },
+    {
+      "name": "supervisor_approval_required",
+      "target": "supervisor_approval",
+      "status": "success",
+      "details": "Policy-only validator"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "supervisor_approval",
+      "status": "success",
+      "details": "Deferred until approved publish manifest exists"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "artifact_publish",
+      "status": "success",
+      "details": "Deferred until approved publish manifest exists"
+    },
+    {
+      "name": "artifact_manifest",
+      "target": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\published-artifact-manifest.yml",
+      "status": "success",
+      "details": "{\"status\": \"passed\", \"path\": \"B:\\\\Test\\\\qa-qc-agent-skills\\\\outputs\\\\run-customer-validate\\\\published-artifact-manifest.yml\"}"
+    }
+  ],
+  "warnings": [],
+  "open_questions": []
+}

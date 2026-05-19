@@ -285,8 +285,8 @@ IX. VÍ DỤ MẪU CHUẨN (GOLDEN SAMPLE)
 
 X. THỰC THI CUỐI CÙNG (FINAL EXECUTION)
 1. Input Processing: Đọc kỹ toàn bộ nội dung file markdown, RSD và PTTK được cung cấp.
-2. Generation: Sinh số lượng Test Case theo chỉ định bên dưới. Nếu User không chỉ định rõ, *MẶC ĐỊNH chỉ sinh tối đa 10 - 15 Test Cases*
+2. Generation: Sinh đầy đủ và toàn diện các Test Case. MẶC ĐỊNH phải sinh đầy đủ kịch bản kiểm thử bao phủ toàn bộ các Test Design Nodes (TD Nodes) có trong tài liệu Test Design (không bỏ sót bất kỳ node nào, mỗi node phải ánh xạ đến ít nhất một testcase).
 3. Rendering: Xuất kết quả dưới dạng MỘT FILE TSV DUY NHẤT nằm trong code fence.
 4. Silence Rule: KHÔNG in thêm bất kỳ dòng chữ nào như "Đây là kết quả của tôi", "Bảng phân tích coverage". Chỉ in duy nhất Header và Data của file TSV.
 
-=> HÃY BẮT ĐẦU PHÂN TÍCH MARKDOWN VÀ SINH TEST CASE CHO CẤU PHẦN 1 TD_P1_xxx CỦA TEST DESIGN
+=> HÃY BẮT ĐẦU PHÂN TÍCH MARKDOWN VÀ SINH TEST CASE CHO CẤU PHẦN CỦA TEST DESIGN

@@ -1,0 +1,9 @@
+{
+  "stage": "artifact_publish",
+  "artifact_path": "B:\\Test\\qa-qc-agent-skills\\artifacts\\default\\approved\\CCTG_Online\\Squad_Customer\\Customer_Validate\\md\\API_OperationInventory.md",
+  "validator_report": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\validation_report.json",
+  "review_report": "B:\\Test\\qa-qc-agent-skills\\outputs\\run-customer-validate\\OutputReview.md",
+  "retry_count": 0,
+  "owner_agent": "delivery-orchestrator",
+  "supervisor_decision": "approved"
+}

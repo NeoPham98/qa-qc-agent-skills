@@ -27,6 +27,9 @@ describe("Customer Validation API - Cypress Automation Run", () => {
   it("Dynamically registers and executes all 29 test cases", () => {
     expect(testCases.length).to.be.greaterThan(0);
     
+    // Visit a blank page to initialize window context for cy.window()
+    cy.visit("about:blank");
+    
     testCases.forEach((tc) => {
       const caseId = tc["Test Case ID"];
       const summary = tc["Test Case Summary"];
@@ -75,28 +78,28 @@ describe("Customer Validation API - Cypress Automation Run", () => {
         });
       }).as(`apiCall_${caseId}`);
 
-      // Call API
-      cy.request({
-        method: "POST",
-        url: "http://localhost:8080/v1/customer/validate",
-        body: requestBody,
-        headers: {
-          "Content-Type": "application/json",
-          "authToken": "ValidToken_QA_2026",
-          "requestID": "REQ-20260520-001",
-          "X-App-Code": "CCTG_ONLINE_PORTAL"
-        },
-        failOnStatusCode: false
-      }).then((response) => {
-        // Assertions
-        expect(response.status).to.eq(expectedStatus);
-        
-        if (expectedCode) {
-          expect(response.body.code).to.eq(expectedCode);
-        }
-        if (expectedMessage) {
-          expect(response.body.message).to.contain(expectedMessage);
-        }
+      // Call API using browser context (so cy.intercept captures it)
+      cy.window().then((win) => {
+        return win.fetch("http://localhost:8080/v1/customer/validate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "authToken": "ValidToken_QA_2026",
+            "requestID": "REQ-20260520-001",
+            "X-App-Code": "CCTG_ONLINE_PORTAL"
+          },
+          body: JSON.stringify(requestBody)
+        }).then((response) => {
+          expect(response.status).to.eq(expectedStatus);
+          return response.json();
+        }).then((body) => {
+          if (expectedCode) {
+            expect(body.code).to.eq(expectedCode);
+          }
+          if (expectedMessage) {
+            expect(body.message).to.contain(expectedMessage);
+          }
+        });
       });
     });
   });

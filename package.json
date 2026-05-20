@@ -1,0 +1,24 @@
+{
+  "name": "qa-qc-agent-skills",
+  "version": "1.0.0",
+  "description": "Package này chỉ hỗ trợ **Prompt-Compatible Orchestration Mode**.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NeoPham98/qa-qc-agent-skills.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NeoPham98/qa-qc-agent-skills/issues"
+  },
+  "homepage": "https://github.com/NeoPham98/qa-qc-agent-skills#readme"
+}

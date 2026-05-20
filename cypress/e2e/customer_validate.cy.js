@@ -27,8 +27,8 @@ describe("Customer Validation API - Cypress Automation Run", () => {
   it("Dynamically registers and executes all 29 test cases", () => {
     expect(testCases.length).to.be.greaterThan(0);
     
-    // Visit a blank page to initialize window context for cy.window()
-    cy.visit("about:blank");
+    // Visit local mock server to initialize window context for cy.window()
+    cy.visit("http://localhost:8080");
     
     testCases.forEach((tc) => {
       const caseId = tc["Test Case ID"];

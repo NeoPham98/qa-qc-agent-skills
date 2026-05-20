@@ -78,7 +78,7 @@ describe("Customer Validation API - Cypress Automation Run", () => {
       // Call API
       cy.request({
         method: "POST",
-        url: "/v1/customer/validate",
+        url: "http://localhost:8080/v1/customer/validate",
         body: requestBody,
         headers: {
           "Content-Type": "application/json",

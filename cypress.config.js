@@ -17,7 +17,6 @@ module.exports = defineConfig({
         }
       });
     },
-    baseUrl: "http://sit-deposit.apps.uat2ttptnhs.ldapudtest.com", // Fallback URL
     supportFile: false
   }
 });

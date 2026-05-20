@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/NeoPham98/qa-qc-agent-skills/issues"
   },
-  "homepage": "https://github.com/NeoPham98/qa-qc-agent-skills#readme"
+  "homepage": "https://github.com/NeoPham98/qa-qc-agent-skills#readme",
+  "devDependencies": {
+    "cypress": "^15.15.0"
+  }
 }

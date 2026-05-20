@@ -16,7 +16,10 @@ module.exports = defineConfig({
       // Read and convert TSV to JSON fixture before running specs
       const tsvPath = path.resolve("outputs/run-customer-validate/Legacy19TestCase.generated.tsv");
       if (fs.existsSync(tsvPath)) {
-        const content = fs.readFileSync(tsvPath, "utf-8");
+        let content = fs.readFileSync(tsvPath, "utf-8");
+        if (content.startsWith("\ufeff")) {
+          content = content.slice(1);
+        }
         const lines = content.split("\n");
         const testCases = [];
         if (lines.length >= 2) {

@@ -1,0 +1,624 @@
+id: ai-tester
+version: 0.1.0
+name: AI Tester Cognition Workflow
+summary: Cognition-first workflow pack that makes the AI tester collect knowledge, understand input, cook knowledge, reason, plan, generate outputs, review, and update memory.
+source_registries:
+  - data/source-knowledge/source_registry.yml
+  - data/source-knowledge/prompt_map.yml
+  - data/source-knowledge/excel_profile_map.yml
+mandatory_contracts:
+  - knowledge/standards/qc_delivery_standard.md
+  - knowledge/standards/ai_assisted_testing_standard.md
+  - data/output-contracts/mandatory_test_coverage_rules.yml
+  - workflow-packs/ai-tester/contracts/cognition_artifact_contract.md
+  - workflow-packs/ai-tester/contracts/cognition_gate_contract.md
+hybrid_operating_model:
+  default_entrypoint: delivery-orchestrator
+  direct_specialist_allowed_for_narrow_tasks: false
+  end_to_end_requests_must_use_orchestrator: true
+  cognition_first_rule: Output generation must not run directly from raw input; it must consume approved cognition artifacts.
+  output_reuse_rule: Existing output skills remain the final generation layer after cognition gate approval.
+  missing_fact_rule: Missing facts must be recorded in OpenQuestions or QuestionBacklog, not invented.
+routes:
+  source_to_knowledge:
+    description: Collect sources, classify knowledge, assess source quality, and build safe context.
+    source_roles:
+      - source_root
+      - source_manifest
+      - business_requirement
+      - api_spec
+      - ui_spec
+      - rsd
+      - pttk
+      - urd
+    prompt_intents:
+      - source_inventory
+      - knowledge_setup
+      - full_delivery
+    stages:
+      - knowledge_collect
+      - source_quality_analyze
+      - context_build
+      - cognition_artifact_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - SourceInventory.md
+      - KnowledgeMap.md
+      - CanonicalContextPackage.md
+      - MissingInputList.md
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+  source_to_understanding:
+    description: Skim, break down, analyze, and detect gaps in specific input before cooking knowledge.
+    source_roles:
+      - canonical_context_package
+      - source_manifest
+      - api_spec
+      - ui_spec
+      - rsd
+      - pttk
+      - urd
+    prompt_intents:
+      - input_understanding
+      - document_analysis
+      - full_delivery
+    stages:
+      - document_skim
+      - document_breakdown
+      - source_fact_analyze
+      - ambiguity_conflict_detect
+      - cognition_artifact_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - DocumentMap.md
+      - SourceBreakdown.md
+      - FactInventory.md
+      - RuleInventory.md
+      - OpenQuestions.md
+      - GapAnalysis.md
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+  understanding_to_cooked_knowledge:
+    description: Convert facts and raw rules into structured business, domain, and coverage knowledge.
+    source_roles:
+      - document_map
+      - source_breakdown
+      - fact_inventory
+      - rule_inventory
+      - open_questions
+    prompt_intents:
+      - knowledge_cooking
+      - business_rule_modeling
+      - coverage_modeling
+      - full_delivery
+    stages:
+      - business_rule_extract
+      - domain_model_build
+      - coverage_model_build
+      - risk_model_build
+      - cognition_artifact_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - BusinessRuleModel.md
+      - DomainKnowledgeModel.md
+      - CoverageModel.md
+      - RiskModel.md
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+  cooked_knowledge_to_strategy:
+    description: Brainstorm risks, defect hypotheses, edge cases, coverage ideas, and tester strategy.
+    source_roles:
+      - business_rule_model
+      - domain_knowledge_model
+      - coverage_model
+      - risk_model
+      - tester_memory
+    prompt_intents:
+      - reasoning
+      - brainstorming
+      - planning
+      - full_delivery
+    stages:
+      - risk_brainstorm
+      - defect_hypothesis_generate
+      - edge_case_brainstorm
+      - coverage_idea_generate
+      - test_strategy_plan
+      - coverage_plan
+      - test_data_plan
+      - question_plan
+      - cognition_gate_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - RiskModel.md
+      - DefectHypothesis.md
+      - EdgeCaseList.md
+      - CoverageIdeaList.md
+      - TesterStrategyPlan.md
+      - CoveragePlan.md
+      - TestDataPlan.md
+      - QuestionBacklog.md
+      - ArtifactPlan.md
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+  strategy_to_outputs:
+    description: Generate existing QA outputs only after cognition artifacts pass the cognition gate.
+    source_roles:
+      - canonical_context_package
+      - business_rule_model
+      - risk_model
+      - coverage_plan
+      - tester_strategy_plan
+      - question_backlog
+      - artifact_plan
+    prompt_intents:
+      - test_plan
+      - test_design
+      - testcase
+      - manual_testcase
+      - uat
+      - automation_script
+      - dashboard
+      - full_delivery
+    stages:
+      - cognition_gate_validation
+      - test_plan
+      - test_plan_validation
+      - api_operation_inventory
+      - api_td_setup_context
+      - api_td_method_header
+      - api_td_schema_validation
+      - api_td_business_logic
+      - api_td_validation
+      - ui_td
+      - ui_td_validation
+      - test_generation_matrix
+      - mandatory_coverage_rule_validation
+      - api_tc_from_td
+      - ui_tc_from_td
+      - uat_tc
+      - legacy_19col_export
+      - uat_16col_export
+      - test_generation_matrix_validation
+      - testcase_granularity_validation
+      - api_tc_validation
+      - ui_tc_validation
+      - uat_tc_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - TestPlan.md
+      - API_OperationInventory.md
+      - API_TestDesign.md
+      - UI_TestDesign.md
+      - TestCaseSource.md
+      - UAT_TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+      - UAT_TestCase.generated.tsv
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+  review_to_memory_update:
+    description: Learn from validator, reviewer, supervisor, and execution feedback after output review.
+    source_roles:
+      - validation_report
+      - output_review
+      - supervisor_approval
+      - execution_result
+      - tester_memory
+    prompt_intents:
+      - reflection
+      - learning
+      - memory_update
+      - review
+    stages:
+      - review_findings_normalize
+      - reflection_learn
+      - feedback_to_knowledge_update
+      - defect_pattern_memory_update
+      - cognition_artifact_validation
+      - output_review
+      - supervisor_approval
+      - artifact_publish
+    final_outputs:
+      - ReviewFindings.md
+      - LessonsLearned.md
+      - MemoryUpdate.md
+      - DefectPatternMemory.md
+      - OutputReview.md
+      - SupervisorApproval.md
+    max_retries: 2
+    draft_output_dir: artifacts/ai-tester/draft
+    reviewed_output_dir: artifacts/ai-tester/reviewed
+    approved_output_dir: artifacts/ai-tester/approved
+    failure_output_dir: artifacts/ai-tester/rejected
+stages:
+  knowledge_collect:
+    kind: agent
+    owner: knowledge-collector
+    outputs:
+      - SourceInventory.md
+      - KnowledgeMap.md
+      - MissingInputList.md
+    validators:
+      - cognition_artifact_contract
+  source_quality_analyze:
+    kind: agent
+    owner: source-quality-analyzer
+    outputs:
+      - SourceQualityReport.md
+    validators:
+      - cognition_artifact_contract
+  context_build:
+    kind: agent
+    owner: context-builder
+    outputs:
+      - CanonicalContextPackage.md
+    validators:
+      - cognition_artifact_contract
+  document_skim:
+    kind: agent
+    owner: document-skimmer
+    outputs:
+      - DocumentMap.md
+    validators:
+      - cognition_artifact_contract
+  document_breakdown:
+    kind: agent
+    owner: document-breakdown
+    outputs:
+      - SourceBreakdown.md
+    validators:
+      - cognition_artifact_contract
+  source_fact_analyze:
+    kind: agent
+    owner: api-spec-analyzer|ui-flow-analyzer
+    outputs:
+      - FactInventory.md
+      - RuleInventory.md
+    validators:
+      - cognition_artifact_contract
+  ambiguity_conflict_detect:
+    kind: agent
+    owner: ambiguity-conflict-detector
+    outputs:
+      - OpenQuestions.md
+      - GapAnalysis.md
+    validators:
+      - cognition_artifact_contract
+  business_rule_extract:
+    kind: agent
+    owner: business-rule-extractor
+    outputs:
+      - BusinessRuleModel.md
+    validators:
+      - cognition_artifact_contract
+  domain_model_build:
+    kind: agent
+    owner: domain-model-builder
+    outputs:
+      - DomainKnowledgeModel.md
+    validators:
+      - cognition_artifact_contract
+  coverage_model_build:
+    kind: agent
+    owner: coverage-model-builder
+    outputs:
+      - CoverageModel.md
+    validators:
+      - cognition_artifact_contract
+  risk_model_build:
+    kind: agent
+    owner: risk-model-builder
+    outputs:
+      - RiskModel.md
+    validators:
+      - cognition_artifact_contract
+  risk_brainstorm:
+    kind: agent
+    owner: risk-brainstormer
+    outputs:
+      - RiskModel.md
+    validators:
+      - cognition_artifact_contract
+  defect_hypothesis_generate:
+    kind: agent
+    owner: defect-hypothesis-generator
+    outputs:
+      - DefectHypothesis.md
+    validators:
+      - cognition_artifact_contract
+  edge_case_brainstorm:
+    kind: agent
+    owner: edge-case-brainstormer
+    outputs:
+      - EdgeCaseList.md
+    validators:
+      - cognition_artifact_contract
+  coverage_idea_generate:
+    kind: agent
+    owner: coverage-idea-generator
+    outputs:
+      - CoverageIdeaList.md
+    validators:
+      - cognition_artifact_contract
+  test_strategy_plan:
+    kind: agent
+    owner: test-strategy-planner
+    outputs:
+      - TesterStrategyPlan.md
+      - ArtifactPlan.md
+    validators:
+      - cognition_artifact_contract
+  coverage_plan:
+    kind: agent
+    owner: coverage-planner
+    outputs:
+      - CoveragePlan.md
+    validators:
+      - cognition_artifact_contract
+  test_data_plan:
+    kind: agent
+    owner: test-data-planner
+    outputs:
+      - TestDataPlan.md
+    validators:
+      - cognition_artifact_contract
+  question_plan:
+    kind: agent
+    owner: question-planner
+    outputs:
+      - QuestionBacklog.md
+    validators:
+      - cognition_artifact_contract
+  cognition_artifact_validation:
+    kind: validation
+    outputs:
+      - CognitionArtifact.validation.json
+    validators:
+      - cognition_artifact_contract
+  cognition_gate_validation:
+    kind: validation
+    outputs:
+      - CognitionGate.validation.json
+    validators:
+      - cognition_gate_contract
+  review_findings_normalize:
+    kind: agent
+    owner: reflection-learner
+    outputs:
+      - ReviewFindings.md
+    validators:
+      - cognition_artifact_contract
+  reflection_learn:
+    kind: agent
+    owner: reflection-learner
+    outputs:
+      - LessonsLearned.md
+    validators:
+      - cognition_artifact_contract
+  feedback_to_knowledge_update:
+    kind: agent
+    owner: feedback-to-knowledge-updater
+    outputs:
+      - MemoryUpdate.md
+    validators:
+      - cognition_artifact_contract
+  defect_pattern_memory_update:
+    kind: agent
+    owner: defect-pattern-memory-updater
+    outputs:
+      - DefectPatternMemory.md
+    validators:
+      - cognition_artifact_contract
+  test_plan:
+    kind: agent
+    owner: test-plan-generate
+    outputs:
+      - TestPlan.md
+  test_plan_validation:
+    kind: validation
+    outputs:
+      - TestPlan.validation.json
+    validators:
+      - test_plan_contract
+  api_operation_inventory:
+    kind: agent
+    outputs:
+      - API_OperationInventory.md
+  api_td_setup_context:
+    kind: prompt
+    prompt: ../default/prompts/API/API_TD_1_Setup_Context.txt
+    outputs:
+      - API_TestDesign.md
+  api_td_method_header:
+    kind: prompt
+    prompt: ../default/prompts/API/API_TD_2_Method_Header_BreakDown.txt
+    outputs:
+      - API_TestDesign.md
+  api_td_schema_validation:
+    kind: prompt
+    prompt: ../default/prompts/API/API_TD_3_Schema_Validation_BreakDown.txt
+    outputs:
+      - API_TestDesign.md
+  api_td_business_logic:
+    kind: prompt
+    prompt: ../default/prompts/API/API_TD_4_Value_Business_Cross_Logic_BreakDown.txt
+    outputs:
+      - API_TestDesign.md
+  api_td_validation:
+    kind: validation
+    outputs:
+      - API_TestDesign.validation.json
+    validators:
+      - api_td_contract
+      - api_td_specificity
+  ui_td:
+    kind: prompt
+    prompt: ../default/prompts/UI/UI_Gen_TD.txt
+    outputs:
+      - UI_TestDesign.md
+  ui_td_validation:
+    kind: validation
+    outputs:
+      - UI_TestDesign.validation.json
+    validators:
+      - ui_td_contract
+  test_generation_matrix:
+    kind: prompt
+    outputs:
+      - CoverageMatrix.md
+      - GapAnalysis.md
+  mandatory_coverage_rule_validation:
+    kind: validation
+    outputs:
+      - MandatoryCoverage.validation.json
+    validators:
+      - test_generation_matrix
+  api_tc_from_td:
+    kind: prompt
+    prompt: ../default/prompts/API/API_Gen_TC_From_TD_v2.txt
+    outputs:
+      - TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+  ui_tc_from_td:
+    kind: prompt
+    prompt: ../default/prompts/UI/UI_Gen_TC_From_TD.txt
+    outputs:
+      - TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+  uat_tc:
+    kind: prompt
+    prompt: ../default/prompts/UI/UI_Gen_TC_For_UAT.txt
+    outputs:
+      - UAT_TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+  legacy_19col_export:
+    kind: tool
+    formatted_xlsx_required: true
+    command_hint: scripts/export_legacy_19col_xlsx.py
+    outputs:
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+    validators:
+      - legacy_19col_tsv
+  uat_16col_export:
+    kind: tool
+    outputs:
+      - UAT_TestCase.generated.tsv
+    validators:
+      - uat_16col_tsv
+  test_generation_matrix_validation:
+    kind: validation
+    outputs:
+      - CoverageMatrix.validation.json
+    validators:
+      - test_generation_matrix
+  testcase_granularity_validation:
+    kind: validation
+    outputs:
+      - TestCaseGranularity.validation.json
+    validators:
+      - api_tc_granularity
+      - ui_tc_granularity
+  api_tc_validation:
+    kind: validation
+    outputs:
+      - Legacy19TestCase.generated.tsv
+    validators:
+      - test_generation_matrix
+      - api_tc_specificity
+      - api_tc_granularity
+      - testcase_coverage_api
+  ui_tc_validation:
+    kind: validation
+    outputs:
+      - Legacy19TestCase.generated.tsv
+    validators:
+      - test_generation_matrix
+      - ui_tc_granularity
+      - testcase_coverage_ui
+  uat_tc_validation:
+    kind: validation
+    outputs:
+      - UAT_TestCase.validation.json
+    validators:
+      - test_generation_matrix
+      - uat_tc_granularity
+  output_review:
+    kind: review
+    outputs:
+      - OutputReview.md
+    validators:
+      - output_review_required
+  supervisor_approval:
+    kind: approval
+    outputs:
+      - SupervisorApproval.md
+    validators:
+      - supervisor_approval_required
+      - artifact_manifest
+  artifact_publish:
+    kind: publish
+    outputs:
+      - published-artifact-manifest.yml
+    validators:
+      - artifact_manifest
+validators:
+  cognition_artifact_contract: workflow-packs/ai-tester/contracts/cognition_artifact_contract.md
+  cognition_gate_contract: workflow-packs/ai-tester/contracts/cognition_gate_contract.md
+  test_plan_contract: scripts/validate_test_plan.py
+  api_td_contract: scripts/validate_test_design.py --type api
+  api_td_specificity: scripts/validate_api_td_specificity.py
+  ui_td_contract: scripts/validate_test_design.py --type ui
+  test_generation_matrix: scripts/validate_test_generation_matrix.py
+  api_tc_specificity: scripts/validate_api_tc_specificity.py
+  api_tc_granularity: scripts/validate_testcase_granularity.py --profile api_legacy_19_column_testcase
+  ui_tc_granularity: scripts/validate_testcase_granularity.py --profile ui_legacy_19_column_testcase
+  uat_tc_granularity: scripts/validate_testcase_granularity.py --profile uat_16_column_testcase
+  testcase_coverage_api: scripts/validate_testcase_coverage.py --profile api_legacy_19_column_testcase
+  testcase_coverage_ui: scripts/validate_testcase_coverage.py --profile ui_legacy_19_column_testcase
+  legacy_19col_tsv: scripts/validate_legacy_19col_tsv.py
+  uat_16col_tsv: scripts/validate_testcase_contract.py --profile uat_16_column_testcase
+  artifact_manifest: scripts/validate_artifact_manifest.py
+  output_review_required: workflow-packs/ai-tester/review-gates.yml#output_review
+  supervisor_approval_required: workflow-packs/ai-tester/review-gates.yml#supervisor_approval

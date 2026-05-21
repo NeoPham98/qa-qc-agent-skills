@@ -1,0 +1,29 @@
+schema_version: '1.0'
+required_gate_order:
+  - cognition_artifact_validation
+  - cognition_gate_validation
+  - output_generation
+  - validation
+  - output_review
+  - supervisor_approval
+  - artifact_publish
+  - reflection_when_applicable
+validators:
+  cognition_artifact_contract:
+    type: contract
+    reference: workflow-packs/ai-tester/contracts/cognition_artifact_contract.md
+  cognition_gate_contract:
+    type: contract
+    reference: workflow-packs/ai-tester/contracts/cognition_gate_contract.md
+  source_trace_required:
+    type: policy
+    rule: every source-backed cognition claim must include a source reference or explicit pending marker
+  no_raw_secret_runtime_source:
+    type: policy
+    rule: cognition artifacts must not expose unredacted secrets or unsafe raw source content
+  no_direct_output_from_raw_input:
+    type: policy
+    rule: final output stages require cognition gate approval first
+  blocker_question_policy:
+    type: policy
+    rule: blocker questions must stop output generation unless the proceed rule is explicit and reviewer-visible

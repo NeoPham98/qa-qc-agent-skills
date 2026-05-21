@@ -1,0 +1,108 @@
+source_roles:
+  canonical_context_package:
+    extensions: [.md, .json, .yml, .yaml]
+    filename_keywords: [CanonicalContextPackage, canonical-context, context-package]
+    content_keywords: [Canonical Context Package, Included source refs, Redaction warnings, Usage constraints]
+  source_inventory:
+    extensions: [.md, .json, .yml, .yaml]
+    filename_keywords: [SourceInventory, source-inventory, source_manifest]
+    content_keywords: [Source ID, Source Kind, Canonical Status, Redaction Status]
+  knowledge_map:
+    extensions: [.md, .json]
+    filename_keywords: [KnowledgeMap, knowledge-map]
+    content_keywords: [Project/domain map, Module/feature map, Available source coverage]
+  tester_memory:
+    extensions: [.md, .json]
+    filename_keywords: [TesterMemory, tester-memory, DefectPatternMemory]
+    content_keywords: [Domain memory, Business rule memory, Risk memory, Approved lessons]
+  document_map:
+    extensions: [.md, .json]
+    filename_keywords: [DocumentMap, document-map]
+    content_keywords: [Section, Table, API, Screen, Flow, Rule, Gap]
+  source_breakdown:
+    extensions: [.md, .json]
+    filename_keywords: [SourceBreakdown, source-breakdown]
+    content_keywords: [Unit ID, Unit Type, Testability, Dependencies]
+  fact_inventory:
+    extensions: [.md, .json]
+    filename_keywords: [FactInventory, fact-inventory]
+    content_keywords: [Fact ID, Fact Type, Source Ref, Confidence]
+  rule_inventory:
+    extensions: [.md, .json]
+    filename_keywords: [RuleInventory, rule-inventory]
+    content_keywords: [Raw Rule ID, Raw Rule Text, Parsed Condition, Parsed Outcome]
+  business_rule_model:
+    extensions: [.md, .json]
+    filename_keywords: [BusinessRuleModel, business-rule-model]
+    content_keywords: [Rule ID, Condition, Action, Expected Outcome, Exception]
+  domain_knowledge_model:
+    extensions: [.md, .json]
+    filename_keywords: [DomainKnowledgeModel, domain-knowledge-model]
+    content_keywords: [Entities, Actors, States, Transitions, Dependencies]
+  coverage_model:
+    extensions: [.md, .json]
+    filename_keywords: [CoverageModel, coverage-model]
+    content_keywords: [Coverage Item ID, Coverage Type, Required, Priority]
+  risk_model:
+    extensions: [.md, .json]
+    filename_keywords: [RiskModel, risk-model]
+    content_keywords: [Risk ID, Risk Category, Cause, Impact, Mitigation]
+  defect_hypothesis:
+    extensions: [.md, .json]
+    filename_keywords: [DefectHypothesis, defect-hypothesis]
+    content_keywords: [Hypothesis ID, Why Plausible, Suggested Coverage]
+  edge_case_list:
+    extensions: [.md, .json]
+    filename_keywords: [EdgeCaseList, edge-case-list]
+    content_keywords: [Edge Case ID, Category, Expected Behavior Known]
+  coverage_idea_list:
+    extensions: [.md, .json]
+    filename_keywords: [CoverageIdeaList, coverage-idea-list]
+    content_keywords: [Idea ID, Basis, Recommended Artifact]
+  tester_strategy_plan:
+    extensions: [.md, .json]
+    filename_keywords: [TesterStrategyPlan, tester-strategy-plan]
+    content_keywords: [Strategy by risk, Test levels, Output generation plan]
+  coverage_plan:
+    extensions: [.md, .json]
+    filename_keywords: [CoveragePlan, coverage-plan]
+    content_keywords: [Coverage Plan ID, Must Generate, Rationale]
+  test_data_plan:
+    extensions: [.md, .json]
+    filename_keywords: [TestDataPlan, test-data-plan]
+    content_keywords: [Valid data classes, Invalid data classes, Boundary values]
+  question_backlog:
+    extensions: [.md, .json]
+    filename_keywords: [QuestionBacklog, question-backlog]
+    content_keywords: [Question ID, Blocker, Proceed Rule]
+  artifact_plan:
+    extensions: [.md, .json]
+    filename_keywords: [ArtifactPlan, artifact-plan]
+    content_keywords: [Upstream Required, Generator, Validators, Order]
+  review_findings:
+    extensions: [.md, .json]
+    filename_keywords: [ReviewFindings, review-findings]
+    content_keywords: [Finding ID, Severity, Required Action]
+  lessons_learned:
+    extensions: [.md, .json]
+    filename_keywords: [LessonsLearned, lessons-learned]
+    content_keywords: [What failed, Why it failed, What should change next run]
+  memory_update:
+    extensions: [.md, .json]
+    filename_keywords: [MemoryUpdate, memory-update]
+    content_keywords: [Update ID, Target Memory, Change Type, Approval]
+
+prompt_intents:
+  knowledge_setup: [setup knowledge, collect knowledge, thu thập tri thức, hệ thống tri thức, source inventory]
+  input_understanding: [skim, skimming, đọc lướt, hiểu input, phân tích tài liệu, analyze docs]
+  document_analysis: [breakdown document, breaking part, chia nhỏ tài liệu, document map]
+  knowledge_cooking: [cook knowledge, cooking knowledge, chuẩn hóa tri thức, business rule model]
+  business_rule_modeling: [business rule, rule model, luật nghiệp vụ, decision table]
+  coverage_modeling: [coverage model, mô hình coverage, coverage obligations]
+  reasoning: [reasoning, suy luận, phân tích rủi ro, risk reasoning]
+  brainstorming: [brainstorm, brainstorming, nghĩ test, edge case]
+  planning: [planning, test strategy, kế hoạch test, coverage plan]
+  reflection: [reflection, lessons learned, học lại, review findings]
+  learning: [learning, memory update, cập nhật tri thức, defect pattern]
+  memory_update: [tester memory, defect memory, cập nhật memory]
+  full_ai_tester: [ai tester, tester như con người, cognition-first, từ tri thức đến testcase]

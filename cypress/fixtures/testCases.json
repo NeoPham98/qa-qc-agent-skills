@@ -1,6 +1,6 @@
 [
   {
-    "﻿Test Case ID": "TD_P1_001_TC_001",
+    "Test Case ID": "TD_P1_001_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "POST hợp lệ",
@@ -18,10 +18,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: RESPONSE_SCHEMA"
+    "Notes\r": "\"Coverage: RESPONSE_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_002_TC_001",
+    "Test Case ID": "TD_P1_002_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "GET không hỗ trợ",
@@ -39,10 +39,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: METHOD"
+    "Notes\r": "\"Coverage: METHOD\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_003_TC_001",
+    "Test Case ID": "TD_P1_003_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Content-Type không hợp lệ",
@@ -60,10 +60,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: CONTENT_TYPE"
+    "Notes\r": "\"Coverage: CONTENT_TYPE\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_004_TC_001",
+    "Test Case ID": "TD_P1_004_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Thiếu header authToken",
@@ -81,10 +81,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: AUTH"
+    "Notes\r": "\"Coverage: AUTH\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_005_TC_001",
+    "Test Case ID": "TD_P1_005_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Thiếu header requestID",
@@ -102,10 +102,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: MANDATORY_HEADERS"
+    "Notes\r": "\"Coverage: MANDATORY_HEADERS\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_006_TC_001",
+    "Test Case ID": "TD_P1_006_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Thiếu header X-App-Code",
@@ -123,10 +123,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: MANDATORY_HEADERS"
+    "Notes\r": "\"Coverage: MANDATORY_HEADERS\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_007_TC_001",
+    "Test Case ID": "TD_P1_007_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Thiếu header Accept-language",
@@ -144,10 +144,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: LANGUAGE"
+    "Notes\r": "\"Coverage: LANGUAGE\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P1_008_TC_001",
+    "Test Case ID": "TD_P1_008_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Protocol & Headers",
     "Scenario Outline": "Accept-language không hỗ trợ",
@@ -165,10 +165,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: LANGUAGE"
+    "Notes\r": "\"Coverage: LANGUAGE\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_001_TC_001",
+    "Test Case ID": "TD_P2_001_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "Thiếu trường requestCif",
@@ -186,10 +186,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: RESPONSE_SCHEMA"
+    "Notes\r": "\"Coverage: RESPONSE_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_002_TC_001",
+    "Test Case ID": "TD_P2_002_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "Sai kiểu dữ liệu requestCif",
@@ -207,10 +207,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BODY_SCHEMA"
+    "Notes\r": "\"Coverage: BODY_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_003_TC_001",
+    "Test Case ID": "TD_P2_003_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "requestCif rỗng",
@@ -228,10 +228,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BODY_SCHEMA"
+    "Notes\r": "\"Coverage: BODY_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_004_TC_001",
+    "Test Case ID": "TD_P2_004_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "requestCif ngắn hơn 12 ký tự",
@@ -249,10 +249,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BOUNDARY"
+    "Notes\r": "\"Coverage: BOUNDARY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_005_TC_001",
+    "Test Case ID": "TD_P2_005_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "requestCif dài hơn 12 ký tự",
@@ -270,10 +270,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BOUNDARY"
+    "Notes\r": "\"Coverage: BOUNDARY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_006_TC_001",
+    "Test Case ID": "TD_P2_006_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "requestCif chứa chữ",
@@ -291,10 +291,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BODY_SCHEMA"
+    "Notes\r": "\"Coverage: BODY_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P2_006_TC_002",
+    "Test Case ID": "TD_P2_006_TC_002",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Body Schema Validation",
     "Scenario Outline": "requestCif chứa ký tự đặc biệt",
@@ -312,10 +312,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BODY_SCHEMA"
+    "Notes\r": "\"Coverage: BODY_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_001_TC_001",
+    "Test Case ID": "TD_P3_001_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Lỗi quốc tịch 101",
@@ -333,10 +333,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BUSINESS_ERROR"
+    "Notes\r": "\"Coverage: BUSINESS_ERROR\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_002_TC_001",
+    "Test Case ID": "TD_P3_002_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Lỗi tuổi 102",
@@ -354,10 +354,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BUSINESS_ERROR"
+    "Notes\r": "\"Coverage: BUSINESS_ERROR\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_003_TC_001",
+    "Test Case ID": "TD_P3_003_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Khách hàng 18 tuổi",
@@ -375,10 +375,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: RESPONSE_SCHEMA"
+    "Notes\r": "\"Coverage: RESPONSE_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_004_TC_001",
+    "Test Case ID": "TD_P3_004_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Lỗi loại khách hàng 103",
@@ -396,10 +396,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BUSINESS_ERROR"
+    "Notes\r": "\"Coverage: BUSINESS_ERROR\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_005_TC_001",
+    "Test Case ID": "TD_P3_005_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Lỗi tình trạng cư trú 104",
@@ -417,10 +417,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BUSINESS_ERROR"
+    "Notes\r": "\"Coverage: BUSINESS_ERROR\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_006_TC_001",
+    "Test Case ID": "TD_P3_006_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Ngoài giờ COT 109",
@@ -438,10 +438,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BUSINESS_ERROR"
+    "Notes\r": "\"Coverage: BUSINESS_ERROR\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_007_TC_001",
+    "Test Case ID": "TD_P3_007_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Biên COT: Giao dịch lúc 07:59",
@@ -459,10 +459,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BOUNDARY"
+    "Notes\r": "\"Coverage: BOUNDARY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_008_TC_001",
+    "Test Case ID": "TD_P3_008_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Biên COT: Giao dịch lúc 08:00",
@@ -480,10 +480,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: RESPONSE_SCHEMA"
+    "Notes\r": "\"Coverage: RESPONSE_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_009_TC_001",
+    "Test Case ID": "TD_P3_009_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Biên COT: Giao dịch lúc 17:00",
@@ -501,10 +501,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: RESPONSE_SCHEMA"
+    "Notes\r": "\"Coverage: RESPONSE_SCHEMA\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_010_TC_001",
+    "Test Case ID": "TD_P3_010_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Biên COT: Giao dịch lúc 17:01",
@@ -522,10 +522,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: BOUNDARY"
+    "Notes\r": "\"Coverage: BOUNDARY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_011_TC_001",
+    "Test Case ID": "TD_P3_011_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Độ ưu tiên lỗi: 101 và 102",
@@ -543,10 +543,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: ERROR_PRIORITY"
+    "Notes\r": "\"Coverage: ERROR_PRIORITY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_012_TC_001",
+    "Test Case ID": "TD_P3_012_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Độ ưu tiên lỗi: 102 và 103",
@@ -564,10 +564,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: ERROR_PRIORITY"
+    "Notes\r": "\"Coverage: ERROR_PRIORITY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_013_TC_001",
+    "Test Case ID": "TD_P3_013_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Độ ưu tiên lỗi: 103 và 104",
@@ -585,10 +585,10 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: ERROR_PRIORITY"
+    "Notes\r": "\"Coverage: ERROR_PRIORITY\"\r"
   },
   {
-    "﻿Test Case ID": "TD_P3_014_TC_001",
+    "Test Case ID": "TD_P3_014_TC_001",
     "Function": "POST /v1/customer/validate",
     "Group Tests": "Business Logic",
     "Scenario Outline": "Độ ưu tiên lỗi: 104 và 109",
@@ -606,6 +606,6 @@
     "Automation Test Results": "",
     "Actual result": "",
     "BugID": "",
-    "Notes": "Coverage: ERROR_PRIORITY"
+    "Notes\r": "\"Coverage: ERROR_PRIORITY\"\r"
   }
 ]

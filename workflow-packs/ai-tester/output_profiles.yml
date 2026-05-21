@@ -1,0 +1,134 @@
+lifecycle_states:
+  draft:
+    directory: artifacts/ai-tester/draft
+    writer: cognition_or_output_generator
+    approval_required: false
+  reviewed:
+    directory: artifacts/ai-tester/reviewed
+    writer: reviewer
+    requires:
+      - validation_report
+      - OutputReview.md
+  approved:
+    directory: artifacts/ai-tester/approved
+    writer: supervisor
+    requires:
+      - validation_report
+      - OutputReview.md
+      - SupervisorApproval.md
+      - source_trace
+      - no_secret_report
+  rejected:
+    directory: artifacts/ai-tester/rejected
+    writer: supervisor
+    requires:
+      - failure_reason
+  memory_pending:
+    directory: artifacts/ai-tester/memory-pending
+    writer: reflection_agent
+    requires:
+      - LessonsLearned.md
+      - MemoryUpdate.md
+      - approval_status
+profiles:
+  source_to_knowledge:
+    final_outputs:
+      - SourceInventory.md
+      - KnowledgeMap.md
+      - SourceQualityReport.md
+      - CanonicalContextPackage.md
+      - MissingInputList.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  source_to_understanding:
+    final_outputs:
+      - DocumentMap.md
+      - SourceBreakdown.md
+      - FactInventory.md
+      - RuleInventory.md
+      - OpenQuestions.md
+      - GapAnalysis.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  cooked_knowledge:
+    final_outputs:
+      - BusinessRuleModel.md
+      - DomainKnowledgeModel.md
+      - CoverageModel.md
+      - RiskModel.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  reasoning_and_strategy:
+    final_outputs:
+      - RiskModel.md
+      - DefectHypothesis.md
+      - EdgeCaseList.md
+      - CoverageIdeaList.md
+      - TesterStrategyPlan.md
+      - CoveragePlan.md
+      - TestDataPlan.md
+      - QuestionBacklog.md
+      - ArtifactPlan.md
+      - OutputReview.md
+      - SupervisorApproval.md
+  ai_tester_api_testcase:
+    final_outputs:
+      - SourceInventory.md
+      - DocumentMap.md
+      - FactInventory.md
+      - BusinessRuleModel.md
+      - RiskModel.md
+      - CoveragePlan.md
+      - TesterStrategyPlan.md
+      - QuestionBacklog.md
+      - API_OperationInventory.md
+      - API_TestDesign.md
+      - TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+      - OutputReview.md
+      - SupervisorApproval.md
+  ai_tester_ui_testcase:
+    final_outputs:
+      - SourceInventory.md
+      - DocumentMap.md
+      - FactInventory.md
+      - BusinessRuleModel.md
+      - RiskModel.md
+      - CoveragePlan.md
+      - TesterStrategyPlan.md
+      - QuestionBacklog.md
+      - UI_TestDesign.md
+      - TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+      - Legacy19TestCase.generated.tsv
+      - Legacy19TestCase.generated.xlsx
+      - OutputReview.md
+      - SupervisorApproval.md
+  ai_tester_uat_testcase:
+    final_outputs:
+      - SourceInventory.md
+      - DocumentMap.md
+      - FactInventory.md
+      - BusinessRuleModel.md
+      - RiskModel.md
+      - CoveragePlan.md
+      - TesterStrategyPlan.md
+      - QuestionBacklog.md
+      - UAT_TestCaseSource.md
+      - CoverageMatrix.md
+      - GapAnalysis.md
+      - UAT_TestCase.generated.tsv
+      - OutputReview.md
+      - SupervisorApproval.md
+  reflection_memory_update:
+    final_outputs:
+      - ReviewFindings.md
+      - LessonsLearned.md
+      - MemoryUpdate.md
+      - DefectPatternMemory.md
+      - OutputReview.md
+      - SupervisorApproval.md

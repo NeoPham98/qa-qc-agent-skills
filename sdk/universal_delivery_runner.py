@@ -5,11 +5,13 @@ import asyncio
 from datetime import datetime
 import json
 from pathlib import Path
+import subprocess
 import sys
 from typing import AsyncIterator
 
 from intent_classifier import classify_intent
 from output_publishers.google_sheets_publisher import publish_to_google_sheet, write_local_handoff
+from output_publishers.testrail_publisher import load_testrail_config_from_env, publish_testcases_from_import_csv
 from route_planner import plan_route
 from source_adapters.google_sheets import build_google_sheet_source
 from source_adapters.local_files import expand_sources
@@ -144,6 +146,39 @@ def require_final_outputs(output_dir: Path, plan) -> None:
         raise RuntimeError(f"Generation completed without required final outputs: {missing}")
 
 
+def maybe_export_testrail_csv(output_dir: Path, plan, enabled: bool) -> Path | None:
+    if not enabled:
+        return None
+    legacy_tsv = next(
+        (output_dir / output for output in plan.final_outputs if output == "Legacy19TestCase.generated.tsv" and (output_dir / output).exists()),
+        None,
+    )
+    if legacy_tsv is None:
+        return None
+    csv_output = output_dir / "TestRailImport.generated.csv"
+    cmd = [
+        sys.executable,
+        str(ROOT / "scripts" / "export_testrail_cases_csv.py"),
+        "--input",
+        str(legacy_tsv),
+        "--output",
+        str(csv_output),
+    ]
+    proc = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=True, check=False)
+    if proc.returncode != 0:
+        raise RuntimeError(f"TestRail CSV export failed:\n{proc.stdout}{proc.stderr}")
+    return csv_output
+
+
+def maybe_publish_testrail(csv_output: Path | None, enabled: bool, mode: str) -> None:
+    if not enabled or csv_output is None:
+        return
+    if mode == "csv-only":
+        return
+    config = load_testrail_config_from_env()
+    publish_testcases_from_import_csv(csv_output, config=config, approved=True, mode=mode)
+
+
 async def async_main(args: argparse.Namespace) -> int:
     if not (args.plan_only or args.dry_run):
         require_claude_agent_sdk()
@@ -173,6 +208,8 @@ async def async_main(args: argparse.Namespace) -> int:
             raise RuntimeError("--target-sheet-id is required with --write-back-google-sheet")
         tsv_outputs = [output_dir / output for output in plan.final_outputs if output.endswith(".tsv") and (output_dir / output).exists()]
         publish_to_google_sheet(args.target_sheet_id, args.write_back_tab_prefix, tsv_outputs, approved=True)
+    testrail_csv = maybe_export_testrail_csv(output_dir, plan, args.write_back_testrail or args.write_back_testrail_mode == "csv-only")
+    maybe_publish_testrail(testrail_csv, args.write_back_testrail, args.write_back_testrail_mode)
     return 0
 
 
@@ -203,6 +240,8 @@ def main() -> int:
     parser.add_argument("--write-back-google-sheet", action="store_true", help="Write TSV outputs to new tabs after successful generation and validation")
     parser.add_argument("--target-sheet-id", help="Target spreadsheet ID for explicit Google Sheet write-back")
     parser.add_argument("--write-back-tab-prefix", default="QC_Output", help="Prefix for new output tabs")
+    parser.add_argument("--write-back-testrail", action="store_true", help="Publish generated testcase definitions to TestRail after validation")
+    parser.add_argument("--write-back-testrail-mode", choices=["csv-only", "api"], default="csv-only", help="TestRail write-back mode; csv-only creates TestRailImport.generated.csv without calling TestRail")
     args = parser.parse_args()
     return asyncio.run(async_main(args))
 

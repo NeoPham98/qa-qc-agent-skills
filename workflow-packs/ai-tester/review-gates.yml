@@ -1,0 +1,60 @@
+schema_version: '1.0'
+cognition_gate:
+  required: true
+  must_pass_before:
+    - test_plan
+    - api_td_setup_context
+    - ui_td
+    - api_tc_from_td
+    - ui_tc_from_td
+    - uat_tc
+  required_artifacts:
+    - SourceInventory.md
+    - DocumentMap.md
+    - FactInventory.md
+    - BusinessRuleModel.md
+    - RiskModel.md
+    - CoveragePlan.md
+    - TesterStrategyPlan.md
+    - QuestionBacklog.md
+  block_on:
+    - missing_source_trace
+    - blocker_open_question_without_proceed_rule
+    - unredacted_runtime_source
+    - output_generation_from_raw_input_only
+    - hypothesis_marked_as_confirmed_rule
+output_review:
+  required: true
+  reviewer_must_not_be_generator: true
+  reviewer_must_check_cognition_chain: true
+  finding_severities:
+    - blocker
+    - major
+    - minor
+  block_publish_on:
+    - blocker
+    - major
+  blocking_quality_gates:
+    - cognition_gate
+    - testcase_granularity
+    - source_traceability
+  requires_actionable_findings: true
+supervisor_approval:
+  required: true
+  must_follow: output_review
+  approve_only_if:
+    - cognition_gate_passed
+    - all_validators_passed
+    - review_passed
+    - source_trace_present
+    - no_secrets_detected
+    - artifact_manifest_valid
+    - blocker_questions_resolved_or_explicitly_deferred
+  on_failure: route_back_to_owner_until_retry_limit_then_reject
+reflection_gate:
+  required_after_rejection_or_major_finding: true
+  required_outputs:
+    - ReviewFindings.md
+    - LessonsLearned.md
+    - MemoryUpdate.md
+  memory_update_requires_supervisor_approval: true

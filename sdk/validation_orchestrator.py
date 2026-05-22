@@ -10,6 +10,37 @@ from route_planner import RoutePlan
 
 ROOT = Path(__file__).resolve().parents[1]
 
+COGNITION_ARTIFACTS = {
+    "SourceInventory.md",
+    "KnowledgeMap.md",
+    "CanonicalContextPackage.md",
+    "TesterMemory.md",
+    "MissingInputList.md",
+    "DocumentMap.md",
+    "SourceBreakdown.md",
+    "SourceQualityReport.md",
+    "GapAnalysis.md",
+    "FactInventory.md",
+    "RuleInventory.md",
+    "OpenQuestions.md",
+    "BusinessRuleModel.md",
+    "DomainKnowledgeModel.md",
+    "CoverageModel.md",
+    "RiskModel.md",
+    "DefectHypothesis.md",
+    "EdgeCaseList.md",
+    "CoverageIdeaList.md",
+    "TesterStrategyPlan.md",
+    "CoveragePlan.md",
+    "TestDataPlan.md",
+    "QuestionBacklog.md",
+    "ArtifactPlan.md",
+    "ReviewFindings.md",
+    "LessonsLearned.md",
+    "DefectPatternMemory.md",
+    "MemoryUpdate.md",
+}
+
 
 @dataclass
 class ValidationCheck:
@@ -95,6 +126,39 @@ def validate_no_bidv_runtime_refs(output_dir: Path, report: ValidationReport) ->
     report.checks.append(ValidationCheck("no_bidv_runtime_refs", str(output_dir), "success" if ok else "error", details))
 
 
+def route_has_stage(plan: RoutePlan, stage_id: str) -> bool:
+    return any(stage.id == stage_id for stage in plan.stages)
+
+
+def validate_cognition_artifacts(output_dir: Path, plan: RoutePlan, report: ValidationReport) -> None:
+    if plan.workflow_pack != "ai-tester" and not route_has_stage(plan, "cognition_artifact_validation"):
+        return
+    artifact_names = sorted({
+        output
+        for stage in plan.stages
+        if "cognition_artifact_contract" in stage.validators
+        for output in stage.outputs
+        if output in COGNITION_ARTIFACTS
+    })
+    artifact_paths = [output_dir / name for name in artifact_names if (output_dir / name).exists()]
+    if not artifact_paths:
+        report.checks.append(ValidationCheck("cognition_artifact_validation", str(output_dir), "pending", "Cognition artifacts will be created during execution."))
+        return
+    ok, details = run_validator(["scripts/validate_cognition_artifact.py", *[str(path) for path in artifact_paths]])
+    report.checks.append(ValidationCheck("cognition_artifact_validation", str(output_dir), "success" if ok else "error", details))
+
+
+def validate_cognition_gate(output_dir: Path, plan: RoutePlan, report: ValidationReport) -> None:
+    if plan.workflow_pack != "ai-tester" and not route_has_stage(plan, "cognition_gate_validation"):
+        return
+    gate_outputs = ["SourceInventory.md", "DocumentMap.md", "FactInventory.md", "RiskModel.md", "CoveragePlan.md", "TesterStrategyPlan.md", "QuestionBacklog.md"]
+    if not any((output_dir / name).exists() for name in gate_outputs):
+        report.checks.append(ValidationCheck("cognition_gate_validation", str(output_dir), "pending", "Cognition gate artifacts will be created during execution."))
+        return
+    ok, details = run_validator(["scripts/validate_cognition_gate.py", str(output_dir)])
+    report.checks.append(ValidationCheck("cognition_gate_validation", str(output_dir), "success" if ok else "error", details))
+
+
 def validate_planned_outputs(output_dir: Path, plan: RoutePlan) -> ValidationReport:
     report = ValidationReport(schema_version="1.0", status="success")
     for output in plan.final_outputs:
@@ -110,6 +174,8 @@ def validate_planned_outputs(output_dir: Path, plan: RoutePlan) -> ValidationRep
             report.checks.append(ValidationCheck("final_output_exists", output, "success"))
         else:
             report.checks.append(ValidationCheck("final_output_exists", output, "pending", "Final output will be created during execution."))
+    validate_cognition_artifacts(output_dir, plan, report)
+    validate_cognition_gate(output_dir, plan, report)
     validate_matrix_artifact(output_dir, plan, report)
     validate_test_plan_artifact(output_dir, plan, report)
     validate_api_automation_artifacts(output_dir, plan, report)

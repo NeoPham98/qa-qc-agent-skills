@@ -22,7 +22,16 @@ from workflow_pack_loader import load_workflow_pack
 
 ROOT = Path(__file__).resolve().parents[1]
 
-SYSTEM_PROMPT = """
+def build_system_prompt(workflow_pack: str) -> str:
+    if workflow_pack == "ai-tester":
+        return """
+You are running the self-contained AI Tester Operating System router.
+Use workflow-packs/ai-tester as the main workflow. Work like a senior QC: collect knowledge, understand input, cook facts into tester knowledge, reason about risks, plan coverage, pass the cognition gate, then generate QA/test outputs.
+Do not generate TestPlan/TestDesign/TestCase/UAT/export directly from raw input. Output generation may reuse workflow-packs/default only as a downstream subsystem after cognition artifacts pass the gate.
+Missing facts must be recorded in OpenQuestions, QuestionBacklog, or [PENDING_DOC:<fact>] markers. Do not treat hypotheses as confirmed requirements.
+Never write to Google Sheets or external workbooks unless explicitly instructed and validated.
+""".strip()
+    return """
 You are running the self-contained universal file+prompt router.
 The original raw sample folder is not required at runtime. Use workflow-packs/default as the source of workflow behavior, prompts, contracts, output profiles, validators, and golden examples.
 User-facing final outputs are QA/test artifacts: Test Design, Test Case, legacy 19-column TSV/XLSX, UAT testcase, API automation feature files, TestExecution TSV, Paygates dashboard, and Coverage/GAP reports.
@@ -73,7 +82,34 @@ def write_plan_only_artifacts(output_dir: Path, manifest: SourceManifest, plan) 
     write_local_handoff(output_dir, plan.final_outputs)
 
 
+def build_ai_tester_execution_requirements() -> str:
+    return """
+AI Tester OS requirements:
+1. For end-to-end delivery, create cognition artifacts before final QA/test outputs: SourceInventory.md, DocumentMap.md, FactInventory.md, BusinessRuleModel.md or OpenQuestions.md, RiskModel.md, CoveragePlan.md, TesterStrategyPlan.md, and QuestionBacklog.md.
+2. Each cognition artifact must include Artifact ID, Project, Squad, Epic, Source Refs, Created By, Created At, Confidence, and Open Questions.
+3. Source-backed claims must include source manifest ids, normalized knowledge ids, source section/page/sheet refs, or [PENDING_DOC:<fact>] markers.
+4. Missing facts must be visible in OpenQuestions.md, QuestionBacklog.md, or pending markers. Do not invent requirements.
+5. Hypotheses belong in risk/defect reasoning only; do not treat them as confirmed business rules.
+6. Run cognition gate validation before output stages. If the gate fails, write blocker rationale to OutputReview.md and SupervisorApproval.md instead of claiming approval.
+7. Output stages may reuse workflow-packs/default prompts/contracts only after the cognition gate passes.
+""".strip()
+
+
+def build_output_generation_requirements() -> str:
+    return """
+Output generation requirements:
+1. API_TestDesign.md must satisfy scripts/validate_test_design.py --type api and scripts/validate_api_td_specificity.py: include TD_P1, TD_P2, and TD_P3 nodes with headings like `### TD_P1_001 ...`; include control parameters METHOD_CHECK, CONTENT_TYPE_CHECK, MANDATORY_CHECK, TYPE_CHECK, LENGTH_CHECK, SCOPE_FIELDS, and EG_CHECK; include HTTP method plus endpoint heading such as `POST /path`; each TD node must include **Steps**, **Expected**, and Source/source reference text; TD_P2 nodes must name concrete field/schema/request/response/body/param targets; TD_P3 nodes must name concrete business/rule/error/code/state/flow targets.
+2. Before writing Legacy19TestCase.generated.tsv, read workflow-packs/default/examples/testcase-legacy-19col.tsv and copy its 19-column header exactly, including quoted cells and tab separators. Every data row must have exactly the same 19 tab-separated columns and non-empty required cells.
+3. Before writing CoverageMatrix.md, satisfy scripts/validate_test_generation_matrix.py: include a Markdown table with at least these columns: Matrix Row ID, Source Ref, Source Kind, Field Or Rule, Rule Type, Technique, Value Class, Coverage Status, Rationale, TD ID, Test Case ID. For every row whose Coverage Status is covered, populate a valid TD ID such as TD_P1_001/TD_P2_001/TD_P3_001 or a valid Test Case ID such as TD_P1_001_TC_001; use Coverage Status open_question for rows that cannot be traced to a TD/TC yet.
+4. TestCaseSource.md must contain real testcase execution content, not metadata-only notes: include testcase IDs matching TD_P[123]_NNN_TC_NNN; include `Primary Condition:`, `Primary Target:`, or `Atomic Target:` markers naming exact field/header/param/path/body/business targets; include execution markers such as `Pre-conditions`, `Test Datas`, `Test Steps`, `Expected result`, or `Open Questions`; keep each testcase atomic.
+5. Each row in Legacy19TestCase.generated.tsv must also satisfy scripts/validate_api_tc_specificity.py and scripts/validate_testcase_granularity.py: Test Case ID must match TD_P[123]_NNN_TC_NNN; Test Case Summary or Test Steps must include an HTTP method (GET/POST/PUT/PATCH/DELETE) and endpoint path; Expected result must include an HTTP status such as HTTP 200/HTTP 400 and a concrete response/error assertion mentioning code, message, success, data, errors, response, body, schema, field, lỗi, or mã lỗi; Test Case Summary or Test Datas or Expected result must contain `Primary Condition:`, `Primary Target:`, or `Atomic Target:` naming one exact field/header/param/path/body/business rule. Do not use generic phrases such as valid data, invalid data, correct response, appropriate error, như trên, tương tự, etc.
+6. Legacy19TestCase.generated.tsv must include all API coverage categories required by scripts/validate_testcase_coverage.py for profile api_legacy_19_column_testcase. Across the generated rows, include explicit `Coverage: METHOD`, `Coverage: CONTENT_TYPE`, `Coverage: AUTH`, `Coverage: MANDATORY_HEADERS`, `Coverage: LANGUAGE`, `Coverage: BODY_SCHEMA`, `Coverage: BOUNDARY`, `Coverage: BUSINESS_ERROR`, `Coverage: RESPONSE_SCHEMA`, and `Coverage: ERROR_PRIORITY` markers in Notes or another testcase text column. Each marked row must still remain atomic with one Primary Condition.
+""".strip()
+
+
 def build_execution_prompt(manifest_path: Path, route_plan_path: Path, workflow_pack: str) -> str:
+    pack_requirements = build_ai_tester_execution_requirements() if workflow_pack == "ai-tester" else ""
+    output_requirements = build_output_generation_requirements()
     return f"""
 Execute the universal route using workflow pack `{workflow_pack}`.
 
@@ -92,13 +128,11 @@ Required behavior:
 8. Do not create task-list items or plan-only placeholders. Write the required artifact files directly under the manifest output_directory before finishing.
 9. If a required source fact is absent, write an explicit Open Question or [PENDING_DOC] marker instead of stopping generation.
 10. Preserve the workflow route and prompt sequence exactly as defined by route_plan.json; these prompts are packaged end-user standard knowledge, not throwaway templates.
-11. API_TestDesign.md must satisfy scripts/validate_test_design.py --type api and scripts/validate_api_td_specificity.py: include TD_P1, TD_P2, and TD_P3 nodes with headings like `### TD_P1_001 ...`; include control parameters METHOD_CHECK, CONTENT_TYPE_CHECK, MANDATORY_CHECK, TYPE_CHECK, LENGTH_CHECK, SCOPE_FIELDS, and EG_CHECK; include HTTP method plus endpoint heading such as `POST /path`; each TD node must include **Steps**, **Expected**, and Source/source reference text; TD_P2 nodes must name concrete field/schema/request/response/body/param targets; TD_P3 nodes must name concrete business/rule/error/code/state/flow targets.
-12. Before writing Legacy19TestCase.generated.tsv, read workflow-packs/default/examples/testcase-legacy-19col.tsv and copy its 19-column header exactly, including quoted cells and tab separators. Every data row must have exactly the same 19 tab-separated columns and non-empty required cells.
-13. Before writing CoverageMatrix.md, satisfy scripts/validate_test_generation_matrix.py: include a Markdown table with at least these columns: Matrix Row ID, Source Ref, Source Kind, Field Or Rule, Rule Type, Technique, Value Class, Coverage Status, Rationale, TD ID, Test Case ID. For every row whose Coverage Status is covered, populate a valid TD ID such as TD_P1_001/TD_P2_001/TD_P3_001 or a valid Test Case ID such as TD_P1_001_TC_001; use Coverage Status open_question for rows that cannot be traced to a TD/TC yet.
-14. TestCaseSource.md must contain real testcase execution content, not metadata-only notes: include testcase IDs matching TD_P[123]_NNN_TC_NNN; include `Primary Condition:`, `Primary Target:`, or `Atomic Target:` markers naming exact field/header/param/path/body/business targets; include execution markers such as `Pre-conditions`, `Test Datas`, `Test Steps`, `Expected result`, or `Open Questions`; keep each testcase atomic.
-15. Each row in Legacy19TestCase.generated.tsv must also satisfy scripts/validate_api_tc_specificity.py and scripts/validate_testcase_granularity.py: Test Case ID must match TD_P[123]_NNN_TC_NNN; Test Case Summary or Test Steps must include an HTTP method (GET/POST/PUT/PATCH/DELETE) and endpoint path; Expected result must include an HTTP status such as HTTP 200/HTTP 400 and a concrete response/error assertion mentioning code, message, success, data, errors, response, body, schema, field, lỗi, or mã lỗi; Test Case Summary or Test Datas or Expected result must contain `Primary Condition:`, `Primary Target:`, or `Atomic Target:` naming one exact field/header/param/path/body/business rule. Do not use generic phrases such as valid data, invalid data, correct response, appropriate error, như trên, tương tự, etc.
-16. Legacy19TestCase.generated.tsv must include all API coverage categories required by scripts/validate_testcase_coverage.py for profile api_legacy_19_column_testcase. Across the generated rows, include explicit `Coverage: METHOD`, `Coverage: CONTENT_TYPE`, `Coverage: AUTH`, `Coverage: MANDATORY_HEADERS`, `Coverage: LANGUAGE`, `Coverage: BODY_SCHEMA`, `Coverage: BOUNDARY`, `Coverage: BUSINESS_ERROR`, `Coverage: RESPONSE_SCHEMA`, and `Coverage: ERROR_PRIORITY` markers in Notes or another testcase text column. Each marked row must still remain atomic with one Primary Condition.
-17. Do not claim review, supervisor approval, or publish readiness unless deterministic validators pass. If any validator fails or cannot be run, OutputReview.md and SupervisorApproval.md must state retry_required/rejected with the exact blocker.
+11. Do not claim review, supervisor approval, or publish readiness unless deterministic validators pass. If any validator fails or cannot be run, OutputReview.md and SupervisorApproval.md must state retry_required/rejected with the exact blocker.
+
+{pack_requirements}
+
+{output_requirements}
 """.strip()
 
 
@@ -128,7 +162,7 @@ async def execute_with_claude(output_dir: Path, workflow_pack: str, max_turns: i
     options = build_options(ROOT, max_turns=max_turns, include_mcp=include_mcp)
     prompt = build_execution_prompt(output_dir / "source_manifest.json", output_dir / "route_plan.json", workflow_pack)
     async with ClaudeSDKClient(options=options) as client:
-        await client.query(f"{SYSTEM_PROMPT}\n\n{prompt}")
+        await client.query(f"{build_system_prompt(workflow_pack)}\n\n{prompt}")
         async for message in client.receive_response():
             yield str(message)
 
@@ -223,7 +257,7 @@ def main() -> int:
     parser.add_argument("--sheet-range")
     parser.add_argument("--prompt")
     parser.add_argument("--prompt-file")
-    parser.add_argument("--workflow-pack", default="default")
+    parser.add_argument("--workflow-pack", default="ai-tester")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--run-id")
     parser.add_argument("--project")

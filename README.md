@@ -1,44 +1,77 @@
-# BIDV Automation Test Agent Skills
+# AI Tester Operating System
 
-Package này chỉ hỗ trợ **Prompt-Compatible Orchestration Mode**.
+Package này triển khai **AI Tester Operating System**: một hệ agent skills làm việc như QC senior. Trục chính không phải raw input -> output artifact, mà là đọc nguồn, xây tri thức, hiểu tài liệu, cook knowledge, brainstorm/risk reasoning, planning, rồi mới sinh output QA/test.
 
-Agent skills không thay thế prompt/workflow hiện có của BIDV bằng native generation. Agent skills đóng vai trò điều phối: chọn đúng workflow pack/prompt đã đóng gói, gom đủ input mà prompt yêu cầu, generate theo đúng rule/prohibition của prompt, normalize output thành Markdown source-of-truth, export TSV/Excel-style đúng contract, rồi review trước handoff.
+Runtime chính là `workflow-packs/ai-tester/`. `workflow-packs/default/` được giữ làm output-generation subsystem để tái sử dụng prompt, contract, validator, exporter và golden examples hiện có.
 
-Runtime mặc định là self-contained workflow pack `workflow-packs/default/`; package không cần folder `BIDV/` tồn tại khi vận hành. Folder BIDV lịch sử chỉ là bootstrap/reference để tạo workflow pack.
-
-## Operating mode duy nhất
+## Operating mode chính
 
 ```text
-BIDV request
--> orchestrator intake
--> request classification
--> registry lookup
--> source/runtime verbatim prompt selection
--> prompt mirror verification
--> prompt-required input gathering
--> BIDV prompt-compatible generation
--> markdown normalization
--> TSV/Excel-style export
--> output review
--> handoff
+Source/Input
+-> Knowledge System
+-> Input Understanding System
+-> Knowledge Cooking System
+-> Reasoning / Brainstorming System
+-> Planning System
+-> Cognition Gate
+-> Output Generation System
+-> Review / Approval System
+-> Reflection / Memory System
 ```
 
-Không có Native Agent Mode. Không generate freeform ngoài selected BIDV runtime verbatim prompt và source docs đã duyệt.
+Rule lõi:
+
+```text
+Không sinh TestPlan/TestDesign/TestCase/UAT/export trực tiếp từ raw input.
+Output skills chỉ chạy sau khi cognition artifacts đạt cognition gate.
+```
+
+## AI Tester OS layers
+
+| Layer | Nhiệm vụ | Component chính |
+|---|---|---|
+| Knowledge System | collect, classify, source quality, context package, memory | `knowledge-collector`, `source-quality-analyzer`, `context-builder`, `knowledge-retriever` |
+| Input Understanding System | skim, break down, analyze API/UI/docs, detect gaps | `document-skimmer`, `document-breakdown`, `api-spec-analyzer`, `ui-flow-analyzer`, `ambiguity-conflict-detector` |
+| Knowledge Cooking System | raw facts -> business/domain/coverage/risk model | `business-rule-extractor`, `domain-model-builder`, `coverage-model-builder`, `risk-model-builder` |
+| Reasoning / Brainstorming System | risks, defect hypotheses, edge cases, coverage ideas | `risk-brainstormer`, `defect-hypothesis-generator`, `edge-case-brainstormer`, `coverage-idea-generator` |
+| Planning System | strategy, coverage, test data, questions, artifact plan | `test-strategy-planner`, `coverage-planner`, `test-data-planner`, `question-planner` |
+| Output Generation System | Test Plan, TD, TC, UAT, automation, execution, dashboard | existing output skills and `workflow-packs/default/` |
+| Review / Approval System | output review, contract validation, supervisor approval | `output-reviewer`, `contract-validator`, `supervisor` |
+| Reflection / Memory System | lessons, memory update, defect pattern update | `reflection-learner`, `feedback-to-knowledge-updater`, `defect-pattern-memory-updater` |
+
+## Cognition gate
+
+Before any final output generation, the AI Tester OS must provide:
+
+- `SourceInventory.md`
+- `DocumentMap.md`
+- `FactInventory.md`
+- `BusinessRuleModel.md` or blocker `OpenQuestions.md`
+- `RiskModel.md`
+- `CoveragePlan.md`
+- `TesterStrategyPlan.md`
+- `QuestionBacklog.md`
+
+Missing facts must be visible as `OpenQuestions`, `QuestionBacklog`, or `[PENDING_DOC:<fact>]`. Hypotheses must not be treated as confirmed requirements.
 
 ## Universal file + prompt runner
 
-Khi user chỉ “ném file + prompt”, dùng universal runner để tự phân loại source, suy luận intent, chọn route trong workflow pack và tạo output QA/test cuối:
+Khi user chỉ “ném file + prompt”, dùng universal runner để tự phân loại source, suy luận intent, chọn route trong AI Tester OS và tạo artifact đúng gate:
 
 ```bash
 python sdk/universal_delivery_runner.py \
-  --workflow-pack default \
+  --workflow-pack ai-tester \
   --source ./input/api_spec.pdf \
-  --prompt "Sinh test design, testcase BIDV 19 cột và test API" \
+  --prompt "Sinh test design, testcase 19 cột và test API theo AI Tester OS như QC senior" \
   --output-dir ./outputs/run-001 \
   --plan-only
 ```
 
-User-facing final outputs tùy route:
+`--workflow-pack ai-tester` là default. Chỉ dùng `--workflow-pack default` khi cần chạy legacy/output subsystem trực tiếp để tương thích.
+
+## Output Generation Subsystem
+
+Output subsystem giữ các năng lực hiện có:
 
 - `API_TestDesign.md` / `UI_TestDesign.md`
 - `TestCaseSource.md`
@@ -49,47 +82,51 @@ User-facing final outputs tùy route:
 - `PaygatesDashboard.generated.tsv` / `PaygatesDashboard.generated.xlsx`
 - `CoverageMatrix.md` / `GapAnalysis.md`
 
-For testcase-generation routes, `CoverageMatrix.md` is not optional: it is the dense senior-QC expansion layer used to split source rules by technique/value class/boundary/state/role before writing testcase rows. `GapAnalysis.md` records open questions, pruned combinations, and uncovered matrix rows.
+For testcase-generation routes, `CoverageMatrix.md` remains mandatory traceability: split source rules by technique/value class/boundary/state/role before writing testcase rows. `GapAnalysis.md` records open questions, pruned combinations, and uncovered matrix rows.
 
-Support artifacts như `source_manifest.json`, `route_plan.json`, `validation_report.json`, `OutputReview.md`, `handoff_summary.md` chỉ phục vụ trace/debug/validation.
+Support artifacts như `source_manifest.json`, `route_plan.json`, `validation_report.json`, `OutputReview.md`, `SupervisorApproval.md`, `handoff_summary.md` phục vụ trace/debug/validation.
 
 ## Entry point
 
-Bắt đầu từ `agents/delivery-orchestrator/AGENT.md`.
+Bắt đầu từ `agents/delivery-orchestrator/AGENT.md`, now acting as AI Tester Orchestrator.
 
-Luồng end-to-end bất biến là:
+Luồng end-to-end bất biến:
 
 ```text
-Project -> Squad -> Epic/Module -> Source Inventory -> Source Analysis -> Test Plan -> Test Design -> Test Generation Matrix / Coverage Matrix -> Test Case -> formatted Excel artifact -> Manual Execution -> Execution import / Status update -> Dashboard / Review -> Supervisor Approval -> Publish approved artifact
+Project -> Squad -> Epic/Module
+-> Source Inventory
+-> Document Map / Source Breakdown
+-> Fact / Rule Inventory
+-> Business / Domain / Coverage / Risk Model
+-> Defect Hypothesis / Edge Case / Coverage Ideas
+-> Tester Strategy / Coverage / Test Data / Question Plan
+-> Cognition Gate
+-> Test Plan / Test Design / Test Case / Export / Automation / Execution / Dashboard
+-> Output Review
+-> Supervisor Approval
+-> Artifact Publish
+-> Reflection / Memory Update
 ```
 
-Mọi request Project/Squad/Epic/API/UI/UAT/Execution/Automation/Review phải đi qua orchestrator để:
+Mọi request Project/Squad/Epic/API/UI/UAT/Execution/Automation/Review phải đi qua AI Tester Orchestrator để:
 
-1. xác định artifact cần sinh,
-2. chọn prompt/workflow BIDV tương ứng,
-3. xác nhận input bắt buộc,
-4. điều phối skill chuyên trách,
-5. kiểm output contract trước handoff.
+1. xác định layer cần chạy,
+2. chọn route trong `workflow-packs/ai-tester`,
+3. xác nhận upstream cognition artifacts,
+4. điều phối specialist/output subsystem,
+5. kiểm cognition/output contracts trước handoff.
 
 ## Source behavior
 
 - Raw BIDV prompts trong `BIDV/Prompt/**` là source behavior reference.
-- Runtime prompt mirrors trong `prompts-verbatim/**` phải khớp nguyên văn với source BIDV prompt và được verify bằng `scripts/verify_prompt_mirrors.py`.
+- Runtime prompt mirrors trong `prompts-verbatim/**` phải khớp nguyên văn với source BIDV prompt và được verify bằng `scripts/verify_prompt_mirrors.py` khi default/output subsystem cần dùng.
 - Files trong `skills/*/prompts/*.md` là non-runtime notes/wrappers nếu không được verify là content-equivalent với source prompt.
 - BIDV specs/UI/test design/source docs là business source input.
 - Output contracts trong `data/output-contracts/` quyết định export format.
 
 ## Readiness boundary
 
-Agents are linked through orchestrator routing, the prompt registry, owning skills, runtime owning roles, prompt mirror verification, and output review/contract validation gates. A document-to-output run is BIDV-ready only after the selected runtime verbatim prompts are verified, generated artifacts record source/runtime prompt metadata, `OutputReview` passes, and required TSV/Excel-style validators pass.
-
-## Output bắt buộc
-
-- Markdown artifact để maintain, review và diff.
-- Legacy BIDV 19-column TSV cho API/UI manual testcase khi cần output giống file BIDV hiện tại.
-- UAT 16-column TSV khi workflow UAT yêu cầu.
-- XRAY/TestLink-style TSV cho traceability, Test Set và Test Execution handoff khi cần.
-- Review report trước handoff.
+A run is AI Tester OS-ready only after cognition artifacts satisfy `workflow-packs/ai-tester/contracts/cognition_artifact_contract.md`, cognition gate satisfies `workflow-packs/ai-tester/contracts/cognition_gate_contract.md`, selected output validators pass, `OutputReview.md` exists, and `SupervisorApproval.md` records approved/rejected status with blocker rationale.
 
 ## QA standards
 
@@ -120,9 +157,10 @@ Agents are linked through orchestrator routing, the prompt registry, owning skil
 
 ## Routing references
 
-- One-mode definition: [orchestration_mode.md](data/source-inventory/orchestration_mode.md)
-- BIDV workflow map: [workflow_map.md](data/source-inventory/workflow_map.md)
-- Prompt fragment registry: [prompt_fragment_registry.md](data/source-inventory/prompt_fragment_registry.md)
+- AI Tester workflow: [workflow.yml](workflow-packs/ai-tester/workflow.yml)
+- Cognition artifact contract: [cognition_artifact_contract.md](workflow-packs/ai-tester/contracts/cognition_artifact_contract.md)
+- Cognition gate contract: [cognition_gate_contract.md](workflow-packs/ai-tester/contracts/cognition_gate_contract.md)
+- Output subsystem workflow: [workflow.yml](workflow-packs/default/workflow.yml)
 - Prompt mirror manifest: [prompt_mirror_manifest.json](data/source-inventory/prompt_mirror_manifest.json)
 - Orchestrator playbook: [prompt_compatible_orchestration.md](agents/delivery-orchestrator/playbooks/prompt_compatible_orchestration.md)
 
@@ -157,6 +195,7 @@ Reusable review/validation roles:
 SDK runner layer:
 
 - SDK guide: [README.md](sdk/README.md)
+- Universal AI Tester OS runner: [universal_delivery_runner.py](sdk/universal_delivery_runner.py)
 - BIDV API delivery runner: [api_delivery_runner.py](sdk/api_delivery_runner.py)
 - BIDV Paygates dashboard runner: [paygates_dashboard_runner.py](sdk/paygates_dashboard_runner.py)
 - Guardrail hooks: [hooks.py](sdk/hooks.py)

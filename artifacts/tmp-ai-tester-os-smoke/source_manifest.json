@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run-20260522-074143",
+  "user_prompt": "Sinh testcase theo AI Tester OS như QC senior",
+  "output_directory": "B:\\Test\\qa-qc-agent-skills\\artifacts\\tmp-ai-tester-os-smoke",
+  "workflow_pack": "ai-tester",
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "local_file",
+      "original_locator": "b:\\Test\\qa-qc-agent-skills\\examples\\e2e\\api-cctg\\API_TestDesign.md",
+      "local_path": "examples\\e2e\\api-cctg\\API_TestDesign.md",
+      "google_sheet": null,
+      "extension": ".md",
+      "size_bytes": 3907,
+      "sha256": "b2847e0dd3423711ed7728d0aa33c200668c444196931c15f9737c0eb56579cb",
+      "fingerprint": {
+        "candidate_roles": [
+          "api_spec",
+          "api_test_design",
+          "api_testcase",
+          "pttk",
+          "test_design",
+          "ui_spec"
+        ],
+        "detected_headers": [],
+        "detected_keywords": [
+          "endpoint",
+          "request",
+          "response",
+          "method",
+          "header",
+          "schema",
+          "content-type",
+          "http",
+          "field",
+          "validation",
+          "message",
+          "api",
+          "request",
+          "response",
+          "td_p1",
+          "td_p2",
+          "td_p3",
+          "test condition",
+          "td_p1",
+          "td_p2",
+          "td_p3",
+          "method",
+          "header",
+          "schema",
+          "business logic",
+          "endpoint",
+          "request body",
+          "response",
+          "http status",
+          "td_p"
+        ],
+        "content_hints": []
+      }
+    }
+  ],
+  "user_context": {
+    "project": null,
+    "squad": null,
+    "sprint": null,
+    "epic": null,
+    "environment": null,
+    "tester": null,
+    "build_version": null
+  }
+}

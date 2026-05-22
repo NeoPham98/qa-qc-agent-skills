@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "workflow_pack": "default",
+  "route_id": "api_test_design_to_testcase",
+  "confidence": 0.85,
+  "source_roles": [
+    "api_spec",
+    "api_test_design",
+    "pttk",
+    "rsd",
+    "ui_spec"
+  ],
+  "prompt_intents": [
+    "testcase"
+  ],
+  "stages": [
+    {
+      "id": "api_td_validation",
+      "kind": "validation",
+      "prompt": null,
+      "outputs": [
+        "API_TestDesign.validation.json"
+      ],
+      "validators": [
+        "api_td_contract",
+        "api_td_specificity"
+      ]
+    },
+    {
+      "id": "api_tc_from_td",
+      "kind": "prompt",
+      "prompt": "prompts/API/API_Gen_TC_From_TD_v2.txt",
+      "outputs": [
+        "TestCaseSource.md"
+      ],
+      "validators": []
+    },
+    {
+      "id": "legacy_19col_export",
+      "kind": "tool",
+      "prompt": null,
+      "outputs": [
+        "Legacy19TestCase.generated.tsv",
+        "Legacy19TestCase.generated.xlsx"
+      ],
+      "validators": [
+        "legacy_19col_tsv"
+      ]
+    },
+    {
+      "id": "api_tc_validation",
+      "kind": "validation",
+      "prompt": null,
+      "outputs": [
+        "Legacy19TestCase.generated.tsv"
+      ],
+      "validators": [
+        "api_tc_specificity",
+        "api_tc_granularity",
+        "testcase_coverage_api"
+      ]
+    },
+    {
+      "id": "output_review",
+      "kind": "review",
+      "prompt": null,
+      "outputs": [
+        "OutputReview.md"
+      ],
+      "validators": [
+        "output_review_required"
+      ]
+    },
+    {
+      "id": "supervisor_approval",
+      "kind": "approval",
+      "prompt": null,
+      "outputs": [
+        "SupervisorApproval.md"
+      ],
+      "validators": [
+        "supervisor_approval_required",
+        "artifact_manifest"
+      ]
+    },
+    {
+      "id": "artifact_publish",
+      "kind": "publish",
+      "prompt": null,
+      "outputs": [
+        "published-artifact-manifest.yml"
+      ],
+      "validators": [
+        "artifact_manifest"
+      ]
+    }
+  ],
+  "final_outputs": [
+    "TestCaseSource.md",
+    "Legacy19TestCase.generated.tsv",
+    "Legacy19TestCase.generated.xlsx",
+    "OutputReview.md",
+    "SupervisorApproval.md"
+  ],
+  "support_outputs": [
+    "source_manifest.json",
+    "route_plan.json",
+    "validation_report.json",
+    "handoff_summary.md",
+    "CoverageMatrix.md"
+  ]
+}

@@ -46,7 +46,8 @@ def plan_route(workflow: dict[str, Any], classification: IntentClassification, p
     routes = workflow.get("routes", {})
     route = routes.get(classification.request_type)
     if route is None:
-        raise ValueError(f"No route found for request type: {classification.request_type}")
+        available = ", ".join(sorted(routes)) or "<none>"
+        raise ValueError(f"No route found for request type {classification.request_type!r} in workflow pack {pack_id!r}. Available routes: {available}")
     stage_defs = workflow.get("stages", {})
     stages: list[RouteStage] = []
     for stage_id in route.get("stages", []):

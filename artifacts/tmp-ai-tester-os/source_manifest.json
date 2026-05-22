@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run-20260521-222531",
+  "user_prompt": "Sinh testcase theo AI Tester OS như QC senior",
+  "output_directory": "B:\\Test\\qa-qc-agent-skills\\artifacts\\tmp-ai-tester-os",
+  "workflow_pack": "ai-tester",
+  "sources": [
+    {
+      "id": "source-1",
+      "kind": "local_file",
+      "original_locator": "qa-qc-agent-skills\\examples\\full-xray-chain\\RequirementInventory.md",
+      "local_path": "examples\\full-xray-chain\\RequirementInventory.md",
+      "google_sheet": null,
+      "extension": ".md",
+      "size_bytes": 842,
+      "sha256": "cc0281be5059b46ec8b6fc111e274b3db7fc758afe232f24c5707d409b9e68ca",
+      "fingerprint": {
+        "candidate_roles": [
+          "api_spec",
+          "api_test_design",
+          "pttk",
+          "rsd",
+          "ui_spec"
+        ],
+        "detected_headers": [],
+        "detected_keywords": [
+          "response",
+          "method",
+          "header",
+          "schema",
+          "http",
+          "api",
+          "response",
+          "table",
+          "method",
+          "header",
+          "schema"
+        ],
+        "content_hints": []
+      }
+    }
+  ],
+  "user_context": {
+    "project": null,
+    "squad": null,
+    "sprint": null,
+    "epic": null,
+    "environment": null,
+    "tester": null,
+    "build_version": null
+  }
+}

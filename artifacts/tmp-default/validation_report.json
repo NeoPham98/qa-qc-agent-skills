@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "status": "warnings",
+  "checks": [
+    {
+      "name": "final_output_exists",
+      "target": "TestCaseSource.md",
+      "status": "pending",
+      "details": "Final output will be created during execution."
+    },
+    {
+      "name": "final_output_exists",
+      "target": "Legacy19TestCase.generated.tsv",
+      "status": "pending",
+      "details": "Final output will be created during execution."
+    },
+    {
+      "name": "final_output_exists",
+      "target": "Legacy19TestCase.generated.xlsx",
+      "status": "pending",
+      "details": "Final output will be created during execution."
+    },
+    {
+      "name": "output_review_exists",
+      "target": "OutputReview.md",
+      "status": "warning",
+      "details": "OutputReview is expected after generation."
+    },
+    {
+      "name": "final_output_exists",
+      "target": "SupervisorApproval.md",
+      "status": "pending",
+      "details": "Final output will be created during execution."
+    },
+    {
+      "name": "coverage_matrix_exists",
+      "target": "CoverageMatrix.md",
+      "status": "pending",
+      "details": "Coverage matrix will be created during execution."
+    },
+    {
+      "name": "no_bidv_runtime_refs",
+      "target": "B:\\Test\\qa-qc-agent-skills\\artifacts\\tmp-default",
+      "status": "success",
+      "details": "{\"status\": \"passed\", \"paths\": [\"B:\\\\Test\\\\qa-qc-agent-skills\\\\artifacts\\\\tmp-default\"]}"
+    }
+  ],
+  "warnings": [
+    "OutputReview.md missing in plan/dry-run output"
+  ],
+  "open_questions": []
+}
